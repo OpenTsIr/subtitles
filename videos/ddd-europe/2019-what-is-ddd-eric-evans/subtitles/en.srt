@@ -1,0 +1,4635 @@
+1
+00:00:00,000 --> 00:00:17,540
+Well, welcome to DDD Europe, and thank you for the welcome.
+
+2
+00:00:18,540 --> 00:00:27,840
+So today, my talk, I think the one I'm assigned is sort of what is domain-driven design.
+
+3
+00:00:27,840 --> 00:00:35,320
+And so I'll try to get across sort of the basic concepts and the motivations,
+
+4
+00:00:36,000 --> 00:00:40,880
+and then they'll go into more detail in some of the other talks about some of the important principles,
+
+5
+00:00:40,940 --> 00:00:42,480
+as you've seen on the agenda.
+
+6
+00:00:43,560 --> 00:00:48,100
+I always like to start the discussion with this statement.
+
+7
+00:00:48,280 --> 00:00:51,260
+It's like a mantra, almost, that I do.
+
+8
+00:00:51,260 --> 00:00:57,480
+Because a lot of people come to design with deep-seated perfectionist tendencies.
+
+9
+00:00:58,340 --> 00:01:02,720
+And those tendencies undermine all our attempts to do good design.
+
+10
+00:01:03,060 --> 00:01:06,640
+And this I say as someone who has this tendency.
+
+11
+00:01:07,220 --> 00:01:12,060
+And speaking to a room full of, I'm sure, 90% of you have this tendency, too.
+
+12
+00:01:12,720 --> 00:01:16,300
+So keep that in the back of your mind as we go along.
+
+13
+00:01:17,240 --> 00:01:20,400
+Now, there are a lot of people who don't have that tendency.
+
+14
+00:01:20,960 --> 00:01:26,660
+And when they look at some of the things we do, and they'll say, you know, you don't need all that.
+
+15
+00:01:27,840 --> 00:01:28,740
+Truth and beauty.
+
+16
+00:01:29,120 --> 00:01:30,320
+It's just truth and beauty.
+
+17
+00:01:30,720 --> 00:01:32,840
+And all you need is software that runs.
+
+18
+00:01:33,900 --> 00:01:36,960
+And what we're doing is about software, right?
+
+19
+00:01:37,040 --> 00:01:42,940
+We're really, our goal is to create software that does an important job.
+
+20
+00:01:43,720 --> 00:01:49,940
+And so what is the most effective way of creating software that does an important job?
+
+21
+00:01:50,380 --> 00:01:57,480
+It isn't a given that that would be models or a particular style of doing models.
+
+22
+00:01:57,840 --> 00:02:00,340
+That shouldn't be taken for granted.
+
+23
+00:02:00,780 --> 00:02:02,940
+We should always be questioning our assumptions.
+
+24
+00:02:03,760 --> 00:02:06,760
+But I think there is a good case for it.
+
+25
+00:02:07,140 --> 00:02:11,640
+And I will try to illustrate that case with an example.
+
+26
+00:02:12,620 --> 00:02:14,200
+All this stuff is so abstract.
+
+27
+00:02:15,480 --> 00:02:17,740
+I like to get straight to an example.
+
+28
+00:02:18,840 --> 00:02:22,160
+So mostly in this talk, I'll go through this.
+
+29
+00:02:23,260 --> 00:02:26,660
+The example is from a domain of container shipping.
+
+30
+00:02:26,660 --> 00:02:27,780
+This is for bulk.
+
+31
+00:02:27,840 --> 00:02:29,140
+Cargo transport.
+
+32
+00:02:30,020 --> 00:02:34,540
+And most people, I think, are at least a little bit familiar with this.
+
+33
+00:02:36,180 --> 00:02:41,960
+Almost all bulk cargo these days is loaded into containers like this one.
+
+34
+00:02:42,600 --> 00:02:46,500
+And then put onto ships like this to go across the ocean.
+
+35
+00:02:47,240 --> 00:02:51,940
+Transfer it in ports like this to go onto other ships or onto trains.
+
+36
+00:02:52,180 --> 00:02:55,940
+You just simply attach a chassis to the bottom of the container.
+
+37
+00:02:56,740 --> 00:02:57,820
+And it becomes a train.
+
+38
+00:02:58,000 --> 00:02:59,100
+It becomes a train car.
+
+39
+00:02:59,100 --> 00:03:00,920
+Or a different kind of chassis.
+
+40
+00:03:01,080 --> 00:03:04,120
+And it becomes the trailer of a truck.
+
+41
+00:03:04,660 --> 00:03:10,460
+And so this kind of intermodal transportation, it's very efficient.
+
+42
+00:03:10,880 --> 00:03:13,860
+And you can imagine, it has some logistical complexity.
+
+43
+00:03:15,080 --> 00:03:18,920
+And because of that logistical complexity, there's a lot of software involved.
+
+44
+00:03:20,000 --> 00:03:21,920
+So I think that...
+
+45
+00:03:24,120 --> 00:03:25,600
+Well, anyway.
+
+46
+00:03:26,940 --> 00:03:27,080
+So...
+
+47
+00:03:27,820 --> 00:03:34,700
+Imagine that we work in a company, a shipping company.
+
+48
+00:03:34,700 --> 00:03:39,340
+And our job is to write software that addresses those logistical issues.
+
+49
+00:03:40,520 --> 00:03:48,120
+So a typical kind of problem, a kind of case that we might be looking at,
+
+50
+00:03:48,220 --> 00:03:53,380
+would involve, say, a customer calling one of our clerks and saying,
+
+51
+00:03:53,700 --> 00:03:56,160
+I have a container in Hong Kong.
+
+52
+00:03:56,280 --> 00:03:57,620
+I want to ship it to Dallas.
+
+53
+00:03:57,620 --> 00:03:57,700
+Taxi.
+
+54
+00:03:57,700 --> 00:03:57,800
+Taxi.
+
+55
+00:03:57,800 --> 00:04:00,700
+So the clerk might say, all right.
+
+56
+00:04:01,040 --> 00:04:04,320
+They put into the computer, the origin is Hong Kong.
+
+57
+00:04:04,820 --> 00:04:06,240
+The destination is Dallas.
+
+58
+00:04:06,920 --> 00:04:10,640
+And the computer will come up with a routing for that cargo.
+
+59
+00:04:11,660 --> 00:04:17,260
+And then they will explain it back to the customer.
+
+60
+00:04:17,340 --> 00:04:17,680
+All right.
+
+61
+00:04:17,740 --> 00:04:22,900
+Your cargo would be loaded in Hong Kong onto a specific vessel voyage.
+
+62
+00:04:23,080 --> 00:04:25,740
+ABC is the designator of that in this picture.
+
+63
+00:04:26,680 --> 00:04:27,680
+And then in Hong Kong...
+
+64
+00:04:27,680 --> 00:04:30,760
+In Hong Kong, it would be transferred onto a train, XYZ.
+
+65
+00:04:31,040 --> 00:04:39,960
+And that would get it to Texas, to Dallas, Texas, on a certain date and time.
+
+66
+00:04:40,460 --> 00:04:42,500
+The customer says, all right, that sounds good.
+
+67
+00:04:42,640 --> 00:04:43,020
+Book it.
+
+68
+00:04:44,200 --> 00:04:48,600
+So then they take a few more steps, and it's stored in the computer.
+
+69
+00:04:48,900 --> 00:04:50,440
+This is our first use case.
+
+70
+00:04:51,620 --> 00:04:56,880
+And we could start immediately thinking about, all right, what kind of objects do we need?
+
+71
+00:04:56,880 --> 00:04:57,660
+Or what kind of functions?
+
+72
+00:04:57,660 --> 00:05:05,100
+And we could develop a design and a model for this thing.
+
+73
+00:05:05,800 --> 00:05:09,740
+But that ignores one of the realities of software development.
+
+74
+00:05:10,600 --> 00:05:14,280
+And that is that we already have software that does this.
+
+75
+00:05:14,940 --> 00:05:22,780
+In almost every project, we're working in a problem space where there's already a lot of software.
+
+76
+00:05:23,220 --> 00:05:25,940
+Our software will have to coexist with that software.
+
+77
+00:05:26,140 --> 00:05:27,540
+Perhaps it will be...
+
+78
+00:05:27,660 --> 00:05:31,060
+Perhaps we're talking about a refinement of the existing software.
+
+79
+00:05:31,580 --> 00:05:37,320
+Perhaps we're talking about some new piece of software that will integrate with another piece of software.
+
+80
+00:05:37,720 --> 00:05:42,620
+Or maybe we're talking about a new piece of software that's replacing a piece of existing software.
+
+81
+00:05:42,840 --> 00:05:45,220
+But there's always existing software.
+
+82
+00:05:45,740 --> 00:05:49,860
+Even in so-called greenfield projects, there's still existing software.
+
+83
+00:05:50,520 --> 00:05:52,620
+And that's a very important constraint.
+
+84
+00:05:53,620 --> 00:05:56,380
+So I don't like to ignore that constraint.
+
+85
+00:05:57,660 --> 00:06:04,780
+And a number of the techniques that will be talked about later,
+
+86
+00:06:04,960 --> 00:06:08,480
+some of those are related to that, especially context mapping.
+
+87
+00:06:09,380 --> 00:06:15,340
+But for right now, we'll sort of assume that we are going to be refining an existing piece of software.
+
+88
+00:06:16,340 --> 00:06:20,240
+So let's look briefly at the design of the existing software.
+
+89
+00:06:20,980 --> 00:06:24,600
+So this is a very high-level view.
+
+90
+00:06:26,180 --> 00:06:26,240
+And...
+
+91
+00:06:27,660 --> 00:06:32,180
+In this very high-level view, we can see that we have an object called a cargo,
+
+92
+00:06:32,640 --> 00:06:37,860
+which is populated with all the information that the clerk would collect as they talk to the customer,
+
+93
+00:06:38,360 --> 00:06:41,040
+especially the origin and destination of that cargo.
+
+94
+00:06:42,680 --> 00:06:48,260
+Then they pass that information to a service called the routing service.
+
+95
+00:06:48,260 --> 00:06:53,260
+And that service will figure out the steps, right?
+
+96
+00:06:53,360 --> 00:06:57,380
+Which actual vessel voyages which ships at which times.
+
+97
+00:06:57,660 --> 00:07:02,100
+Can actually take the cargo from its origin to its destination.
+
+98
+00:07:02,980 --> 00:07:09,680
+And as it does that, it puts its answers into a database table called cargo bookings.
+
+99
+00:07:10,640 --> 00:07:18,880
+Now, this design, which is fairly typical, I think, of legacy software of a certain generation.
+
+100
+00:07:19,600 --> 00:07:21,620
+And it's not a bad design.
+
+101
+00:07:21,620 --> 00:07:27,620
+It has one characteristic that's quite good, which is I can explain it at a high level very quickly.
+
+102
+00:07:27,660 --> 00:07:28,640
+And clearly.
+
+103
+00:07:29,380 --> 00:07:33,720
+So I think everyone understands this high-level view at this point.
+
+104
+00:07:34,060 --> 00:07:35,400
+That's a good characteristic.
+
+105
+00:07:35,580 --> 00:07:36,820
+Not all designs have that.
+
+106
+00:07:37,440 --> 00:07:39,300
+But it also has some drawbacks.
+
+107
+00:07:40,660 --> 00:07:48,760
+And some of those drawbacks might be preventing us from adding features or improving features that we want to do.
+
+108
+00:07:49,840 --> 00:07:55,980
+Now, when I look at a software design, I try to have two perspectives.
+
+109
+00:07:55,980 --> 00:07:56,980
+And I...
+
+110
+00:07:57,660 --> 00:08:01,660
+I try to shift back and forth between those two perspectives.
+
+111
+00:08:01,660 --> 00:08:07,660
+One perspective is the software designer, software engineer type of perspective.
+
+112
+00:08:07,660 --> 00:08:21,660
+This one, I apply all the principles that, you know, that we have learned about how to make software somewhat clean and changeable and so forth.
+
+113
+00:08:21,660 --> 00:08:26,660
+For example, with this set of eyes, I might notice that...
+
+114
+00:08:26,660 --> 00:08:27,640
+that...
+
+115
+00:08:27,660 --> 00:08:33,660
+there is a side effect here, kind of a problematic side effect.
+
+116
+00:08:33,660 --> 00:08:36,660
+That as the routing service does its job,
+
+117
+00:08:37,660 --> 00:08:42,660
+a very complex piece of logic is also updating the database.
+
+118
+00:08:43,660 --> 00:08:56,660
+To combine complex logic with a database update is basically a violation of an old principle of the separation of the logic from updating state.
+
+119
+00:08:56,660 --> 00:08:57,160
+And that's...
+
+120
+00:08:57,660 --> 00:09:03,660
+a principle that goes back before domain-driven design, as a name, anyway.
+
+121
+00:09:03,660 --> 00:09:07,660
+So I would notice that in other things.
+
+122
+00:09:07,660 --> 00:09:14,660
+But there's another perspective I want to bring to it, which is the domain perspective.
+
+123
+00:09:14,660 --> 00:09:25,660
+If I were talking about this design with a person who is not a software developer, but instead an expert in shipping, how would I explain it to them?
+
+124
+00:09:25,660 --> 00:09:31,660
+And it would start out much the same as the way I talked about it with you.
+
+125
+00:09:31,660 --> 00:09:38,660
+I would explain how you give the routing service an origin, destination, and a few other things.
+
+126
+00:09:38,660 --> 00:09:45,660
+And then it will come up with the stops that the cargo will have to make and put them in the database.
+
+127
+00:09:45,660 --> 00:09:50,660
+And at this level, communication is pretty good.
+
+128
+00:09:50,660 --> 00:09:52,660
+A shipping expert would understand that.
+
+129
+00:09:52,660 --> 00:09:54,660
+Would understand these kind of components of a database.
+
+130
+00:09:54,660 --> 00:09:58,660
+Components of a software system and how they interact.
+
+131
+00:09:58,660 --> 00:10:02,660
+But we need to get a little more detailed than that.
+
+132
+00:10:02,660 --> 00:10:05,660
+We can't always have such high-level discussions.
+
+133
+00:10:05,660 --> 00:10:10,660
+Suppose I wanted to discuss an issue that comes up sometimes.
+
+134
+00:10:10,660 --> 00:10:17,660
+I showed you an itinerary for a shipment that looks like a pretty good one.
+
+135
+00:10:17,660 --> 00:10:22,660
+But sometimes, for various reasons, you end up with something like this.
+
+136
+00:10:22,660 --> 00:10:23,660
+So notice that now,
+
+137
+00:10:23,660 --> 00:10:28,660
+the cargo is unloaded in Long Beach, California,
+
+138
+00:10:28,660 --> 00:10:33,660
+and then loaded onto the train in Sacramento, California,
+
+139
+00:10:33,660 --> 00:10:36,660
+which is hundreds of miles away.
+
+140
+00:10:36,660 --> 00:10:39,660
+So how did it get from Long Beach to Sacramento?
+
+141
+00:10:39,660 --> 00:10:41,660
+Well, it wouldn't.
+
+142
+00:10:41,660 --> 00:10:45,660
+If we had an actual itinerary like this in the system,
+
+143
+00:10:45,660 --> 00:10:48,660
+they would follow the instructions of the itinerary.
+
+144
+00:10:48,660 --> 00:10:51,660
+When it arrived in Long Beach, they would unload it.
+
+145
+00:10:51,660 --> 00:10:53,660
+But then when the time came for the people in Sacramento,
+
+146
+00:10:53,660 --> 00:10:54,660
+to put it on the train,
+
+147
+00:10:54,660 --> 00:10:57,660
+they would look around for it and couldn't find it.
+
+148
+00:10:57,660 --> 00:11:00,660
+And then eventually, someone would figure out what had happened.
+
+149
+00:11:00,660 --> 00:11:06,660
+But what we want is to be able to notice when this happens
+
+150
+00:11:06,660 --> 00:11:09,660
+and take a corrective action.
+
+151
+00:11:09,660 --> 00:11:12,660
+And people talk about this.
+
+152
+00:11:12,660 --> 00:11:17,660
+And they talk about these kind of disconnected itineraries.
+
+153
+00:11:17,660 --> 00:11:22,660
+But how is it reflected in the software as it exists?
+
+154
+00:11:22,660 --> 00:11:24,660
+Well, it is there.
+
+155
+00:11:24,660 --> 00:11:29,660
+We have some relational integrity constraints in the database table.
+
+156
+00:11:29,660 --> 00:11:33,660
+But when I start talking about this and this solution,
+
+157
+00:11:33,660 --> 00:11:37,660
+I find that I lose my connection with the domain expert.
+
+158
+00:11:37,660 --> 00:11:41,660
+I can't talk about this with a shipping expert
+
+159
+00:11:41,660 --> 00:11:44,660
+who doesn't really understand software that well.
+
+160
+00:11:44,660 --> 00:11:49,660
+So we have to find another way of dealing with this
+
+161
+00:11:49,660 --> 00:11:51,660
+and a way that gives us a design
+
+162
+00:11:51,660 --> 00:11:58,660
+just as clean and effective but maintains that communication.
+
+163
+00:11:58,660 --> 00:12:03,660
+So in these kinds of combining these two perspectives,
+
+164
+00:12:03,660 --> 00:12:07,660
+this is how I want to think as I go forward.
+
+165
+00:12:07,660 --> 00:12:12,660
+Now, I think about what concepts are we missing
+
+166
+00:12:12,660 --> 00:12:16,660
+that we are using when we talk to the domain expert.
+
+167
+00:12:16,660 --> 00:12:19,660
+We're almost shifting between two conceptual systems,
+
+168
+00:12:19,660 --> 00:12:21,660
+between two models.
+
+169
+00:12:21,660 --> 00:12:24,660
+Two languages.
+
+170
+00:12:24,660 --> 00:12:29,660
+So to find an alternative,
+
+171
+00:12:29,660 --> 00:12:33,660
+we need to somehow get into a creative collaboration
+
+172
+00:12:33,660 --> 00:12:36,660
+with these software experts.
+
+173
+00:12:36,660 --> 00:12:40,660
+I mean, between the software experts and the domain experts.
+
+174
+00:12:40,660 --> 00:12:42,660
+And that's not so easy to do.
+
+175
+00:12:42,660 --> 00:12:46,660
+Sometimes you can get one of these people into a room
+
+176
+00:12:46,660 --> 00:12:48,660
+and you've got a nice whiteboard
+
+177
+00:12:48,660 --> 00:12:50,660
+and you say, you know,
+
+178
+00:12:50,660 --> 00:12:54,660
+like, well, what concepts are we missing here?
+
+179
+00:12:54,660 --> 00:12:58,660
+And, you know, nothing will happen here.
+
+180
+00:12:58,660 --> 00:13:04,660
+So the thing is that getting these conversations started
+
+181
+00:13:04,660 --> 00:13:06,660
+is quite difficult.
+
+182
+00:13:06,660 --> 00:13:10,660
+I'm going to talk about sort of the things I often do,
+
+183
+00:13:10,660 --> 00:13:13,660
+kind of tell a little story of a typical way.
+
+184
+00:13:13,660 --> 00:13:17,660
+But that doesn't mean this is the way it's done.
+
+185
+00:13:17,660 --> 00:13:19,660
+And in fact, later in the day,
+
+186
+00:13:19,660 --> 00:13:23,660
+Alberto Brandolini is going to talk about event storming,
+
+187
+00:13:23,660 --> 00:13:27,660
+which is a technique that is, among other things,
+
+188
+00:13:27,660 --> 00:13:32,660
+a great way to get a creative collaboration going
+
+189
+00:13:32,660 --> 00:13:35,660
+between those two kinds of people, I think.
+
+190
+00:13:35,660 --> 00:13:42,660
+That's, I think, the most exciting aspect of it to me, actually.
+
+191
+00:13:42,660 --> 00:13:48,660
+But nonetheless, here's kind of a thing that I do.
+
+192
+00:13:48,660 --> 00:13:51,660
+Just take this as a story about, you know,
+
+193
+00:13:51,660 --> 00:13:55,660
+how it was done in this particular case.
+
+194
+00:13:55,660 --> 00:13:59,660
+First of all, I like to go in with an idea or two, you know,
+
+195
+00:13:59,660 --> 00:14:05,660
+to just kind of start feeding the conversation.
+
+196
+00:14:05,660 --> 00:14:09,660
+And where do those ideas come from, though?
+
+197
+00:14:09,660 --> 00:14:12,660
+Well, often, you know, you're just popping with ideas
+
+198
+00:14:12,660 --> 00:14:14,660
+if you've been working in the domain.
+
+199
+00:14:14,660 --> 00:14:17,660
+But one of the principles of domain-driven design
+
+200
+00:14:17,660 --> 00:14:20,660
+is that the language is very important.
+
+201
+00:14:20,660 --> 00:14:22,660
+And one thing I've noticed
+
+202
+00:14:22,660 --> 00:14:25,660
+is that when we talk about our software,
+
+203
+00:14:25,660 --> 00:14:30,660
+we don't use the same language that's actually in the software.
+
+204
+00:14:30,660 --> 00:14:32,660
+So, for example, here,
+
+205
+00:14:32,660 --> 00:14:36,660
+let's compare the way I talked about this system,
+
+206
+00:14:36,660 --> 00:14:38,660
+even at the high level,
+
+207
+00:14:38,660 --> 00:14:40,660
+with the way it actually works.
+
+208
+00:14:40,660 --> 00:14:43,660
+So I said,
+
+209
+00:14:43,660 --> 00:14:46,660
+give the routing service
+
+210
+00:14:46,660 --> 00:14:49,660
+an origin and a destination arrival time.
+
+211
+00:14:49,660 --> 00:14:51,660
+And if you look at the diagram,
+
+212
+00:14:51,660 --> 00:14:53,660
+you will see that, in fact,
+
+213
+00:14:53,660 --> 00:14:55,660
+that's exactly what happens.
+
+214
+00:14:55,660 --> 00:14:57,660
+I mean, taking this diagram
+
+215
+00:14:57,660 --> 00:15:00,660
+to be an accurate representation of the software.
+
+216
+00:15:00,660 --> 00:15:02,660
+So, so far, so good.
+
+217
+00:15:02,660 --> 00:15:05,660
+And then I say that the routing service,
+
+218
+00:15:05,660 --> 00:15:07,660
+it, the routing service,
+
+219
+00:15:07,660 --> 00:15:10,660
+will look up the stops the cargo will have to make.
+
+220
+00:15:10,660 --> 00:15:12,660
+Now, the thing about that
+
+221
+00:15:12,660 --> 00:15:14,660
+is that the word stops
+
+222
+00:15:14,660 --> 00:15:16,660
+does not appear in the diagram.
+
+223
+00:15:16,660 --> 00:15:19,660
+And we can do a little search
+
+224
+00:15:19,660 --> 00:15:21,660
+of the code and so forth,
+
+225
+00:15:21,660 --> 00:15:23,660
+and we will find that
+
+226
+00:15:23,660 --> 00:15:25,660
+stops is never used in this way
+
+227
+00:15:25,660 --> 00:15:27,660
+anywhere in the software.
+
+228
+00:15:27,660 --> 00:15:29,660
+It might be in a label here or there.
+
+229
+00:15:29,660 --> 00:15:31,660
+So this is a concept so basic
+
+230
+00:15:31,660 --> 00:15:33,660
+that I use it to explain
+
+231
+00:15:33,660 --> 00:15:35,660
+what the routing service does.
+
+232
+00:15:35,660 --> 00:15:37,660
+What does the routing service do?
+
+233
+00:15:37,660 --> 00:15:39,660
+It looks up the stops the cargo has to make.
+
+234
+00:15:39,660 --> 00:15:41,660
+But that's not actually
+
+235
+00:15:41,660 --> 00:15:43,660
+what's happening in the software.
+
+236
+00:15:43,660 --> 00:15:45,660
+Not at least in those words.
+
+237
+00:15:45,660 --> 00:15:47,660
+So maybe here we have an idea
+
+238
+00:15:47,660 --> 00:15:50,660
+that could feed the conversation.
+
+239
+00:15:50,660 --> 00:15:52,660
+And so I could propose something.
+
+240
+00:15:52,660 --> 00:15:54,660
+I could say, well, cargo,
+
+241
+00:15:54,660 --> 00:15:56,660
+we already have the cargo object.
+
+242
+00:15:56,660 --> 00:15:58,660
+Maybe the cargo object
+
+243
+00:15:58,660 --> 00:16:00,660
+could have a series of stops.
+
+244
+00:16:00,660 --> 00:16:03,660
+Now, I propose this,
+
+245
+00:16:03,660 --> 00:16:06,660
+and my shipping counterpart says,
+
+246
+00:16:06,660 --> 00:16:08,660
+yeah, that sounds good.
+
+247
+00:16:08,660 --> 00:16:10,660
+Let's do it that way.
+
+248
+00:16:10,660 --> 00:16:12,660
+And so I feel good
+
+249
+00:16:12,660 --> 00:16:14,660
+that I had a good idea.
+
+250
+00:16:14,660 --> 00:16:16,660
+Now we can take this.
+
+251
+00:16:16,660 --> 00:16:18,660
+We can refactor the software.
+
+252
+00:16:18,660 --> 00:16:20,660
+We can have a more,
+
+253
+00:16:20,660 --> 00:16:22,660
+a better communication
+
+254
+00:16:22,660 --> 00:16:24,660
+between the two types of people
+
+255
+00:16:24,660 --> 00:16:27,660
+and so forth and never look back.
+
+256
+00:16:27,660 --> 00:16:30,660
+Actually, this is often what happens.
+
+257
+00:16:30,660 --> 00:16:33,660
+And that is another point
+
+258
+00:16:33,660 --> 00:16:35,660
+where things can go awry
+
+259
+00:16:35,660 --> 00:16:37,660
+because at this point,
+
+260
+00:16:37,660 --> 00:16:39,660
+I will have lost a great opportunity.
+
+261
+00:16:39,660 --> 00:16:42,660
+The first decent idea that came along
+
+262
+00:16:42,660 --> 00:16:44,660
+is often the last idea.
+
+263
+00:16:44,660 --> 00:16:47,660
+Because we latch onto it
+
+264
+00:16:47,660 --> 00:16:50,660
+and we stop thinking.
+
+265
+00:16:50,660 --> 00:16:53,660
+As a metaphor for this,
+
+266
+00:16:53,660 --> 00:16:56,660
+or a comparison anyway,
+
+267
+00:16:56,660 --> 00:16:58,660
+think of what you would do
+
+268
+00:16:58,660 --> 00:17:01,660
+if you decided to go shopping for a car.
+
+269
+00:17:01,660 --> 00:17:03,660
+You might do a little research
+
+270
+00:17:03,660 --> 00:17:05,660
+and you'd say, okay, what do I need?
+
+271
+00:17:05,660 --> 00:17:07,660
+And you write down some things you need.
+
+272
+00:17:07,660 --> 00:17:10,660
+I want to have a sedan
+
+273
+00:17:10,660 --> 00:17:12,660
+with enough room for four people
+
+274
+00:17:12,660 --> 00:17:14,660
+and so forth.
+
+275
+00:17:14,660 --> 00:17:16,660
+And so you go,
+
+276
+00:17:16,660 --> 00:17:18,660
+and I'd like to have it be green.
+
+277
+00:17:18,660 --> 00:17:20,660
+And so you go to a dealer
+
+278
+00:17:20,660 --> 00:17:22,660
+and you say, well, these are things I want.
+
+279
+00:17:22,660 --> 00:17:24,660
+I want a four-door sedan.
+
+280
+00:17:24,660 --> 00:17:26,660
+I want it to be green.
+
+281
+00:17:26,660 --> 00:17:28,660
+And there are other constraints there too.
+
+282
+00:17:28,660 --> 00:17:30,660
+So the dealer says, all right,
+
+283
+00:17:30,660 --> 00:17:32,660
+well, here's a car over here
+
+284
+00:17:32,660 --> 00:17:34,660
+that is green, four doors.
+
+285
+00:17:34,660 --> 00:17:36,660
+It meets all your requirements.
+
+286
+00:17:36,660 --> 00:17:38,660
+And so you say, okay, I'll take it.
+
+287
+00:17:38,660 --> 00:17:41,660
+Is that how you shop for a car?
+
+288
+00:17:41,660 --> 00:17:43,660
+Now, what you really do probably
+
+289
+00:17:43,660 --> 00:17:45,660
+is you say, okay, well,
+
+290
+00:17:45,660 --> 00:17:47,660
+let me test drive that car.
+
+291
+00:17:47,660 --> 00:17:49,660
+And then I'm going to go and shop around
+
+292
+00:17:49,660 --> 00:17:51,660
+at some other cars too.
+
+293
+00:17:51,660 --> 00:17:53,660
+And then in the end,
+
+294
+00:17:53,660 --> 00:17:55,660
+it's actually possible that I will come back
+
+295
+00:17:55,660 --> 00:17:57,660
+and buy that car.
+
+296
+00:17:57,660 --> 00:17:59,660
+But I would not feel good about buying that car
+
+297
+00:17:59,660 --> 00:18:01,660
+having not looked at any others.
+
+298
+00:18:01,660 --> 00:18:03,660
+But what's the difference between buying a car
+
+299
+00:18:03,660 --> 00:18:05,660
+and designing a piece of software?
+
+300
+00:18:05,660 --> 00:18:08,660
+I can only think of two real differences.
+
+301
+00:18:08,660 --> 00:18:12,660
+One is that the possibilities for software
+
+302
+00:18:12,660 --> 00:18:15,660
+are much broader and less well understood.
+
+303
+00:18:15,660 --> 00:18:17,660
+So if I actually did buy that car
+
+304
+00:18:17,660 --> 00:18:19,660
+or indeed pick a car at random,
+
+305
+00:18:19,660 --> 00:18:22,660
+the chances are that it would suit most of my needs.
+
+306
+00:18:22,660 --> 00:18:24,660
+That's the truth.
+
+307
+00:18:24,660 --> 00:18:27,660
+In 2019, I could pick a car at random
+
+308
+00:18:27,660 --> 00:18:30,660
+and it would suit 90% of the needs that I have.
+
+309
+00:18:30,660 --> 00:18:34,660
+That's probably not true of a software design.
+
+310
+00:18:34,660 --> 00:18:37,660
+The other thing is that most of the time
+
+311
+00:18:37,660 --> 00:18:40,660
+software development is quite a bit more expensive
+
+312
+00:18:40,660 --> 00:18:42,660
+than buying a car.
+
+313
+00:18:42,660 --> 00:18:44,660
+So both of those, though,
+
+314
+00:18:44,660 --> 00:18:46,660
+would suggest spending more effort
+
+315
+00:18:46,660 --> 00:18:48,660
+trying to choose a software model
+
+316
+00:18:48,660 --> 00:18:50,660
+than we do a car.
+
+317
+00:18:50,660 --> 00:18:52,660
+And specifically I mean
+
+318
+00:18:52,660 --> 00:18:55,660
+looking at more alternatives.
+
+319
+00:18:55,660 --> 00:18:57,660
+Because there are lots of methods
+
+320
+00:18:57,660 --> 00:18:59,660
+where people put a lot of energy
+
+321
+00:18:59,660 --> 00:19:01,660
+into designing the software.
+
+322
+00:19:01,660 --> 00:19:04,660
+But that energy doesn't usually go to
+
+323
+00:19:04,660 --> 00:19:07,660
+looking at a broad range of alternatives.
+
+324
+00:19:07,660 --> 00:19:10,660
+So somehow or other,
+
+325
+00:19:10,660 --> 00:19:12,660
+we've got to get some alternatives in there.
+
+326
+00:19:12,660 --> 00:19:15,660
+And if I've been listening to the way people talk,
+
+327
+00:19:15,660 --> 00:19:18,660
+I realize that some people sometimes say
+
+328
+00:19:18,660 --> 00:19:23,660
+that the cargo's itinerary is a series of stops.
+
+329
+00:19:23,660 --> 00:19:25,660
+But sometimes they say
+
+330
+00:19:25,660 --> 00:19:28,660
+that it's made up of a sequence of legs.
+
+331
+00:19:28,660 --> 00:19:30,660
+So the cargo will...
+
+332
+00:19:30,660 --> 00:19:32,660
+So a leg will be like, you know,
+
+333
+00:19:32,660 --> 00:19:34,660
+the part that goes from Hong Kong
+
+334
+00:19:34,660 --> 00:19:36,660
+to Long Beach, California
+
+335
+00:19:36,660 --> 00:19:38,660
+on a particular ship.
+
+336
+00:19:38,660 --> 00:19:40,660
+That's one leg.
+
+337
+00:19:40,660 --> 00:19:43,660
+So maybe we should try that out.
+
+338
+00:19:43,660 --> 00:19:47,660
+So I'm going to throw that up there, too.
+
+339
+00:19:47,660 --> 00:19:49,660
+Now this time,
+
+340
+00:19:49,660 --> 00:19:51,660
+the conversation has to change.
+
+341
+00:19:51,660 --> 00:19:54,660
+The shipping expert can't just say,
+
+342
+00:19:54,660 --> 00:19:56,660
+that's good, do that.
+
+343
+00:19:56,660 --> 00:19:58,660
+Of course, if legs had come first,
+
+344
+00:19:58,660 --> 00:20:00,660
+that's what would have happened.
+
+345
+00:20:00,660 --> 00:20:03,660
+But now it's more of a conversation about,
+
+346
+00:20:03,660 --> 00:20:06,660
+well, why should I use one versus the other?
+
+347
+00:20:06,660 --> 00:20:09,660
+Or maybe it will even trigger...
+
+348
+00:20:09,660 --> 00:20:11,660
+I find that about three,
+
+349
+00:20:11,660 --> 00:20:13,660
+if you can get three,
+
+350
+00:20:13,660 --> 00:20:16,660
+it changes the way people think
+
+351
+00:20:16,660 --> 00:20:20,660
+from sort of choosing one
+
+352
+00:20:20,660 --> 00:20:24,660
+to realizing that they're just looking at examples
+
+353
+00:20:24,660 --> 00:20:26,660
+from a very large set.
+
+354
+00:20:26,660 --> 00:20:28,660
+And if you can get to that point
+
+355
+00:20:28,660 --> 00:20:30,660
+where you have that shift in your mind,
+
+356
+00:20:30,660 --> 00:20:32,660
+where you realize you're looking at samples
+
+357
+00:20:32,660 --> 00:20:34,660
+from a very large set,
+
+358
+00:20:34,660 --> 00:20:36,660
+it gets to be much easier
+
+359
+00:20:36,660 --> 00:20:38,660
+to come up with more alternatives.
+
+360
+00:20:38,660 --> 00:20:42,660
+But it's not so easy to get those first three.
+
+361
+00:20:42,660 --> 00:20:45,660
+I can do my little trick again.
+
+362
+00:20:45,660 --> 00:20:47,660
+So, for example,
+
+363
+00:20:47,660 --> 00:20:49,660
+what I said earlier
+
+364
+00:20:49,660 --> 00:20:54,660
+is that a cargo's itinerary is a series of legs,
+
+365
+00:20:54,660 --> 00:20:58,660
+and I explained what a leg is.
+
+366
+00:20:58,660 --> 00:21:02,660
+But let's just ignore the bubble on the right.
+
+367
+00:21:02,660 --> 00:21:04,660
+Do the trick of comparing what I say
+
+368
+00:21:04,660 --> 00:21:06,660
+to the more formal...
+
+369
+00:21:06,660 --> 00:21:08,660
+In this case, it's just a diagram on a board.
+
+370
+00:21:08,660 --> 00:21:10,660
+It's not software, but still,
+
+371
+00:21:10,660 --> 00:21:13,660
+the diagram on the board has already diverged
+
+372
+00:21:13,660 --> 00:21:16,660
+from the way I talk about it.
+
+373
+00:21:16,660 --> 00:21:19,660
+So look at that for a moment.
+
+374
+00:21:19,660 --> 00:21:21,660
+What is the difference?
+
+375
+00:21:21,660 --> 00:21:26,660
+Can someone just point out a difference, any difference?
+
+376
+00:21:26,660 --> 00:21:28,660
+Location of the bubble.
+
+377
+00:21:28,660 --> 00:21:30,660
+The...
+
+378
+00:21:30,660 --> 00:21:31,660
+So the words, I mean,
+
+379
+00:21:31,660 --> 00:21:34,660
+how do the words not correspond to the diagram?
+
+380
+00:21:34,660 --> 00:21:36,660
+A cargo's itinerary is a series of legs,
+
+381
+00:21:36,660 --> 00:21:38,660
+and I have that diagram,
+
+382
+00:21:38,660 --> 00:21:40,660
+and that's number one.
+
+383
+00:21:42,660 --> 00:21:44,660
+So there are two differences,
+
+384
+00:21:44,660 --> 00:21:47,660
+and I think I heard them both come from various people.
+
+385
+00:21:47,660 --> 00:21:50,660
+One difference is that the diagram is less specific.
+
+386
+00:21:50,660 --> 00:21:52,660
+It doesn't say that the legs are a series.
+
+387
+00:21:52,660 --> 00:21:54,660
+It just says it's a collection.
+
+388
+00:21:54,660 --> 00:21:56,660
+So we could fix that.
+
+389
+00:21:56,660 --> 00:21:58,660
+And that's kind of a detail, though.
+
+390
+00:21:58,660 --> 00:22:00,660
+I mean to say it would be a good thing to fix,
+
+391
+00:22:00,660 --> 00:22:02,660
+but it isn't a fundamental change
+
+392
+00:22:02,660 --> 00:22:04,660
+because a series is a collection.
+
+393
+00:22:04,660 --> 00:22:06,660
+But the thing that really is missing
+
+394
+00:22:06,660 --> 00:22:08,660
+is the word itinerary.
+
+395
+00:22:08,660 --> 00:22:10,660
+That is, the statement doesn't say
+
+396
+00:22:10,660 --> 00:22:12,660
+a cargo has legs.
+
+397
+00:22:12,660 --> 00:22:14,660
+In fact, as an English statement,
+
+398
+00:22:14,660 --> 00:22:16,660
+that sounds very weird.
+
+399
+00:22:16,660 --> 00:22:17,660
+A cargo has legs.
+
+400
+00:22:17,660 --> 00:22:19,660
+What sort of cargo has legs?
+
+401
+00:22:19,660 --> 00:22:22,660
+Maybe we're transporting live animals or something.
+
+402
+00:22:22,660 --> 00:22:25,660
+Or chairs.
+
+403
+00:22:25,660 --> 00:22:27,660
+Yes, I'm transporting chairs,
+
+404
+00:22:27,660 --> 00:22:29,660
+and my cargo has legs.
+
+405
+00:22:29,660 --> 00:22:32,660
+Well, that's not what this means, though, right?
+
+406
+00:22:32,660 --> 00:22:34,660
+That's a different sense of legs.
+
+407
+00:22:34,660 --> 00:22:36,660
+So we need a...
+
+408
+00:22:36,660 --> 00:22:39,660
+We need to really take seriously
+
+409
+00:22:39,660 --> 00:22:42,660
+that we're not using the same language.
+
+410
+00:22:45,660 --> 00:22:48,660
+And here's an observation I want to make.
+
+411
+00:22:48,660 --> 00:22:50,660
+I've used the word itinerary
+
+412
+00:22:50,660 --> 00:22:54,660
+in this presentation many times.
+
+413
+00:22:54,660 --> 00:22:57,660
+But I don't think people were sitting there saying,
+
+414
+00:22:57,660 --> 00:22:59,660
+well, why isn't he putting itinerary up
+
+415
+00:22:59,660 --> 00:23:02,660
+as a concept to use in our model?
+
+416
+00:23:02,660 --> 00:23:04,660
+You weren't thinking that.
+
+417
+00:23:04,660 --> 00:23:06,660
+Nobody would think that
+
+418
+00:23:06,660 --> 00:23:09,660
+because we're just used to hearing words,
+
+419
+00:23:09,660 --> 00:23:12,660
+and, you know, we get the gist of what's being said.
+
+420
+00:23:12,660 --> 00:23:14,660
+You get the meaning of what I'm saying,
+
+421
+00:23:14,660 --> 00:23:16,660
+but not paying enough attention
+
+422
+00:23:16,660 --> 00:23:18,660
+to the actual words themselves.
+
+423
+00:23:18,660 --> 00:23:20,660
+And I think that if you pay attention
+
+424
+00:23:20,660 --> 00:23:22,660
+to the words themselves,
+
+425
+00:23:22,660 --> 00:23:24,660
+it gives you wonderful clues
+
+426
+00:23:24,660 --> 00:23:27,660
+to models that can really help
+
+427
+00:23:27,660 --> 00:23:30,660
+solve the problems in the software.
+
+428
+00:23:30,660 --> 00:23:34,660
+So I'm going to add a couple more.
+
+429
+00:23:34,660 --> 00:23:35,660
+One would be that a cargo
+
+430
+00:23:35,660 --> 00:23:37,660
+would have an itinerary,
+
+431
+00:23:37,660 --> 00:23:39,660
+and that itinerary would have a sequence of legs.
+
+432
+00:23:39,660 --> 00:23:41,660
+And another would be that it would have
+
+433
+00:23:41,660 --> 00:23:42,660
+a sequence of stops.
+
+434
+00:23:42,660 --> 00:23:44,660
+I could do it both ways.
+
+435
+00:23:44,660 --> 00:23:47,660
+So now I've got at least four distinct models
+
+436
+00:23:47,660 --> 00:23:52,660
+and minor variations around those.
+
+437
+00:23:52,660 --> 00:23:54,660
+And at this point, hopefully,
+
+438
+00:23:54,660 --> 00:23:57,660
+we would have other ideas as well.
+
+439
+00:23:57,660 --> 00:23:59,660
+But that's enough to get, I think,
+
+440
+00:23:59,660 --> 00:24:02,660
+the sense of what I'm trying to do here.
+
+441
+00:24:02,660 --> 00:24:04,660
+And notice that these diagrams are written
+
+442
+00:24:04,660 --> 00:24:09,660
+in a very informal style.
+
+443
+00:24:09,660 --> 00:24:12,660
+The point being that we don't want to invest a lot
+
+444
+00:24:12,660 --> 00:24:14,660
+in these ideas at this stage.
+
+445
+00:24:14,660 --> 00:24:16,660
+We want quantity,
+
+446
+00:24:16,660 --> 00:24:20,660
+but not depth of analysis.
+
+447
+00:24:20,660 --> 00:24:23,660
+We can do the depth of analysis later if we need to,
+
+448
+00:24:23,660 --> 00:24:26,660
+but right now we want to get broad.
+
+449
+00:24:26,660 --> 00:24:28,660
+That means, in fact, we need some ideas.
+
+450
+00:24:28,660 --> 00:24:30,660
+We don't really have any in this picture,
+
+451
+00:24:30,660 --> 00:24:33,660
+but we need some ideas that are just bad.
+
+452
+00:24:33,660 --> 00:24:36,660
+You don't know if you've really explored
+
+453
+00:24:36,660 --> 00:24:38,660
+the space of the problem,
+
+454
+00:24:38,660 --> 00:24:41,660
+or rather the space of possible solutions,
+
+455
+00:24:41,660 --> 00:24:44,660
+if you never come up with a bad idea.
+
+456
+00:24:44,660 --> 00:24:50,660
+But because when I made this slide,
+
+457
+00:24:50,660 --> 00:24:54,660
+I was too familiar with the problem, perhaps,
+
+458
+00:24:54,660 --> 00:24:57,660
+or just too embarrassed to show a really bad idea,
+
+459
+00:24:57,660 --> 00:25:02,660
+this isn't a good illustration of that principle.
+
+460
+00:25:03,660 --> 00:25:07,660
+All right, so there's one of the things.
+
+461
+00:25:07,660 --> 00:25:09,660
+You've got to generate some variation,
+
+462
+00:25:09,660 --> 00:25:12,660
+but you've also got to keep moving.
+
+463
+00:25:12,660 --> 00:25:17,660
+One of the things that happens to people doing software modeling
+
+464
+00:25:17,660 --> 00:25:20,660
+is that they get, and this is the perfectionism again,
+
+465
+00:25:20,660 --> 00:25:24,660
+they get into a loop of just doing more and more,
+
+466
+00:25:24,660 --> 00:25:26,660
+spending time.
+
+467
+00:25:26,660 --> 00:25:28,660
+If you're not getting good ideas,
+
+468
+00:25:28,660 --> 00:25:31,660
+then move on to something else, come back to it later.
+
+469
+00:25:31,660 --> 00:25:32,660
+And don't be too finicky.
+
+470
+00:25:32,660 --> 00:25:35,660
+You know, I don't think you can really succeed in this
+
+471
+00:25:35,660 --> 00:25:39,660
+if you have a group of people that's working on it
+
+472
+00:25:39,660 --> 00:25:41,660
+where you will really be,
+
+473
+00:25:41,660 --> 00:25:44,660
+where your prestige will be lowered
+
+474
+00:25:44,660 --> 00:25:48,660
+by you putting up a bad idea.
+
+475
+00:25:48,660 --> 00:25:51,660
+If you put up a model and everyone says,
+
+476
+00:25:51,660 --> 00:25:56,660
+well, look, it's got the wrong kind of dependencies in it.
+
+477
+00:25:56,660 --> 00:25:59,660
+And then you say, oh, well, I'm sorry,
+
+478
+00:25:59,660 --> 00:26:01,660
+I'll go away and never talk again.
+
+479
+00:26:01,660 --> 00:26:06,660
+If you're in that kind of place, this isn't going to work.
+
+480
+00:26:06,660 --> 00:26:12,660
+So, now also implicitly I think I've said
+
+481
+00:26:12,660 --> 00:26:15,660
+that there would be more than one session like this.
+
+482
+00:26:15,660 --> 00:26:19,660
+I don't like these sessions to run on for hours and hours.
+
+483
+00:26:19,660 --> 00:26:21,660
+An hour and a half is long enough.
+
+484
+00:26:21,660 --> 00:26:23,660
+At that point you're not going to have any new ideas.
+
+485
+00:26:23,660 --> 00:26:25,660
+So you have to have multiple sessions.
+
+486
+00:26:25,660 --> 00:26:27,660
+And then people get to the question,
+
+487
+00:26:27,660 --> 00:26:29,660
+well, what do you document about this?
+
+488
+00:26:29,660 --> 00:26:31,660
+This is meant to be low cost.
+
+489
+00:26:31,660 --> 00:26:36,660
+So I would say that I would just look at the board and say,
+
+490
+00:26:36,660 --> 00:26:38,660
+is there anything here worth remembering
+
+491
+00:26:38,660 --> 00:26:41,660
+that we would want to feed into the next session?
+
+492
+00:26:41,660 --> 00:26:44,660
+And the answer might be, no, it was a good discussion,
+
+493
+00:26:44,660 --> 00:26:46,660
+but we don't need to keep any of this.
+
+494
+00:26:46,660 --> 00:26:48,660
+And then you can just forget about it
+
+495
+00:26:48,660 --> 00:26:52,660
+and schedule the next meeting and be done.
+
+496
+00:26:52,660 --> 00:26:55,660
+Here I think we did get some things.
+
+497
+00:26:55,660 --> 00:26:58,660
+I would just say those three words would be sufficient.
+
+498
+00:26:58,660 --> 00:27:01,660
+But maybe the diagram or the cargo itinerary statement
+
+499
+00:27:01,660 --> 00:27:03,660
+would be good to have.
+
+500
+00:27:03,660 --> 00:27:06,660
+That would be enough.
+
+501
+00:27:06,660 --> 00:27:09,660
+And I might write those in my design notebook
+
+502
+00:27:09,660 --> 00:27:12,660
+and just leave it at that.
+
+503
+00:27:12,660 --> 00:27:19,660
+We don't have to have a wiki documenting every idea that we have.
+
+504
+00:27:19,660 --> 00:27:21,660
+And now we have to move on.
+
+505
+00:27:21,660 --> 00:27:25,660
+Now, at some point you're going to have to decide, right?
+
+506
+00:27:25,660 --> 00:27:27,660
+Generating variation is very important,
+
+507
+00:27:27,660 --> 00:27:30,660
+but then you have to select from the variation.
+
+508
+00:27:30,660 --> 00:27:33,660
+So it's a very different kind of thinking,
+
+509
+00:27:33,660 --> 00:27:38,660
+different mode of thought and also different criteria,
+
+510
+00:27:38,660 --> 00:27:41,660
+and I think different people.
+
+511
+00:27:41,660 --> 00:27:43,660
+So one thing that I think is important, too,
+
+512
+00:27:43,660 --> 00:27:45,660
+is that you have different meetings,
+
+513
+00:27:45,660 --> 00:27:47,660
+probably with different people,
+
+514
+00:27:47,660 --> 00:27:51,660
+to come up with the ideas or to select
+
+515
+00:27:51,660 --> 00:27:56,660
+or, most importantly, to decide whether to actually use something.
+
+516
+00:27:56,660 --> 00:27:59,660
+So that's really, I guess, three different kinds of things.
+
+517
+00:27:59,660 --> 00:28:00,660
+But the most important thing,
+
+518
+00:28:00,660 --> 00:28:03,660
+the most important is when it comes time to actually decide
+
+519
+00:28:03,660 --> 00:28:04,660
+and we're thinking about,
+
+520
+00:28:04,660 --> 00:28:08,660
+oh, should we actually do this thing,
+
+521
+00:28:08,660 --> 00:28:11,660
+be sure to have a meeting where the stakeholders
+
+522
+00:28:11,660 --> 00:28:15,660
+that would be affected are there.
+
+523
+00:28:15,660 --> 00:28:19,660
+That might be the project manager.
+
+524
+00:28:19,660 --> 00:28:24,660
+It might be another project manager from another team
+
+525
+00:28:24,660 --> 00:28:26,660
+where your stuff is used.
+
+526
+00:28:26,660 --> 00:28:28,660
+If you don't do this,
+
+527
+00:28:28,660 --> 00:28:29,660
+the next time you try to have idea generating meetings,
+
+528
+00:28:29,660 --> 00:28:33,660
+you'll have all those people there
+
+529
+00:28:33,660 --> 00:28:37,660
+and you won't be generating very many ideas.
+
+530
+00:28:37,660 --> 00:28:40,660
+Well, anyway, how do we choose a model?
+
+531
+00:28:40,660 --> 00:28:44,660
+And I don't mean forever necessarily, but for now.
+
+532
+00:28:44,660 --> 00:28:47,660
+So stops or legs, for example.
+
+533
+00:28:47,660 --> 00:28:49,660
+Let's just boil it down to these two.
+
+534
+00:28:49,660 --> 00:28:52,660
+We're going to have a cargo with an itinerary with stops
+
+535
+00:28:52,660 --> 00:28:54,660
+or a cargo with an itinerary with legs
+
+536
+00:28:54,660 --> 00:28:56,660
+and just have a show of hands.
+
+537
+00:28:56,660 --> 00:28:58,660
+Who thinks we should choose stops?
+
+538
+00:28:59,660 --> 00:29:02,660
+And who thinks we should choose legs?
+
+539
+00:29:02,660 --> 00:29:04,660
+All right, legs wins.
+
+540
+00:29:04,660 --> 00:29:06,660
+I think this would be a better process
+
+541
+00:29:06,660 --> 00:29:09,660
+than what we usually do.
+
+542
+00:29:09,660 --> 00:29:11,660
+What we usually do is we'll have some document
+
+543
+00:29:11,660 --> 00:29:13,660
+with a nice diagram in it
+
+544
+00:29:13,660 --> 00:29:15,660
+and then at some future time,
+
+545
+00:29:15,660 --> 00:29:17,660
+a programmer will get a story card
+
+546
+00:29:17,660 --> 00:29:21,660
+and it will have, you know,
+
+547
+00:29:21,660 --> 00:29:23,660
+require some of this functionality
+
+548
+00:29:23,660 --> 00:29:26,660
+and they'll do it some way.
+
+549
+00:29:26,660 --> 00:29:27,660
+That's about it.
+
+550
+00:29:27,660 --> 00:29:29,660
+Or maybe they'll get the diagram,
+
+551
+00:29:29,660 --> 00:29:32,660
+but with no kind of meaning.
+
+552
+00:29:32,660 --> 00:29:34,660
+And so they'll make those objects.
+
+553
+00:29:34,660 --> 00:29:40,660
+But none of the sort of kind of subtlety
+
+554
+00:29:40,660 --> 00:29:44,660
+of the concepts will come through.
+
+555
+00:29:44,660 --> 00:29:46,660
+So we can do better than that.
+
+556
+00:29:46,660 --> 00:29:48,660
+But before we do, I want to talk briefly
+
+557
+00:29:48,660 --> 00:29:50,660
+about what I mean when I say model.
+
+558
+00:29:50,660 --> 00:29:52,660
+Because I've used the word a lot of times,
+
+559
+00:29:52,660 --> 00:29:54,660
+but I haven't really said what I mean.
+
+560
+00:29:54,660 --> 00:29:56,660
+And there are a lot of meanings to the word model
+
+561
+00:29:56,660 --> 00:29:58,660
+and you guys know many of them.
+
+562
+00:29:58,660 --> 00:30:00,660
+You can eliminate some of the obvious ones.
+
+563
+00:30:00,660 --> 00:30:03,660
+Don't mean a tiny ship in a bottle.
+
+564
+00:30:03,660 --> 00:30:07,660
+But there are, for example,
+
+565
+00:30:07,660 --> 00:30:09,660
+people often say model
+
+566
+00:30:09,660 --> 00:30:11,660
+and they mean a UML diagram.
+
+567
+00:30:11,660 --> 00:30:14,660
+And I've used a number of UML diagrams,
+
+568
+00:30:14,660 --> 00:30:16,660
+but that's not what I mean.
+
+569
+00:30:16,660 --> 00:30:18,660
+What I really mean is the concept
+
+570
+00:30:18,660 --> 00:30:21,660
+behind that diagram.
+
+571
+00:30:21,660 --> 00:30:23,660
+So if we look at a map of the world,
+
+572
+00:30:23,660 --> 00:30:25,660
+we could say that this is a kind of model
+
+573
+00:30:25,660 --> 00:30:27,660
+of the world.
+
+574
+00:30:27,660 --> 00:30:29,660
+And yet, and it is,
+
+575
+00:30:29,660 --> 00:30:33,660
+but still it's not quite the kind of model I mean.
+
+576
+00:30:33,660 --> 00:30:36,660
+I mean the model behind this map.
+
+577
+00:30:36,660 --> 00:30:39,660
+So take a quick look at the map
+
+578
+00:30:39,660 --> 00:30:41,660
+and you can see things like,
+
+579
+00:30:41,660 --> 00:30:43,660
+I don't know, how big things are.
+
+580
+00:30:43,660 --> 00:30:45,660
+You could say the United States and China
+
+581
+00:30:45,660 --> 00:30:47,660
+look about the same size.
+
+582
+00:30:47,660 --> 00:30:51,660
+And they actually are approximately the same size.
+
+583
+00:30:51,660 --> 00:30:53,660
+Or you could look and see that Greenland and Africa
+
+584
+00:30:53,660 --> 00:30:55,660
+are about the same size.
+
+585
+00:30:55,660 --> 00:30:57,660
+So I suppose by extrapolation,
+
+586
+00:30:57,660 --> 00:31:00,660
+that they are the same size.
+
+587
+00:31:00,660 --> 00:31:03,660
+Oh, I see someone shaking their head.
+
+588
+00:31:03,660 --> 00:31:05,660
+So apparently they're not the same size.
+
+589
+00:31:05,660 --> 00:31:08,660
+Here's a different map of the world.
+
+590
+00:31:08,660 --> 00:31:11,660
+This one shows Africa and Greenland.
+
+591
+00:31:11,660 --> 00:31:14,660
+And oh, I guess they're not quite the same size.
+
+592
+00:31:14,660 --> 00:31:18,660
+In fact, Africa is 14 times bigger than Greenland.
+
+593
+00:31:18,660 --> 00:31:20,660
+But they look the same size on that map.
+
+594
+00:31:20,660 --> 00:31:25,660
+Now is that because the people who made that map
+
+595
+00:31:25,660 --> 00:31:29,660
+didn't know how big Greenland was?
+
+596
+00:31:29,660 --> 00:31:32,660
+Or perhaps they thought,
+
+597
+00:31:32,660 --> 00:31:34,660
+you know, this is my pet theory
+
+598
+00:31:34,660 --> 00:31:39,660
+that got shot down by this XKCD comic.
+
+599
+00:31:39,660 --> 00:31:43,660
+But my pet theory was that this map was made in the US.
+
+600
+00:31:43,660 --> 00:31:47,660
+You can tell because it's right in the middle of the map.
+
+601
+00:31:47,660 --> 00:31:50,660
+And so you know where it was made.
+
+602
+00:31:50,660 --> 00:31:54,660
+And then there were some immigrants
+
+603
+00:31:54,660 --> 00:31:58,660
+on the team that made the map from Greenland.
+
+604
+00:31:58,660 --> 00:32:01,660
+And they said, Americans aren't very good at geography.
+
+605
+00:32:01,660 --> 00:32:04,660
+And if we make Greenland huge,
+
+606
+00:32:04,660 --> 00:32:09,660
+generations of Americans will think that Greenland is big.
+
+607
+00:32:09,660 --> 00:32:12,660
+And so that's what happened.
+
+608
+00:32:12,660 --> 00:32:15,660
+But actually it turns out that's not what happened.
+
+609
+00:32:15,660 --> 00:32:19,660
+The Mercator projection is the reason.
+
+610
+00:32:19,660 --> 00:32:22,660
+Now, why though did the Mercator projection
+
+611
+00:32:22,660 --> 00:32:24,660
+become so extremely popular?
+
+612
+00:32:24,660 --> 00:32:27,660
+That turns out to be because it was very useful
+
+613
+00:32:27,660 --> 00:32:30,660
+for a particular case which was important
+
+614
+00:32:30,660 --> 00:32:33,660
+in the 1590s when it was made,
+
+615
+00:32:33,660 --> 00:32:36,660
+which is that if you make a map based on this projection,
+
+616
+00:32:36,660 --> 00:32:39,660
+you can draw a line between two points.
+
+617
+00:32:39,660 --> 00:32:42,660
+And that line, the angle of that line
+
+618
+00:32:42,660 --> 00:32:44,660
+corresponds to a compass heading.
+
+619
+00:32:44,660 --> 00:32:48,660
+If you want to know what direction, you know,
+
+620
+00:32:48,660 --> 00:32:51,660
+New York is from Lisbon,
+
+621
+00:32:51,660 --> 00:32:53,660
+you draw a line between New York and Lisbon.
+
+622
+00:32:53,660 --> 00:32:56,660
+And if you pointed a ship that direction
+
+623
+00:32:56,660 --> 00:32:57,660
+and went in a straight line,
+
+624
+00:32:57,660 --> 00:32:59,660
+of course you wouldn't do that,
+
+625
+00:32:59,660 --> 00:33:03,660
+but it's a sort of starting point for a navigator.
+
+626
+00:33:03,660 --> 00:33:08,660
+So this map was really made for use on ships by navigators.
+
+627
+00:33:08,660 --> 00:33:12,660
+But then it was good enough to use for many other purposes.
+
+628
+00:33:12,660 --> 00:33:16,660
+And sometimes you can even tell things like how big something is.
+
+629
+00:33:16,660 --> 00:33:21,660
+You can tell that the US and China are about the same size
+
+630
+00:33:21,660 --> 00:33:23,660
+because they're at about the same height.
+
+631
+00:33:23,660 --> 00:33:26,660
+They're about the same latitude.
+
+632
+00:33:26,660 --> 00:33:28,660
+As long as something's at the same latitude,
+
+633
+00:33:28,660 --> 00:33:30,660
+you can compare the size.
+
+634
+00:33:30,660 --> 00:33:32,660
+If you wanted to,
+
+635
+00:33:32,660 --> 00:33:35,660
+you could compare the size of Africa and Greenland
+
+636
+00:33:35,660 --> 00:33:38,660
+by making an adjustment based on the latitude.
+
+637
+00:33:38,660 --> 00:33:41,660
+It would be a more complicated calculation.
+
+638
+00:33:41,660 --> 00:33:44,660
+So by choosing a model that is well suited
+
+639
+00:33:44,660 --> 00:33:47,660
+for a particular problem you want to solve,
+
+640
+00:33:47,660 --> 00:33:52,660
+you can make the computation simpler and more complex.
+
+641
+00:33:52,660 --> 00:33:56,660
+This one makes figuring out directions very simple,
+
+642
+00:33:56,660 --> 00:34:00,660
+but it makes figuring out the size of things a bit complex.
+
+643
+00:34:00,660 --> 00:34:02,660
+But it's still possible to do.
+
+644
+00:34:02,660 --> 00:34:06,660
+If I wanted to know the population of the US versus China,
+
+645
+00:34:06,660 --> 00:34:09,660
+I could not do that with this map,
+
+646
+00:34:09,660 --> 00:34:12,660
+no matter how complicated the calculation was.
+
+647
+00:34:12,660 --> 00:34:15,660
+So there's these sort of factors.
+
+648
+00:34:15,660 --> 00:34:20,660
+Now, what is the model as I mean it?
+
+649
+00:34:20,660 --> 00:34:21,660
+Well,
+
+650
+00:34:21,660 --> 00:34:23,660
+behind this model,
+
+651
+00:34:23,660 --> 00:34:25,660
+behind that map rather,
+
+652
+00:34:25,660 --> 00:34:28,660
+is the concept that the world is round.
+
+653
+00:34:28,660 --> 00:34:30,660
+It's implicit in it,
+
+654
+00:34:30,660 --> 00:34:32,660
+but that the world is round
+
+655
+00:34:32,660 --> 00:34:35,660
+and that all we're interested in is the surface
+
+656
+00:34:35,660 --> 00:34:37,660
+and certain points on that surface.
+
+657
+00:34:37,660 --> 00:34:40,660
+We're not interested in the chemical makeup of the land
+
+658
+00:34:40,660 --> 00:34:44,660
+or anything about the magma underneath.
+
+659
+00:34:44,660 --> 00:34:47,660
+We're interested in where the coastlines are.
+
+660
+00:34:47,660 --> 00:34:49,660
+So we need a way of describing that,
+
+661
+00:34:49,660 --> 00:34:51,660
+a spherical coordinate system.
+
+662
+00:34:51,660 --> 00:34:53,660
+Such as latitude and longitude.
+
+663
+00:34:53,660 --> 00:34:57,660
+Then we transform all our data into that form.
+
+664
+00:34:57,660 --> 00:35:01,660
+Then we need to convert it into a flat map,
+
+665
+00:35:01,660 --> 00:35:03,660
+or technically into a cylinder,
+
+666
+00:35:03,660 --> 00:35:07,660
+because you could rotate that map.
+
+667
+00:35:07,660 --> 00:35:11,660
+And we need to do this in a way,
+
+668
+00:35:11,660 --> 00:35:13,660
+because there are an infinite number of ways
+
+669
+00:35:13,660 --> 00:35:17,660
+of transforming a spherical surface into a cylinder,
+
+670
+00:35:17,660 --> 00:35:19,660
+but we need to do it in a way
+
+671
+00:35:19,660 --> 00:35:21,660
+that preserves the direction
+
+672
+00:35:21,660 --> 00:35:23,660
+of two points relative to each other.
+
+673
+00:35:23,660 --> 00:35:25,660
+There's only one way to do that,
+
+674
+00:35:25,660 --> 00:35:27,660
+and it's the Mercator projection.
+
+675
+00:35:27,660 --> 00:35:30,660
+This is the model.
+
+676
+00:35:30,660 --> 00:35:33,660
+And if you take that model,
+
+677
+00:35:33,660 --> 00:35:36,660
+I mean, if you look at the pieces of it,
+
+678
+00:35:36,660 --> 00:35:38,660
+you see that here's an abstraction.
+
+679
+00:35:38,660 --> 00:35:41,660
+This very complex and concrete thing, the Earth,
+
+680
+00:35:41,660 --> 00:35:46,660
+is abstracted as this simple geographical figure.
+
+681
+00:35:46,660 --> 00:35:49,660
+And we aren't using all the data we have.
+
+682
+00:35:49,660 --> 00:35:51,660
+We're using certain kinds of data.
+
+683
+00:35:51,660 --> 00:35:54,660
+In this case, the location of coastlines
+
+684
+00:35:54,660 --> 00:35:57,660
+and rivers and so on.
+
+685
+00:35:57,660 --> 00:36:00,660
+Using another abstraction to represent it
+
+686
+00:36:00,660 --> 00:36:03,660
+relative to the other.
+
+687
+00:36:03,660 --> 00:36:06,660
+That is, latitude and longitude is meaningful
+
+688
+00:36:06,660 --> 00:36:09,660
+in relation to a sphere.
+
+689
+00:36:09,660 --> 00:36:13,660
+Then we need some math to do the transformation.
+
+690
+00:36:13,660 --> 00:36:16,660
+Now, I don't know exactly how Mercator did it.
+
+691
+00:36:16,660 --> 00:36:19,660
+Some kind of geometrical technique, I'm sure,
+
+692
+00:36:19,660 --> 00:36:21,660
+with protractors and stuff.
+
+693
+00:36:21,660 --> 00:36:24,660
+But the modern way of expressing it
+
+694
+00:36:24,660 --> 00:36:27,660
+is this function,
+
+695
+00:36:27,660 --> 00:36:30,660
+this projection function.
+
+696
+00:36:30,660 --> 00:36:32,660
+And then we can make an assertion.
+
+697
+00:36:32,660 --> 00:36:34,660
+And this assertion is where the power
+
+698
+00:36:34,660 --> 00:36:38,660
+of the model comes from.
+
+699
+00:36:38,660 --> 00:36:40,660
+I could take a different data set,
+
+700
+00:36:40,660 --> 00:36:44,660
+and I could apply the same model,
+
+701
+00:36:44,660 --> 00:36:46,660
+and I get a different map.
+
+702
+00:36:46,660 --> 00:36:49,660
+This is Mercator's original map.
+
+703
+00:36:49,660 --> 00:36:51,660
+This time, Europe is in the center.
+
+704
+00:36:51,660 --> 00:36:54,660
+Specifically, Belgium is in the center
+
+705
+00:36:54,660 --> 00:36:57,660
+because Mercator was from Belgium.
+
+706
+00:36:57,660 --> 00:37:01,660
+But you can see that the map is essentially the same.
+
+707
+00:37:01,660 --> 00:37:03,660
+A lot of details are different
+
+708
+00:37:03,660 --> 00:37:05,660
+because their data set wasn't as good.
+
+709
+00:37:05,660 --> 00:37:08,660
+But if you look at Europe and Mediterranean,
+
+710
+00:37:08,660 --> 00:37:10,660
+the data is pretty good.
+
+711
+00:37:10,660 --> 00:37:13,660
+You look over in North America,
+
+712
+00:37:13,660 --> 00:37:15,660
+and the data's okay.
+
+713
+00:37:15,660 --> 00:37:17,660
+South America is actually a little better
+
+714
+00:37:17,660 --> 00:37:19,660
+on the East Coast.
+
+715
+00:37:19,660 --> 00:37:20,660
+The West Coast of South America
+
+716
+00:37:20,660 --> 00:37:25,660
+is weirdly sort of shifted to the East.
+
+717
+00:37:25,660 --> 00:37:28,660
+I think there's an offset error in the data.
+
+718
+00:37:28,660 --> 00:37:31,660
+And the West Coast of North America
+
+719
+00:37:31,660 --> 00:37:33,660
+is kind of vague.
+
+720
+00:37:33,660 --> 00:37:35,660
+It's like they knew there was a West Coast,
+
+721
+00:37:35,660 --> 00:37:37,660
+so they just sketched it in.
+
+722
+00:37:37,660 --> 00:37:39,660
+We could call that an extrapolation
+
+723
+00:37:39,660 --> 00:37:42,660
+or an interpolation of incomplete data.
+
+724
+00:37:42,660 --> 00:37:45,660
+And, boy, this starts to feel to me
+
+725
+00:37:45,660 --> 00:37:48,660
+like the kind of things we do on software projects.
+
+726
+00:37:48,660 --> 00:37:49,660
+We take a data set
+
+727
+00:37:49,660 --> 00:37:52,660
+that is imperfect and incomplete.
+
+728
+00:37:52,660 --> 00:37:55,660
+We apply transformations to that data
+
+729
+00:37:55,660 --> 00:38:01,660
+that allow us to make meaningful decisions.
+
+730
+00:38:01,660 --> 00:38:03,660
+The decision in this case is,
+
+731
+00:38:03,660 --> 00:38:07,660
+which way should I point the ship?
+
+732
+00:38:07,660 --> 00:38:10,660
+So the domain is just anything
+
+733
+00:38:10,660 --> 00:38:13,660
+that you could know about.
+
+734
+00:38:13,660 --> 00:38:17,660
+But the model is a system of abstractions
+
+735
+00:38:17,660 --> 00:38:19,660
+representing some selection
+
+736
+00:38:19,660 --> 00:38:22,660
+of the imperfect aspects of that domain.
+
+737
+00:38:22,660 --> 00:38:26,660
+This is a very basic definition of model.
+
+738
+00:38:26,660 --> 00:38:30,660
+But I think any time we start to get more concrete,
+
+739
+00:38:30,660 --> 00:38:32,660
+more hands-on than that,
+
+740
+00:38:32,660 --> 00:38:35,660
+we lose the power of the model.
+
+741
+00:38:35,660 --> 00:38:40,660
+The power of the model is that it is a set of concepts.
+
+742
+00:38:40,660 --> 00:38:42,660
+But it's not neutral.
+
+743
+00:38:42,660 --> 00:38:47,660
+It distills some assumptions and knowledge that we have.
+
+744
+00:38:47,660 --> 00:38:50,660
+And some models are good for some things.
+
+745
+00:38:50,660 --> 00:38:53,660
+Other models are good for other things.
+
+746
+00:38:53,660 --> 00:38:57,660
+This is not a way of representing reality.
+
+747
+00:38:57,660 --> 00:39:01,660
+In fact, I think realism is a distraction.
+
+748
+00:39:01,660 --> 00:39:05,660
+Consider, is this a realistic picture of the world?
+
+749
+00:39:05,660 --> 00:39:08,660
+Well, you know, we discussed, for example,
+
+750
+00:39:08,660 --> 00:39:14,660
+that Greenland is not the size of Africa.
+
+751
+00:39:14,660 --> 00:39:15,660
+Maybe this, then,
+
+752
+00:39:15,660 --> 00:39:18,660
+is a more realistic picture of the world.
+
+753
+00:39:18,660 --> 00:39:22,660
+Greenland and Africa are in their proper perspectives.
+
+754
+00:39:22,660 --> 00:39:26,660
+But somehow the idea that, you know,
+
+755
+00:39:26,660 --> 00:39:28,660
+if you went east from Africa,
+
+756
+00:39:28,660 --> 00:39:30,660
+you would just end up in space
+
+757
+00:39:30,660 --> 00:39:32,660
+doesn't feel right either.
+
+758
+00:39:32,660 --> 00:39:35,660
+So neither of these is realistic,
+
+759
+00:39:35,660 --> 00:39:38,660
+nor are they trying to be.
+
+760
+00:39:38,660 --> 00:39:41,660
+This is a pretty realistic picture of the world.
+
+761
+00:39:41,660 --> 00:39:44,660
+If I were a navigator at sea, though,
+
+762
+00:39:44,660 --> 00:39:48,660
+I would rather have either of those other two than this.
+
+763
+00:39:48,660 --> 00:39:50,660
+And I would much prefer the Mercator map
+
+764
+00:39:50,660 --> 00:39:52,660
+over the Dymaxion one,
+
+765
+00:39:52,660 --> 00:39:54,660
+but I would settle for either
+
+766
+00:39:54,660 --> 00:39:56,660
+rather than this very realistic picture.
+
+767
+00:39:56,660 --> 00:40:02,660
+Realism doesn't give us models that we actually can use.
+
+768
+00:40:02,660 --> 00:40:07,660
+Another thing about models is they need a narrow focus.
+
+769
+00:40:07,660 --> 00:40:12,660
+I Googled for domain model and found this on the web.
+
+770
+00:40:12,660 --> 00:40:14,660
+And I think there were some
+
+771
+00:40:14,660 --> 00:40:15,660
+more complicated,
+
+772
+00:40:15,660 --> 00:40:18,660
+but this was all I could really fit on a slide.
+
+773
+00:40:18,660 --> 00:40:21,660
+Completeness really leads us off the track.
+
+774
+00:40:21,660 --> 00:40:22,660
+And yet we say,
+
+775
+00:40:22,660 --> 00:40:25,660
+but we have all this information.
+
+776
+00:40:25,660 --> 00:40:27,660
+We have to represent it somehow.
+
+777
+00:40:27,660 --> 00:40:29,660
+We have to get it into the computer.
+
+778
+00:40:29,660 --> 00:40:31,660
+And yes, that's true.
+
+779
+00:40:31,660 --> 00:40:33,660
+I could picture having a database
+
+780
+00:40:33,660 --> 00:40:36,660
+where we just say this database is for archiving
+
+781
+00:40:36,660 --> 00:40:38,660
+all the data we've got
+
+782
+00:40:38,660 --> 00:40:41,660
+in some kind of canonical form.
+
+783
+00:40:41,660 --> 00:40:44,660
+But that's not the kind of model I'm talking about.
+
+784
+00:40:44,660 --> 00:40:46,660
+If you're going to do that,
+
+785
+00:40:46,660 --> 00:40:47,660
+what you need to do then
+
+786
+00:40:47,660 --> 00:40:49,660
+is have a separate representation
+
+787
+00:40:49,660 --> 00:40:52,660
+of some small selection of that data
+
+788
+00:40:52,660 --> 00:40:55,660
+that will be used to solve specific problems
+
+789
+00:40:55,660 --> 00:40:56,660
+in the domain.
+
+790
+00:40:56,660 --> 00:40:59,660
+And you'll transform the data back and forth.
+
+791
+00:40:59,660 --> 00:41:01,660
+And I think that is, in fact,
+
+792
+00:41:01,660 --> 00:41:03,660
+the recommended thing.
+
+793
+00:41:03,660 --> 00:41:05,660
+That is, we want multiple models
+
+794
+00:41:05,660 --> 00:41:07,660
+from multiple problems
+
+795
+00:41:07,660 --> 00:41:10,660
+within a larger domain.
+
+796
+00:41:10,660 --> 00:41:14,660
+So a model should be focused on
+
+797
+00:41:14,660 --> 00:41:17,660
+a specific, difficult, important problem.
+
+798
+00:41:17,660 --> 00:41:21,660
+This is obviously too hard to do for everything.
+
+799
+00:41:21,660 --> 00:41:23,660
+Don't do this for everything.
+
+800
+00:41:23,660 --> 00:41:25,660
+Do it for the hard problems,
+
+801
+00:41:25,660 --> 00:41:27,660
+the ones that you don't think you'd get right
+
+802
+00:41:27,660 --> 00:41:29,660
+if you just started writing,
+
+803
+00:41:29,660 --> 00:41:33,660
+well, if this, then this.
+
+804
+00:41:33,660 --> 00:41:36,660
+If you think you could get it right doing that,
+
+805
+00:41:36,660 --> 00:41:37,660
+then do that.
+
+806
+00:41:37,660 --> 00:41:39,660
+But if you don't think you could get it right doing that,
+
+807
+00:41:39,660 --> 00:41:43,660
+maybe a model would be helpful.
+
+808
+00:41:43,660 --> 00:41:45,660
+And for that, then you need to say,
+
+809
+00:41:45,660 --> 00:41:48,660
+well, then this model would be helpful for what?
+
+810
+00:41:48,660 --> 00:41:50,660
+For a specific use, right?
+
+811
+00:41:50,660 --> 00:41:52,660
+A specific kind of problem.
+
+812
+00:41:52,660 --> 00:41:54,660
+This is one of the reasons
+
+813
+00:41:54,660 --> 00:41:59,660
+that I emphasize concrete examples.
+
+814
+00:41:59,660 --> 00:42:00,660
+Earlier I asked,
+
+815
+00:42:00,660 --> 00:42:04,660
+which of these two models do you like better?
+
+816
+00:42:04,660 --> 00:42:07,660
+That's not really the right answer, the question.
+
+817
+00:42:07,660 --> 00:42:09,660
+The question I should ask is,
+
+818
+00:42:09,660 --> 00:42:11,660
+which do you think would be more useful?
+
+819
+00:42:11,660 --> 00:42:14,660
+And when I ask the question like that,
+
+820
+00:42:14,660 --> 00:42:17,660
+it might cause you to change the way you're thinking
+
+821
+00:42:17,660 --> 00:42:20,660
+and think, well, useful for what?
+
+822
+00:42:20,660 --> 00:42:24,660
+What am I being asked to do at using this model?
+
+823
+00:42:24,660 --> 00:42:28,660
+And then you might say, well, okay,
+
+824
+00:42:28,660 --> 00:42:30,660
+we need some scenarios,
+
+825
+00:42:30,660 --> 00:42:33,660
+some specific stories about the business
+
+826
+00:42:33,660 --> 00:42:36,660
+that tell us what we're going to use this thing for.
+
+827
+00:42:36,660 --> 00:42:38,660
+And I did tell you one.
+
+828
+00:42:38,660 --> 00:42:40,660
+I told you the initial booking.
+
+829
+00:42:40,660 --> 00:42:42,660
+And you might say, well, for that purpose,
+
+830
+00:42:42,660 --> 00:42:44,660
+I think either of these would be fine.
+
+831
+00:42:44,660 --> 00:42:47,660
+I could describe the result of the initial booking
+
+832
+00:42:47,660 --> 00:42:49,660
+using the series of stops,
+
+833
+00:42:49,660 --> 00:42:51,660
+an itinerary as a series of stops
+
+834
+00:42:51,660 --> 00:42:53,660
+or an itinerary as a series of legs.
+
+835
+00:42:53,660 --> 00:42:57,660
+I don't think there would really be much difference.
+
+836
+00:42:57,660 --> 00:43:00,660
+So let me give you another scenario,
+
+837
+00:43:00,660 --> 00:43:02,660
+another thing we have to solve.
+
+838
+00:43:02,660 --> 00:43:06,660
+And I think we can use the same model for both of these.
+
+839
+00:43:06,660 --> 00:43:08,660
+Sometimes,
+
+840
+00:43:08,660 --> 00:43:10,660
+the customer will call up and say something like,
+
+841
+00:43:10,660 --> 00:43:13,660
+I want to send my cargo to Dallas.
+
+842
+00:43:13,660 --> 00:43:15,660
+Then a little bit later,
+
+843
+00:43:15,660 --> 00:43:17,660
+they will say, oh,
+
+844
+00:43:17,660 --> 00:43:20,660
+I want to send my cargo to Seattle,
+
+845
+00:43:20,660 --> 00:43:21,660
+not to Dallas.
+
+846
+00:43:21,660 --> 00:43:23,660
+But by this time,
+
+847
+00:43:23,660 --> 00:43:25,660
+the ship has already sailed.
+
+848
+00:43:25,660 --> 00:43:28,660
+The cargo is somewhere in the middle of the Pacific Ocean.
+
+849
+00:43:28,660 --> 00:43:31,660
+If only they had called a few days sooner,
+
+850
+00:43:31,660 --> 00:43:34,660
+we could have just done the whole thing over again, right?
+
+851
+00:43:34,660 --> 00:43:37,660
+Then it's simple from a software point of view.
+
+852
+00:43:37,660 --> 00:43:42,660
+Because we can just undo everything we did
+
+853
+00:43:42,660 --> 00:43:44,660
+and do it all from the beginning.
+
+854
+00:43:44,660 --> 00:43:47,660
+But now we cannot do that.
+
+855
+00:43:47,660 --> 00:43:52,660
+We need to do something to get rid of the legs.
+
+856
+00:43:52,660 --> 00:43:53,660
+I mean, basically,
+
+857
+00:43:53,660 --> 00:43:57,660
+this ship is going to go to Long Beach, California.
+
+858
+00:43:57,660 --> 00:44:00,660
+And then is our next chance to change anything.
+
+859
+00:44:00,660 --> 00:44:02,660
+Our cargo will be unloaded in Long Beach
+
+860
+00:44:02,660 --> 00:44:04,660
+and we could put it on something else.
+
+861
+00:44:04,660 --> 00:44:06,660
+We don't want to put it on to the leg
+
+862
+00:44:06,660 --> 00:44:08,660
+that goes to Dallas.
+
+863
+00:44:08,660 --> 00:44:10,660
+So we want to cancel that leg
+
+864
+00:44:10,660 --> 00:44:13,660
+and replace it with something else.
+
+865
+00:44:13,660 --> 00:44:17,660
+Now, the way that I am trying to explain the problem
+
+866
+00:44:17,660 --> 00:44:21,660
+might lead us to think
+
+867
+00:44:21,660 --> 00:44:25,660
+that the leg model might be helpful for this problem.
+
+868
+00:44:25,660 --> 00:44:27,660
+Because it's so natural
+
+869
+00:44:27,660 --> 00:44:30,660
+to talk about canceling a leg from Long Beach to Dallas
+
+870
+00:44:30,660 --> 00:44:34,660
+and replacing it with a leg from Long Beach to Seattle.
+
+871
+00:44:34,660 --> 00:44:35,660
+But I can do this.
+
+872
+00:44:35,660 --> 00:44:37,660
+But I can do it the other way.
+
+873
+00:44:37,660 --> 00:44:38,660
+And I will try.
+
+874
+00:44:38,660 --> 00:44:42,660
+Because it's worth looking at our alternatives.
+
+875
+00:44:42,660 --> 00:44:45,660
+We could cancel the unloading portion of the stop in Long Beach
+
+876
+00:44:45,660 --> 00:44:46,660
+and the stop in Dallas.
+
+877
+00:44:46,660 --> 00:44:48,660
+Merge the remaining part of the Long Beach stop
+
+878
+00:44:48,660 --> 00:44:49,660
+with the load portion of the stop
+
+879
+00:44:49,660 --> 00:44:51,660
+that sets the cargo bound for Seattle
+
+880
+00:44:51,660 --> 00:44:54,660
+and add a stop at the end that unloads in Seattle.
+
+881
+00:44:54,660 --> 00:44:56,660
+That's not so bad.
+
+882
+00:45:00,660 --> 00:45:03,660
+Here's a pseudocode version of that.
+
+883
+00:45:03,660 --> 00:45:05,660
+And it is actually something
+
+884
+00:45:05,660 --> 00:45:06,660
+you could do.
+
+885
+00:45:06,660 --> 00:45:09,660
+This is not out of the realm of reasonable solutions.
+
+886
+00:45:09,660 --> 00:45:13,660
+But here is the solution with the leg.
+
+887
+00:45:13,660 --> 00:45:15,660
+And not only is it fewer steps,
+
+888
+00:45:15,660 --> 00:45:17,660
+but each one is less confusing.
+
+889
+00:45:17,660 --> 00:45:20,660
+It's not so much the number of steps here.
+
+890
+00:45:20,660 --> 00:45:22,660
+It's how tricky some of those steps are.
+
+891
+00:45:22,660 --> 00:45:25,660
+The ones that involve taking a stop apart,
+
+892
+00:45:25,660 --> 00:45:27,660
+putting it back together again.
+
+893
+00:45:27,660 --> 00:45:29,660
+In the leg-based one,
+
+894
+00:45:29,660 --> 00:45:32,660
+we take things apart between, you know, we...
+
+895
+00:45:32,660 --> 00:45:34,660
+So...
+
+896
+00:45:35,660 --> 00:45:38,660
+Back to our original design.
+
+897
+00:45:38,660 --> 00:45:41,660
+If we're going to transform this thing,
+
+898
+00:45:41,660 --> 00:45:43,660
+it did look like this.
+
+899
+00:45:43,660 --> 00:45:45,660
+And now it's going to look something like this.
+
+900
+00:45:45,660 --> 00:45:47,660
+When you...
+
+901
+00:45:47,660 --> 00:45:50,660
+You're still going to send the origin and destination
+
+902
+00:45:50,660 --> 00:45:52,660
+to the routing service,
+
+903
+00:45:52,660 --> 00:45:54,660
+but instead of updating the database,
+
+904
+00:45:54,660 --> 00:45:57,660
+it's going to create an itinerary.
+
+905
+00:45:57,660 --> 00:45:59,660
+Pass that back.
+
+906
+00:45:59,660 --> 00:46:03,660
+Notice that we now have rid ourselves
+
+907
+00:46:03,660 --> 00:46:04,660
+of that side effect.
+
+908
+00:46:04,660 --> 00:46:07,660
+The routing service no longer needs
+
+909
+00:46:07,660 --> 00:46:09,660
+to update the database.
+
+910
+00:46:09,660 --> 00:46:11,660
+I mean, someone could make it
+
+911
+00:46:11,660 --> 00:46:13,660
+so that it updates the database,
+
+912
+00:46:13,660 --> 00:46:15,660
+and I imagine they will
+
+913
+00:46:15,660 --> 00:46:17,660
+if we don't communicate very well.
+
+914
+00:46:17,660 --> 00:46:19,660
+But this is a great opportunity
+
+915
+00:46:19,660 --> 00:46:21,660
+to improve the basic properties,
+
+916
+00:46:21,660 --> 00:46:23,660
+the sort of architectural properties
+
+917
+00:46:23,660 --> 00:46:25,660
+of the design.
+
+918
+00:46:25,660 --> 00:46:27,660
+And it comes from having a very explicit way
+
+919
+00:46:27,660 --> 00:46:30,660
+to talk about the results of this computation.
+
+920
+00:46:32,660 --> 00:46:34,660
+Another thing we talk about
+
+921
+00:46:34,660 --> 00:46:38,660
+earlier is the disconnected itinerary, remember?
+
+922
+00:46:38,660 --> 00:46:40,660
+Now, if we...
+
+923
+00:46:40,660 --> 00:46:43,660
+Previously, we were putting integrity constraints
+
+924
+00:46:43,660 --> 00:46:45,660
+in the database and stuff like that.
+
+925
+00:46:45,660 --> 00:46:48,660
+But now that we have a little more way
+
+926
+00:46:48,660 --> 00:46:54,660
+of describing the result of routing,
+
+927
+00:46:54,660 --> 00:46:57,660
+we could talk about how this could be done
+
+928
+00:46:57,660 --> 00:46:59,660
+in terms of this model.
+
+929
+00:46:59,660 --> 00:47:01,660
+Does this model lend itself to telling you
+
+930
+00:47:01,660 --> 00:47:04,660
+whether an itinerary is disconnected?
+
+931
+00:47:04,660 --> 00:47:07,660
+I think there's a fairly straightforward way
+
+932
+00:47:07,660 --> 00:47:09,660
+of doing it.
+
+933
+00:47:09,660 --> 00:47:13,660
+So you could say that an itinerary is connected
+
+934
+00:47:13,660 --> 00:47:16,660
+when the end location of each leg
+
+935
+00:47:16,660 --> 00:47:18,660
+is the same as the start location
+
+936
+00:47:18,660 --> 00:47:19,660
+of the next leg.
+
+937
+00:47:19,660 --> 00:47:21,660
+That's very natural.
+
+938
+00:47:21,660 --> 00:47:23,660
+You could talk about that with a business person
+
+939
+00:47:23,660 --> 00:47:25,660
+and find out, perhaps,
+
+940
+00:47:25,660 --> 00:47:27,660
+that that's not really what they mean,
+
+941
+00:47:27,660 --> 00:47:30,660
+or find out that, yes, you've got it right.
+
+942
+00:47:30,660 --> 00:47:32,660
+And that looks almost like...
+
+943
+00:47:32,660 --> 00:47:36,660
+And that looks almost like pseudocode, right?
+
+944
+00:47:36,660 --> 00:47:39,660
+You could say, yeah, I could code that.
+
+945
+00:47:39,660 --> 00:47:41,660
+Now, it looks so much like pseudocode
+
+946
+00:47:41,660 --> 00:47:43,660
+that I want to point out something.
+
+947
+00:47:43,660 --> 00:47:46,660
+I don't mean when I say an itinerary is connected when.
+
+948
+00:47:46,660 --> 00:47:49,660
+I don't mean I'm describing the calculation
+
+949
+00:47:49,660 --> 00:47:51,660
+that you should do.
+
+950
+00:47:51,660 --> 00:47:53,660
+What I'm really hoping to do
+
+951
+00:47:53,660 --> 00:47:55,660
+is define a new word
+
+952
+00:47:55,660 --> 00:47:57,660
+that will be part of our language
+
+953
+00:47:57,660 --> 00:47:59,660
+and a new concept.
+
+954
+00:47:59,660 --> 00:48:01,660
+In other words, I'm saying that the model
+
+955
+00:48:01,660 --> 00:48:03,660
+is not just those three objects,
+
+956
+00:48:03,660 --> 00:48:06,660
+a cargo, an itinerary, and some legs.
+
+957
+00:48:06,660 --> 00:48:08,660
+It's not just those objects.
+
+958
+00:48:08,660 --> 00:48:10,660
+It's also...
+
+959
+00:48:10,660 --> 00:48:12,660
+It describes the way those objects
+
+960
+00:48:12,660 --> 00:48:14,660
+are related to each other.
+
+961
+00:48:14,660 --> 00:48:17,660
+So, for example, one of the properties
+
+962
+00:48:17,660 --> 00:48:19,660
+that an itinerary might have is,
+
+963
+00:48:19,660 --> 00:48:21,660
+is it connected?
+
+964
+00:48:21,660 --> 00:48:24,660
+And that's part of the concept of an itinerary.
+
+965
+00:48:24,660 --> 00:48:26,660
+It's not just a calculation that we can do,
+
+966
+00:48:26,660 --> 00:48:28,660
+but it does correspond
+
+967
+00:48:28,660 --> 00:48:30,660
+to a calculation we can do.
+
+968
+00:48:30,660 --> 00:48:32,660
+Being able to...
+
+969
+00:48:32,660 --> 00:48:34,660
+But being able to step back from the calculation
+
+970
+00:48:34,660 --> 00:48:36,660
+and say this is actually a concept
+
+971
+00:48:36,660 --> 00:48:38,660
+in that sense that I talked about
+
+972
+00:48:38,660 --> 00:48:40,660
+what is the model earlier,
+
+973
+00:48:40,660 --> 00:48:42,660
+that's a very key thing.
+
+974
+00:48:42,660 --> 00:48:45,660
+We're not just rearranging
+
+975
+00:48:45,660 --> 00:48:47,660
+the code in some way.
+
+976
+00:48:49,660 --> 00:48:51,660
+When we get to this point
+
+977
+00:48:51,660 --> 00:48:53,660
+where we can talk about
+
+978
+00:48:53,660 --> 00:48:55,660
+the solution that we have,
+
+979
+00:48:55,660 --> 00:48:57,660
+talk about our software,
+
+980
+00:48:57,660 --> 00:48:59,660
+the same way with another software
+
+981
+00:48:59,660 --> 00:49:03,660
+person as we can with a business person,
+
+982
+00:49:03,660 --> 00:49:05,660
+and where we can have real discussions
+
+983
+00:49:05,660 --> 00:49:07,660
+with them about the things
+
+984
+00:49:07,660 --> 00:49:09,660
+that need to be done
+
+985
+00:49:09,660 --> 00:49:12,660
+and how we might do them differently.
+
+986
+00:49:12,660 --> 00:49:14,660
+We call that the ubiquitous language.
+
+987
+00:49:14,660 --> 00:49:16,660
+The ubiquitous language is one of those
+
+988
+00:49:16,660 --> 00:49:19,660
+fundamentals of domain-driven design.
+
+989
+00:49:19,660 --> 00:49:22,660
+You can see throughout the whole example
+
+990
+00:49:22,660 --> 00:49:24,660
+that I've emphasized language,
+
+991
+00:49:24,660 --> 00:49:26,660
+looking at how we talk about the problem
+
+992
+00:49:26,660 --> 00:49:29,660
+as being fundamental to finding a good solution.
+
+993
+00:49:29,660 --> 00:49:32,660
+So ubiquitous language is one of those
+
+994
+00:49:32,660 --> 00:49:34,660
+three or four concepts.
+
+995
+00:49:34,660 --> 00:49:37,660
+One thing about that word,
+
+996
+00:49:37,660 --> 00:49:39,660
+that phrase ubiquitous language,
+
+997
+00:49:39,660 --> 00:49:43,660
+is that it kind of conveys
+
+998
+00:49:43,660 --> 00:49:48,660
+a ubiquitousness in all sense.
+
+999
+00:49:48,660 --> 00:49:50,660
+That your whole system would revolve
+
+1000
+00:49:50,660 --> 00:49:52,660
+around one language.
+
+1001
+00:49:52,660 --> 00:49:55,660
+And that is emphatically not what we mean.
+
+1002
+00:49:55,660 --> 00:49:59,660
+So I like to pin ubiquitous language
+
+1003
+00:49:59,660 --> 00:50:02,660
+as this within a bounded context.
+
+1004
+00:50:02,660 --> 00:50:04,660
+I'm not going to talk about bounded context
+
+1005
+00:50:04,660 --> 00:50:07,660
+right now, but Cyril will in a couple of hours.
+
+1006
+00:50:07,660 --> 00:50:10,660
+I can't remember exactly when he was in the agenda.
+
+1007
+00:50:10,660 --> 00:50:13,660
+So we'll go into depth on that concept.
+
+1008
+00:50:13,660 --> 00:50:15,660
+But the idea is basically that we will have
+
+1009
+00:50:15,660 --> 00:50:19,660
+multiple models with distinct languages
+
+1010
+00:50:19,660 --> 00:50:22,660
+and that that whole assembly of models
+
+1011
+00:50:22,660 --> 00:50:24,660
+will provide us with the solution
+
+1012
+00:50:24,660 --> 00:50:27,660
+to the various problems that we have.
+
+1013
+00:50:29,660 --> 00:50:33,660
+So getting back to the question of why do this stuff,
+
+1014
+00:50:33,660 --> 00:50:36,660
+I think that the answer lies in complexity
+
+1015
+00:50:36,660 --> 00:50:38,660
+within the domain itself.
+
+1016
+00:50:38,660 --> 00:50:42,660
+Sometimes we have complexity
+
+1017
+00:50:42,660 --> 00:50:45,660
+in the technical solutions that we need to do.
+
+1018
+00:50:45,660 --> 00:50:49,660
+If we were, perhaps if we were, say,
+
+1019
+00:50:49,660 --> 00:50:52,660
+in the early days of creating Twitter.
+
+1020
+00:50:52,660 --> 00:50:56,660
+Twitter is pretty simple in its logic,
+
+1021
+00:50:56,660 --> 00:50:58,660
+but especially early Twitter was.
+
+1022
+00:50:58,660 --> 00:51:02,660
+But at the time, the idea that you would
+
+1023
+00:51:02,660 --> 00:51:06,660
+send out millions of messages in a timely way
+
+1024
+00:51:06,660 --> 00:51:09,660
+to someone's, you know, to the followers,
+
+1025
+00:51:09,660 --> 00:51:12,660
+all those things, that was a real challenge at that time.
+
+1026
+00:51:12,660 --> 00:51:15,660
+Now because of the frameworks that they created
+
+1027
+00:51:15,660 --> 00:51:19,660
+and made public, it's not actually that hard to do now.
+
+1028
+00:51:19,660 --> 00:51:21,660
+If I wanted to go create something
+
+1029
+00:51:21,660 --> 00:51:23,660
+on the scale of Twitter, I think I could do it
+
+1030
+00:51:23,660 --> 00:51:25,660
+all by myself.
+
+1031
+00:51:25,660 --> 00:51:28,660
+That probably couldn't get very many people
+
+1032
+00:51:28,660 --> 00:51:30,660
+to sign up, though.
+
+1033
+00:51:30,660 --> 00:51:32,660
+But the point being, then,
+
+1034
+00:51:32,660 --> 00:51:36,660
+that the Twitter of that time
+
+1035
+00:51:36,660 --> 00:51:39,660
+would not have met this criteria, right?
+
+1036
+00:51:39,660 --> 00:51:42,660
+The critical complexity that they were dealing with
+
+1037
+00:51:42,660 --> 00:51:45,660
+was a technical scaling complexity.
+
+1038
+00:51:45,660 --> 00:51:47,660
+Whereas most of the time on the projects
+
+1039
+00:51:47,660 --> 00:51:49,660
+that I've been working on,
+
+1040
+00:51:49,660 --> 00:51:51,660
+the critical complexity is in the domain itself.
+
+1041
+00:51:51,660 --> 00:51:54,660
+It is that shipping is very complex.
+
+1042
+00:51:54,660 --> 00:51:57,660
+And if we do our job right,
+
+1043
+00:51:57,660 --> 00:51:59,660
+our software might not actually be
+
+1044
+00:51:59,660 --> 00:52:02,660
+more complex than shipping itself.
+
+1045
+00:52:02,660 --> 00:52:04,660
+But if we are not careful,
+
+1046
+00:52:04,660 --> 00:52:07,660
+our software might be much more complex
+
+1047
+00:52:07,660 --> 00:52:09,660
+than the actual shipping domain.
+
+1048
+00:52:09,660 --> 00:52:12,660
+And because the actual shipping domain
+
+1049
+00:52:12,660 --> 00:52:15,660
+is probably pretty close to the minimum complexity
+
+1050
+00:52:15,660 --> 00:52:18,660
+that we can hope for, right?
+
+1051
+00:52:18,660 --> 00:52:23,660
+Well, that is basically my time.
+
+1052
+00:52:23,660 --> 00:52:25,660
+But I want to just touch on one other thing.
+
+1053
+00:52:25,660 --> 00:52:27,660
+Suppose that in some way,
+
+1054
+00:52:27,660 --> 00:52:34,660
+instead of presenting the scenario that I did
+
+1055
+00:52:34,660 --> 00:52:37,660
+as the second scenario where in mid-transit
+
+1056
+00:52:37,660 --> 00:52:39,660
+they changed the destination.
+
+1057
+00:52:39,660 --> 00:52:41,660
+Suppose instead I said,
+
+1058
+00:52:41,660 --> 00:52:44,660
+well, we're still on our original itinerary,
+
+1059
+00:52:44,660 --> 00:52:46,660
+but we're about to arrive at the first port
+
+1060
+00:52:46,660 --> 00:52:48,660
+and we need to generate these purchase orders
+
+1061
+00:52:48,660 --> 00:52:51,660
+to tell the people in the ports
+
+1062
+00:52:51,660 --> 00:52:53,660
+how to actually unload the cargoes,
+
+1063
+00:52:53,660 --> 00:52:55,660
+what to do with each cargo.
+
+1064
+00:52:55,660 --> 00:52:57,660
+And there are these companies
+
+1065
+00:52:57,660 --> 00:52:58,660
+that operate in ports,
+
+1066
+00:52:58,660 --> 00:52:59,660
+and we need to figure out
+
+1067
+00:52:59,660 --> 00:53:01,660
+which one to send each instruction to,
+
+1068
+00:53:01,660 --> 00:53:03,660
+and we need to get the whole story
+
+1069
+00:53:03,660 --> 00:53:05,660
+of each of thousands of cargoes right,
+
+1070
+00:53:05,660 --> 00:53:11,660
+criss-crossing through an enormous, complex port.
+
+1071
+00:53:11,660 --> 00:53:13,660
+And when you look at this problem,
+
+1072
+00:53:13,660 --> 00:53:14,660
+you start to think,
+
+1073
+00:53:14,660 --> 00:53:17,660
+wow, the things that happen in the port
+
+1074
+00:53:17,660 --> 00:53:20,660
+are more complicated than the things happening
+
+1075
+00:53:20,660 --> 00:53:23,660
+in the routing of the ship.
+
+1076
+00:53:23,660 --> 00:53:26,660
+Maybe my model should be re-geared around that.
+
+1077
+00:53:26,660 --> 00:53:30,660
+And that might point me to the stops model.
+
+1078
+00:53:30,660 --> 00:53:32,660
+Because stop has a very explicit place
+
+1079
+00:53:32,660 --> 00:53:34,660
+to talk about the port.
+
+1080
+00:53:34,660 --> 00:53:37,660
+The stop represents everything that happens in a port.
+
+1081
+00:53:37,660 --> 00:53:40,660
+The leg says everything that happens between the ports.
+
+1082
+00:53:40,660 --> 00:53:43,660
+It literally has no place to put information
+
+1083
+00:53:43,660 --> 00:53:46,660
+about what's happening in the port.
+
+1084
+00:53:46,660 --> 00:53:48,660
+And so you would have ended up
+
+1085
+00:53:48,660 --> 00:53:50,660
+with a quite different model.
+
+1086
+00:53:50,660 --> 00:53:53,660
+It isn't like we're converging to the best model.
+
+1087
+00:53:53,660 --> 00:53:55,660
+We are converging to a model
+
+1088
+00:53:55,660 --> 00:53:59,660
+that's very path-dependent,
+
+1089
+00:53:59,660 --> 00:54:01,660
+depending on the particular problems
+
+1090
+00:54:01,660 --> 00:54:03,660
+that we are trying to solve
+
+1091
+00:54:03,660 --> 00:54:05,660
+and the order in which we try to solve them
+
+1092
+00:54:05,660 --> 00:54:07,660
+and the ideas that happen to come up
+
+1093
+00:54:07,660 --> 00:54:09,660
+during that process.
+
+1094
+00:54:09,660 --> 00:54:13,660
+So if you encounter a different sort of problem
+
+1095
+00:54:13,660 --> 00:54:15,660
+later on,
+
+1096
+00:54:15,660 --> 00:54:17,660
+you have some choices.
+
+1097
+00:54:17,660 --> 00:54:19,660
+You could say, well, let's bite the bullet
+
+1098
+00:54:19,660 --> 00:54:21,660
+and change to stops now.
+
+1099
+00:54:21,660 --> 00:54:23,660
+And you're accepting that your solution
+
+1100
+00:54:23,660 --> 00:54:25,660
+to the routing problem will be
+
+1101
+00:54:25,660 --> 00:54:27,660
+slightly more complex.
+
+1102
+00:54:27,660 --> 00:54:28,660
+Remember I said, though,
+
+1103
+00:54:28,660 --> 00:54:30,660
+it's not out of the question, right?
+
+1104
+00:54:30,660 --> 00:54:32,660
+It's doable.
+
+1105
+00:54:32,660 --> 00:54:35,660
+But we'll reserve our best choices
+
+1106
+00:54:35,660 --> 00:54:37,660
+for the most difficult problem,
+
+1107
+00:54:37,660 --> 00:54:39,660
+which is the one in port.
+
+1108
+00:54:39,660 --> 00:54:42,660
+Or maybe this is time for two bounded contexts.
+
+1109
+00:54:42,660 --> 00:54:44,660
+I'll solve route-related problems
+
+1110
+00:54:44,660 --> 00:54:46,660
+over here with legs.
+
+1111
+00:54:46,660 --> 00:54:48,660
+We'll have another place where we can solve
+
+1112
+00:54:48,660 --> 00:54:50,660
+problems in ports using stops.
+
+1113
+00:54:50,660 --> 00:54:52,660
+And I'll have to transform the data
+
+1114
+00:54:52,660 --> 00:54:54,660
+back and forth, back and forth.
+
+1115
+00:54:54,660 --> 00:54:56,660
+But that's doable, too.
+
+1116
+00:54:56,660 --> 00:54:58,660
+Or a third choice,
+
+1117
+00:54:58,660 --> 00:55:00,660
+which is stick with legs and go ahead
+
+1118
+00:55:00,660 --> 00:55:03,660
+and cram the new functionality on there somehow.
+
+1119
+00:55:03,660 --> 00:55:06,660
+You know, I can deal with the first vendor
+
+1120
+00:55:06,660 --> 00:55:09,660
+on the unload of the incoming leg
+
+1121
+00:55:09,660 --> 00:55:11,660
+and the last vendor on the outgoing leg.
+
+1122
+00:55:11,660 --> 00:55:13,660
+Then I'll just put all the other vendors
+
+1123
+00:55:13,660 --> 00:55:15,660
+onto the incoming leg because
+
+1124
+00:55:15,660 --> 00:55:17,660
+I've got to go somewhere.
+
+1125
+00:55:17,660 --> 00:55:21,660
+And that is also sometimes a valid choice,
+
+1126
+00:55:21,660 --> 00:55:23,660
+but especially worth mentioning
+
+1127
+00:55:23,660 --> 00:55:25,660
+because it is the default choice.
+
+1128
+00:55:25,660 --> 00:55:28,660
+That's the choice you make if you don't recognize
+
+1129
+00:55:28,660 --> 00:55:30,660
+that there's a choice to make.
+
+1130
+00:55:30,660 --> 00:55:33,660
+And that's a choice that gets made all the time.
+
+1131
+00:55:33,660 --> 00:55:35,660
+In fact, I think probably on most projects,
+
+1132
+00:55:35,660 --> 00:55:37,660
+it's sort of a time thing.
+
+1133
+00:55:37,660 --> 00:55:40,660
+How long is it before you make that choice?
+
+1134
+00:55:40,660 --> 00:55:42,660
+And once you've made that choice,
+
+1135
+00:55:42,660 --> 00:55:45,660
+you're kind of stuck because you have a model
+
+1136
+00:55:45,660 --> 00:55:48,660
+that no longer fits the most difficult problems
+
+1137
+00:55:48,660 --> 00:55:50,660
+you're trying to deal with.
+
+1138
+00:55:50,660 --> 00:55:52,660
+So you're not getting much benefit from modeling.
+
+1139
+00:55:52,660 --> 00:55:54,660
+And that's the last thing I'll say
+
+1140
+00:55:54,660 --> 00:55:56,660
+before I turn it over to the next person.
+
+1141
+00:55:56,660 --> 00:55:58,660
+Remember that having a model
+
+1142
+00:55:58,660 --> 00:56:02,660
+doesn't actually give you any advantage as such.
+
+1143
+00:56:02,660 --> 00:56:05,660
+The advantage doesn't come from having a model.
+
+1144
+00:56:05,660 --> 00:56:08,660
+The advantage comes from having a model
+
+1145
+00:56:08,660 --> 00:56:11,660
+that is a very nice fit to the specific set of problems
+
+1146
+00:56:11,660 --> 00:56:15,660
+that you are trying to solve in that context.
+
+1147
+00:56:15,660 --> 00:56:18,660
+If you have a model, no matter how nice
+
+1148
+00:56:18,660 --> 00:56:22,660
+its properties might be in an abstract sense,
+
+1149
+00:56:22,660 --> 00:56:24,660
+but it doesn't fit the particular problems
+
+1150
+00:56:24,660 --> 00:56:26,660
+that you are trying to solve,
+
+1151
+00:56:26,660 --> 00:56:28,660
+it will not give you any benefit.
+
+1152
+00:56:28,660 --> 00:56:31,660
+It might be fighting against you.
+
+1153
+00:56:31,660 --> 00:56:35,660
+So I'll go out on that point.
+
+1154
+00:56:35,660 --> 00:56:38,660
+And I hope that this example helped to illustrate
+
+1155
+00:56:38,660 --> 00:56:40,660
+the spirit of domain-driven design.
+
+1156
+00:56:40,660 --> 00:56:42,660
+And I'll leave it to the other guys
+
+1157
+00:56:42,660 --> 00:56:49,660
+to go into the various more detailed parts of it.
+
+1158
+00:56:49,660 --> 00:56:50,660
+Thank you.
+
+1159
+00:56:52,660 --> 00:56:53,660
+Thank you.
