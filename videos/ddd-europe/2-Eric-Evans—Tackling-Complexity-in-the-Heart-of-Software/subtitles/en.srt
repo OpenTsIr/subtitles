@@ -1,0 +1,3767 @@
+1
+00:00:00,000 --> 00:00:07,000
+Tanya Cushman Reviewer:" Peter van de Ven
+
+2
+00:00:15,840 --> 00:00:17,920
+Tackling complexity in the heart of software
+
+3
+00:00:17,920 --> 00:00:20,360
+was the subtitle of my book,
+
+4
+00:00:20,360 --> 00:00:24,920
+because, to me, that was the point of the book.
+
+5
+00:00:24,920 --> 00:00:26,320
+Domain-driven design, then,
+
+6
+00:00:26,320 --> 00:00:30,000
+is a term to capture this particular approach,
+
+7
+00:00:30,000 --> 00:00:32,860
+the way of dealing with this,
+
+8
+00:00:32,860 --> 00:00:36,820
+the way of doing this important thing.
+
+9
+00:00:36,820 --> 00:00:41,560
+Of course, this presumes that you can find
+
+10
+00:00:41,560 --> 00:00:44,000
+that heart of software,
+
+11
+00:00:44,000 --> 00:00:48,080
+which I think is the domain that we're working on,
+
+12
+00:00:48,080 --> 00:00:50,280
+is where the complexity is.
+
+13
+00:00:50,280 --> 00:00:55,280
+And I think that, generally, that is often true.
+
+14
+00:00:56,320 --> 00:00:58,660
+But often, I'm asked, like,
+
+15
+00:00:58,660 --> 00:01:00,960
+well, what exactly is domain-driven design?
+
+16
+00:01:00,960 --> 00:01:04,900
+I mean, it is a hard thing to define, kind of.
+
+17
+00:01:04,900 --> 00:01:08,240
+And I understand why people sometimes are concerned.
+
+18
+00:01:08,240 --> 00:01:09,960
+Like, it doesn't seem like you've given us
+
+19
+00:01:09,960 --> 00:01:14,040
+a really sharp definition.
+
+20
+00:01:14,040 --> 00:01:17,540
+And, I mean, on the one hand, I say,
+
+21
+00:01:17,540 --> 00:01:21,320
+look, there's basically these few things.
+
+22
+00:01:21,320 --> 00:01:25,120
+That the point of domain-driven design, or rather,
+
+23
+00:01:25,120 --> 00:01:26,320
+the...
+
+24
+00:01:26,320 --> 00:01:31,060
+the principles of domain-driven design
+
+25
+00:01:31,060 --> 00:01:36,840
+is that we would find that core complexity
+
+26
+00:01:36,840 --> 00:01:38,840
+in a critical part of our domain,
+
+27
+00:01:38,840 --> 00:01:41,340
+and we will focus on that.
+
+28
+00:01:41,340 --> 00:01:44,440
+Not focus on the technical platform,
+
+29
+00:01:44,440 --> 00:01:47,340
+but on the domain, and in particular,
+
+30
+00:01:47,340 --> 00:01:52,780
+on high-value, difficult parts in that domain.
+
+31
+00:01:52,780 --> 00:01:55,120
+And...
+
+32
+00:01:55,120 --> 00:01:56,320
+then...
+
+33
+00:01:56,320 --> 00:02:00,320
+in particular, how do we deal with that complexity
+
+34
+00:02:00,320 --> 00:02:05,260
+in those high-value, complex parts?
+
+35
+00:02:05,260 --> 00:02:08,160
+Well, we develop models of them.
+
+36
+00:02:08,160 --> 00:02:11,140
+But we don't just say, okay, this is the design phase
+
+37
+00:02:11,140 --> 00:02:12,940
+or whatever, and we're going to make a model,
+
+38
+00:02:12,940 --> 00:02:16,400
+and it's going to be this nice, big UML diagram,
+
+39
+00:02:16,400 --> 00:02:19,840
+and now it's time to program.
+
+40
+00:02:19,840 --> 00:02:23,820
+It's an integral part of the whole process of development,
+
+41
+00:02:23,820 --> 00:02:25,320
+and it goes on and on.
+
+42
+00:02:25,320 --> 00:02:28,860
+So that's why I always say exploring models.
+
+43
+00:02:28,860 --> 00:02:32,500
+Furthermore, we explore models in a...
+
+44
+00:02:32,500 --> 00:02:37,100
+in a particular engagement with business people,
+
+45
+00:02:37,100 --> 00:02:38,940
+or with domain experts.
+
+46
+00:02:38,940 --> 00:02:40,640
+Assuming it's a business domain,
+
+47
+00:02:40,640 --> 00:02:43,180
+then that would be actual business people.
+
+48
+00:02:43,180 --> 00:02:45,980
+In other words, this modeling is something
+
+49
+00:02:45,980 --> 00:02:50,520
+that business people and software experts do together.
+
+50
+00:02:50,520 --> 00:02:52,940
+We don't say to the business people,
+
+51
+00:02:52,940 --> 00:02:54,320
+you're the ones who know the business,
+
+52
+00:02:54,320 --> 00:02:56,960
+so give us a model,
+
+53
+00:02:56,960 --> 00:02:59,960
+which some people have proposed.
+
+54
+00:02:59,960 --> 00:03:03,660
+And we don't say, well, we're the ones responsible
+
+55
+00:03:03,660 --> 00:03:06,360
+for the software, so we'll develop the model,
+
+56
+00:03:06,360 --> 00:03:10,900
+which is what happens by default most of the time.
+
+57
+00:03:10,900 --> 00:03:13,340
+We say this is really something that if it's going to come
+
+58
+00:03:13,340 --> 00:03:18,340
+out well, it needs to be done together.
+
+59
+00:03:18,340 --> 00:03:24,320
+And then there's this point that the software shows
+
+60
+00:03:24,320 --> 00:03:26,960
+that it should express that model.
+
+61
+00:03:26,960 --> 00:03:30,360
+That a model that is just a diagram we draw on the board,
+
+62
+00:03:30,360 --> 00:03:34,560
+or even a wonderful discussion we had with our business people,
+
+63
+00:03:34,560 --> 00:03:39,740
+that if we come up with these nice, sharp concepts
+
+64
+00:03:39,740 --> 00:03:45,140
+and so forth that guide, and then we do nothing with it,
+
+65
+00:03:45,140 --> 00:03:47,040
+nothing tangible in the software,
+
+66
+00:03:47,040 --> 00:03:49,280
+then it really hasn't done us much good.
+
+67
+00:03:49,280 --> 00:03:52,820
+Maybe it's of some value, but in domain-driven design,
+
+68
+00:03:52,820 --> 00:03:53,980
+there's this principle that if you're going to do something,
+
+69
+00:03:53,980 --> 00:03:54,020
+you're going to do something wrong.
+
+70
+00:03:54,020 --> 00:03:54,080
+You're going to do something wrong.
+
+71
+00:03:54,080 --> 00:03:54,240
+You're going to do something wrong.
+
+72
+00:03:54,240 --> 00:03:54,280
+You're going to do something wrong.
+
+73
+00:03:54,280 --> 00:03:54,320
+You're going to do something wrong.
+
+74
+00:03:54,320 --> 00:03:56,880
+And so we say that the software should explicitly reflect
+
+75
+00:03:56,880 --> 00:03:59,620
+that model.
+
+76
+00:03:59,620 --> 00:04:05,800
+And then that leads to the ubiquitous language.
+
+77
+00:04:05,800 --> 00:04:07,600
+How does it reflect that model anyway?
+
+78
+00:04:07,600 --> 00:04:10,000
+Well, the structures in the model,
+
+79
+00:04:10,000 --> 00:04:13,140
+the structures that the model suggests should show
+
+80
+00:04:13,140 --> 00:04:16,040
+up in the software, of course.
+
+81
+00:04:16,040 --> 00:04:21,240
+But the words, the language, a lot of domain-driven design,
+
+82
+00:04:21,240 --> 00:04:24,280
+the philosophy of it revolves around how integral language,
+
+83
+00:04:24,280 --> 00:04:27,180
+how integral language is to the way that we do these things.
+
+84
+00:04:27,180 --> 00:04:29,860
+So that in the end, all this collaboration,
+
+85
+00:04:29,860 --> 00:04:34,020
+exploration, and even the programming,
+
+86
+00:04:34,020 --> 00:04:37,220
+the thread you can see running through it is the evolution
+
+87
+00:04:37,220 --> 00:04:41,640
+of this language for talking about the domain problems
+
+88
+00:04:41,640 --> 00:04:45,540
+in an increasingly precise and expressive way,
+
+89
+00:04:45,540 --> 00:04:50,400
+to the point where you can write code that really says,
+
+90
+00:04:50,400 --> 00:04:54,040
+that's like just a, it reads like an expression of,
+
+91
+00:04:54,040 --> 00:04:59,780
+this is the solution we've chosen for our problem.
+
+92
+00:04:59,780 --> 00:05:03,340
+Now, ubiquitous means everywhere.
+
+93
+00:05:03,340 --> 00:05:06,860
+And when I say ubiquitous, then I mean when I'm talking
+
+94
+00:05:06,860 --> 00:05:08,860
+to a business person, or when I'm talking
+
+95
+00:05:08,860 --> 00:05:12,260
+to another technical person, or when I'm programming the computer,
+
+96
+00:05:12,260 --> 00:05:14,860
+or when I'm writing a document.
+
+97
+00:05:14,860 --> 00:05:20,760
+But it doesn't mean everywhere throughout the system.
+
+98
+00:05:20,760 --> 00:05:24,000
+And so I have to, you know,
+
+99
+00:05:24,000 --> 00:05:28,940
+say ubiquitous language within a bounded context.
+
+100
+00:05:28,940 --> 00:05:33,640
+A bounded context is a recognition that language
+
+101
+00:05:33,640 --> 00:05:38,220
+doesn't mean anything in general.
+
+102
+00:05:38,220 --> 00:05:41,080
+All the things I'm saying only make sense to you,
+
+103
+00:05:41,080 --> 00:05:43,880
+if they do make any sense to you.
+
+104
+00:05:43,880 --> 00:05:46,560
+But they only make sense to you because of the context
+
+105
+00:05:46,560 --> 00:05:48,520
+in which I'm saying them.
+
+106
+00:05:48,520 --> 00:05:51,100
+You know the things I've said before,
+
+107
+00:05:51,100 --> 00:05:54,000
+you know the things in Matthias' introduction,
+
+108
+00:05:54,000 --> 00:05:59,140
+and other information that you bring to bear to say,
+
+109
+00:05:59,140 --> 00:06:01,780
+okay, that's what this word means now.
+
+110
+00:06:01,780 --> 00:06:03,980
+That's what this phrase means now.
+
+111
+00:06:03,980 --> 00:06:05,540
+But it didn't just mean that.
+
+112
+00:06:05,540 --> 00:06:11,620
+If you had just seen the sentence I am saying now
+
+113
+00:06:11,620 --> 00:06:15,920
+on a billboard driving to this place,
+
+114
+00:06:15,920 --> 00:06:18,620
+you wouldn't have known what it meant.
+
+115
+00:06:18,620 --> 00:06:22,700
+So when you're reading code in a computer program,
+
+116
+00:06:22,700 --> 00:06:24,000
+the same is true.
+
+117
+00:06:24,000 --> 00:06:25,760
+You can't just look at one line of code
+
+118
+00:06:25,760 --> 00:06:29,200
+and know what it means, know what it will do.
+
+119
+00:06:29,200 --> 00:06:32,240
+You have to usually read quite a bit of code
+
+120
+00:06:32,240 --> 00:06:34,380
+that comes in other parts of the program.
+
+121
+00:06:34,380 --> 00:06:36,320
+The code that comes before it
+
+122
+00:06:36,320 --> 00:06:39,780
+in the particular process it's in.
+
+123
+00:06:39,780 --> 00:06:44,120
+The code that is referenced by any kind of dependency
+
+124
+00:06:44,120 --> 00:06:46,120
+in that code.
+
+125
+00:06:46,120 --> 00:06:49,120
+So in order to understand a line of code,
+
+126
+00:06:49,120 --> 00:06:52,220
+you have to know all these things.
+
+127
+00:06:52,220 --> 00:06:54,000
+Bounded context says,
+
+128
+00:06:54,000 --> 00:06:58,300
+we're not going to rely on this kind of,
+
+129
+00:06:58,300 --> 00:07:00,240
+well, I'll just figure it out as I go along.
+
+130
+00:07:00,240 --> 00:07:03,500
+I'll look up, you know, every line of code
+
+131
+00:07:03,500 --> 00:07:05,480
+and then every reference it makes.
+
+132
+00:07:05,480 --> 00:07:07,120
+And then by the time I get to that line,
+
+133
+00:07:07,120 --> 00:07:09,780
+I'll know what it means, what it will do.
+
+134
+00:07:09,780 --> 00:07:13,760
+We're saying, we will define some concepts.
+
+135
+00:07:13,760 --> 00:07:17,960
+And within a boundary that we have specified,
+
+136
+00:07:17,960 --> 00:07:22,660
+this will be a very consistent meaning.
+
+137
+00:07:22,660 --> 00:07:23,800
+And that we will have, you know,
+
+138
+00:07:23,800 --> 00:07:25,900
+we will have some rules.
+
+139
+00:07:25,900 --> 00:07:28,040
+And within that boundary,
+
+140
+00:07:28,040 --> 00:07:33,040
+those rules will apply very consistently and rigorously.
+
+141
+00:07:33,040 --> 00:07:34,240
+And you say, well, of course,
+
+142
+00:07:34,240 --> 00:07:36,980
+that's just what modeling is all about,
+
+143
+00:07:36,980 --> 00:07:39,420
+what good design is all about.
+
+144
+00:07:39,420 --> 00:07:42,420
+But the thing is, without the boundary,
+
+145
+00:07:42,420 --> 00:07:44,960
+it doesn't work, it doesn't even make sense.
+
+146
+00:07:46,120 --> 00:07:49,160
+If I, you know, to take an extremely simple example,
+
+147
+00:07:49,160 --> 00:07:51,420
+if I said there's a number x and a number y,
+
+148
+00:07:51,420 --> 00:07:53,760
+and x will always be less than y,
+
+149
+00:07:53,800 --> 00:07:58,800
+and now you see some calculation in my program,
+
+150
+00:08:01,480 --> 00:08:03,680
+and it says y minus x,
+
+151
+00:08:03,680 --> 00:08:07,380
+then you know that that will be a positive number,
+
+152
+00:08:07,380 --> 00:08:09,280
+because x is always less than y.
+
+153
+00:08:09,280 --> 00:08:10,120
+I said so.
+
+154
+00:08:11,580 --> 00:08:16,160
+And now you go and you look at another computer program,
+
+155
+00:08:16,160 --> 00:08:18,500
+and you see y minus x.
+
+156
+00:08:18,500 --> 00:08:21,620
+You see that actual text somewhere in the program.
+
+157
+00:08:21,620 --> 00:08:23,060
+Is it a positive number?
+
+158
+00:08:23,800 --> 00:08:28,800
+Maybe, maybe not, maybe it's not even a number.
+
+159
+00:08:28,800 --> 00:08:31,940
+You simply do not know, and you cannot know,
+
+160
+00:08:31,940 --> 00:08:36,440
+there is no meaning to expressions
+
+161
+00:08:36,440 --> 00:08:38,540
+outside of a given context.
+
+162
+00:08:38,540 --> 00:08:42,480
+So domain-driven design tries to acknowledge that
+
+163
+00:08:42,480 --> 00:08:44,760
+and use that to our benefit.
+
+164
+00:08:44,760 --> 00:08:46,360
+Use it in several ways.
+
+165
+00:08:46,360 --> 00:08:48,420
+One of which is simply to say,
+
+166
+00:08:48,420 --> 00:08:52,060
+if we really want this to work, then we need that boundary.
+
+167
+00:08:52,060 --> 00:08:53,420
+I need to be able to draw a boundary around that boundary,
+
+168
+00:08:53,420 --> 00:08:55,920
+a boundary around me so that I can do all the cool stuff
+
+169
+00:08:55,920 --> 00:08:58,960
+that I want to do inside that boundary.
+
+170
+00:08:58,960 --> 00:09:00,600
+The boundary has to be tangible.
+
+171
+00:09:00,600 --> 00:09:02,360
+It's a real piece of software,
+
+172
+00:09:02,360 --> 00:09:05,060
+or markers within the software.
+
+173
+00:09:07,260 --> 00:09:11,440
+And that's the first and most basic way
+
+174
+00:09:11,440 --> 00:09:14,200
+in which it's important to domain-driven design.
+
+175
+00:09:15,480 --> 00:09:18,540
+Another way it's important to domain-driven design
+
+176
+00:09:18,540 --> 00:09:23,420
+is to say we aren't going to have just one model,
+
+177
+00:09:23,420 --> 00:09:25,960
+but probably several models.
+
+178
+00:09:25,960 --> 00:09:29,920
+Because we have a big, sprawling domain
+
+179
+00:09:29,920 --> 00:09:31,600
+that has many problems.
+
+180
+00:09:31,600 --> 00:09:34,460
+Multiple, complex, important problems,
+
+181
+00:09:34,460 --> 00:09:37,960
+and we want to address them differently.
+
+182
+00:09:37,960 --> 00:09:42,640
+So just as we have many tools for every kind of work we do,
+
+183
+00:09:42,640 --> 00:09:48,880
+we have many models to address a specific domain.
+
+184
+00:09:48,880 --> 00:09:53,280
+A third way in which it's important is that most projects
+
+185
+00:09:53,280 --> 00:09:56,520
+of any size have multiple teams.
+
+186
+00:09:56,520 --> 00:10:02,260
+And different teams cannot coordinate as tightly around,
+
+187
+00:10:02,260 --> 00:10:05,760
+I mean, to accomplish the kind of clarity and consistency
+
+188
+00:10:05,760 --> 00:10:07,800
+that I was talking about earlier,
+
+189
+00:10:07,800 --> 00:10:11,760
+you need a very well-coordinated team to do that.
+
+190
+00:10:11,760 --> 00:10:15,740
+Two teams, each can coordinate within themselves,
+
+191
+00:10:15,740 --> 00:10:19,240
+but they can't coordinate as well with each other.
+
+192
+00:10:19,240 --> 00:10:22,200
+And so they can't accomplish that kind of consistency
+
+193
+00:10:22,200 --> 00:10:23,280
+between them.
+
+194
+00:10:23,280 --> 00:10:25,820
+They can in one particular way.
+
+195
+00:10:25,820 --> 00:10:29,280
+They can do it by freezing the model in place,
+
+196
+00:10:29,280 --> 00:10:31,320
+by deciding in advance what the rules are
+
+197
+00:10:31,320 --> 00:10:33,360
+and then not breaking them.
+
+198
+00:10:33,360 --> 00:10:38,420
+But if you want to be able to make strict rules
+
+199
+00:10:38,420 --> 00:10:41,640
+and then adjust and evolve them quickly
+
+200
+00:10:41,640 --> 00:10:44,060
+in response to new insights,
+
+201
+00:10:44,060 --> 00:10:47,800
+then you need to be able to do that within a team.
+
+202
+00:10:47,800 --> 00:10:51,300
+So the fact that we usually have multiple teams working
+
+203
+00:10:51,300 --> 00:10:52,640
+is another reason that we need
+
+204
+00:10:52,640 --> 00:10:55,680
+to have a very well-coordinated context.
+
+205
+00:10:55,680 --> 00:10:58,680
+Anyway, so that's basically the gist
+
+206
+00:10:58,680 --> 00:11:01,040
+of domain-driven design.
+
+207
+00:11:01,040 --> 00:11:10,120
+And now I know that even so, I think what I said probably
+
+208
+00:11:10,120 --> 00:11:13,420
+doesn't sound like a very, I don't know,
+
+209
+00:11:13,420 --> 00:11:18,460
+it's not a reductionist kind of an attitude, I think.
+
+210
+00:11:18,460 --> 00:11:21,660
+You know, I think I've given up on trying to have
+
+211
+00:11:21,660 --> 00:11:22,640
+that very, very, very, very, very, very, very, very,
+
+212
+00:11:22,640 --> 00:11:26,640
+very crisp little definition of domain-driven design.
+
+213
+00:11:26,640 --> 00:11:31,380
+It's kind of a, it's kind of a gestalt
+
+214
+00:11:31,380 --> 00:11:35,720
+that after a while, it's sort of a way
+
+215
+00:11:35,720 --> 00:11:38,280
+that you look at every problem.
+
+216
+00:11:39,660 --> 00:11:41,320
+No, not every problem, of course,
+
+217
+00:11:41,320 --> 00:11:44,200
+but the sorts of problems they address as well,
+
+218
+00:11:44,200 --> 00:11:48,140
+like complex domains where you want to write software.
+
+219
+00:11:49,440 --> 00:11:50,640
+And it gives some guidance.
+
+220
+00:11:50,640 --> 00:11:51,600
+And then, of course, there are
+
+221
+00:11:51,600 --> 00:11:52,640
+some concrete techniques.
+
+222
+00:11:52,640 --> 00:11:54,100
+There are some techniques that we tend to use,
+
+223
+00:11:54,100 --> 00:11:57,680
+but those are more flexible, more fluid.
+
+224
+00:11:57,680 --> 00:12:00,040
+At this conference, you'll see people presenting
+
+225
+00:12:00,040 --> 00:12:04,720
+about different ways of doing some of those things.
+
+226
+00:12:07,020 --> 00:12:12,020
+And so, as I say, I don't know if I can really define it
+
+227
+00:12:14,420 --> 00:12:16,400
+in that sort of way.
+
+228
+00:12:17,840 --> 00:12:19,840
+And, of course, one important thing about it
+
+229
+00:12:19,840 --> 00:12:22,640
+is it gives us some terminology, some ways of talking,
+
+230
+00:12:22,640 --> 00:12:25,000
+about some of the important things we're doing,
+
+231
+00:12:25,000 --> 00:12:27,880
+even if we don't exactly agree on the technique
+
+232
+00:12:27,880 --> 00:12:29,280
+that we're applying to it.
+
+233
+00:12:29,280 --> 00:12:33,920
+So, for example, to have the word bounded context
+
+234
+00:12:33,920 --> 00:12:38,960
+to describe and say, I think that the boundary
+
+235
+00:12:38,960 --> 00:12:41,160
+of this context has some problems,
+
+236
+00:12:41,160 --> 00:12:44,400
+and that actually means something to the other person,
+
+237
+00:12:44,400 --> 00:12:46,100
+that's one of the valuable things.
+
+238
+00:12:46,100 --> 00:12:51,100
+Now, why is it that 12 years after my book was published,
+
+239
+00:12:57,920 --> 00:13:02,380
+we're actually still talking about domain-driven design?
+
+240
+00:13:02,380 --> 00:13:03,860
+And not only still talking about it,
+
+241
+00:13:03,860 --> 00:13:08,320
+but actually, in some ways, amping up the conversation,
+
+242
+00:13:08,320 --> 00:13:09,580
+because this is, as you said,
+
+243
+00:13:09,580 --> 00:13:13,160
+the first real conference of our own.
+
+244
+00:13:14,200 --> 00:13:15,520
+And how is that?
+
+245
+00:13:15,520 --> 00:13:16,100
+I don't know.
+
+246
+00:13:16,100 --> 00:13:21,100
+I mean, it's kind of a surprise to me, truly.
+
+247
+00:13:21,640 --> 00:13:23,980
+But, I mean, a very pleasant one.
+
+248
+00:13:25,600 --> 00:13:29,920
+But I think one reason, one possibility, anyway,
+
+249
+00:13:29,920 --> 00:13:31,440
+involves technology.
+
+250
+00:13:32,580 --> 00:13:34,880
+And that's kind of a funny thing to say
+
+251
+00:13:34,880 --> 00:13:38,120
+after making the point that the first point
+
+252
+00:13:38,120 --> 00:13:41,100
+of domain-driven design was to focus
+
+253
+00:13:41,100 --> 00:13:45,360
+on the core complexity in the heart of the domain.
+
+254
+00:13:46,100 --> 00:13:47,500
+And so on.
+
+255
+00:13:47,500 --> 00:13:50,040
+And that we emphasize those domain problems
+
+256
+00:13:50,040 --> 00:13:54,640
+and not the technical ones, and not the technology, and so on.
+
+257
+00:13:54,640 --> 00:13:57,920
+And it's true that domain-driven design isn't about technology.
+
+258
+00:13:57,920 --> 00:14:01,020
+And in fact, I mean, part of what made me write it
+
+259
+00:14:01,020 --> 00:14:04,620
+was a bit of a response to what I saw around me,
+
+260
+00:14:04,620 --> 00:14:10,500
+that all the best software designers were always focused
+
+261
+00:14:10,500 --> 00:14:14,120
+toward the technical aspects of the software.
+
+262
+00:14:14,120 --> 00:14:15,700
+And it was like we just left, you know,
+
+263
+00:14:15,700 --> 00:14:18,200
+we just left the B-team people,
+
+264
+00:14:18,200 --> 00:14:24,100
+that is, the less talented people,
+
+265
+00:14:24,100 --> 00:14:26,340
+to work on the actual business problem.
+
+266
+00:14:26,340 --> 00:14:29,480
+It was even considered, it was certainly considered
+
+267
+00:14:29,480 --> 00:14:33,020
+less prestigious, maybe it still is.
+
+268
+00:14:33,020 --> 00:14:39,160
+But I thought that was missing the whole point.
+
+269
+00:14:39,160 --> 00:14:41,800
+But even though I think that domain-driven design
+
+270
+00:14:41,800 --> 00:14:45,700
+is not about technology, that doesn't mean
+
+271
+00:14:45,700 --> 00:14:47,840
+that we are indifferent to the technology.
+
+272
+00:14:47,840 --> 00:14:49,540
+The technology is very important.
+
+273
+00:14:49,540 --> 00:14:52,680
+I think the best domain-driven design practitioners
+
+274
+00:14:52,680 --> 00:14:56,380
+are actually masters of the technology.
+
+275
+00:14:56,380 --> 00:15:01,880
+It's like if you said, well, I'm a master carpenter
+
+276
+00:15:01,880 --> 00:15:05,720
+and I like to make furniture, handcrafted furniture.
+
+277
+00:15:05,720 --> 00:15:12,700
+And let's say I particularly like to make artistic tables.
+
+278
+00:15:12,700 --> 00:15:15,100
+And so you would say that that person
+
+279
+00:15:15,100 --> 00:15:18,440
+was a master of using hammers and saws and chisels
+
+280
+00:15:18,440 --> 00:15:20,300
+and all of these things, I'm sure.
+
+281
+00:15:20,300 --> 00:15:22,640
+But if you asked him, well, what is what you do about,
+
+282
+00:15:22,640 --> 00:15:26,040
+he wouldn't say, oh, it's all about the saws.
+
+283
+00:15:26,040 --> 00:15:28,740
+The way I use saws and chisels and,
+
+284
+00:15:28,740 --> 00:15:31,340
+no, he would say, well, see, this kind of wood
+
+285
+00:15:31,340 --> 00:15:34,720
+and this kind of, you know, I like the,
+
+286
+00:15:34,720 --> 00:15:36,720
+when the legs are kind of like this.
+
+287
+00:15:36,720 --> 00:15:39,600
+And he would talk about tables all the time.
+
+288
+00:15:39,600 --> 00:15:42,160
+And he would be thinking about tables all the time.
+
+289
+00:15:42,160 --> 00:15:44,400
+What makes that possible, in part,
+
+290
+00:15:44,400 --> 00:15:48,540
+is because he's mastered the other tools so thoroughly
+
+291
+00:15:48,540 --> 00:15:50,900
+that he doesn't have to focus on those.
+
+292
+00:15:50,900 --> 00:15:55,180
+When I go to do a project involving something like that,
+
+293
+00:15:55,180 --> 00:15:57,280
+I have to put so much of my attention
+
+294
+00:15:57,280 --> 00:16:01,780
+on just using the saw and not ruining everything
+
+295
+00:16:01,780 --> 00:16:07,160
+that, you know, I don't create that kind of a piece of art.
+
+296
+00:16:07,160 --> 00:16:09,200
+You have to master the tool first,
+
+297
+00:16:09,200 --> 00:16:13,120
+and then you can actually focus on that thing.
+
+298
+00:16:13,120 --> 00:16:14,200
+And so I think that, you know, I think that, you know,
+
+299
+00:16:14,200 --> 00:16:14,300
+I think that, you know, I think that, you know,
+
+300
+00:16:14,300 --> 00:16:14,360
+I think that, you know, I think that, you know,
+
+301
+00:16:14,360 --> 00:16:14,400
+I think that, you know, I think that, you know,
+
+302
+00:16:14,400 --> 00:16:16,140
+I think that, you know, I think that, you know,
+
+303
+00:16:16,140 --> 00:16:20,180
+when you talk about domain-driven design,
+
+304
+00:16:20,180 --> 00:16:22,640
+it's almost as if we've said, well, yes,
+
+305
+00:16:22,640 --> 00:16:27,920
+because we have so mastered the technology that now we can look
+
+306
+00:16:27,920 --> 00:16:32,060
+at the real problem and bring our tools to bear.
+
+307
+00:16:32,060 --> 00:16:35,280
+So it's no kind of excuse to not be a master of technology.
+
+308
+00:16:35,280 --> 00:16:39,320
+And that means we have to keep abreast of what's there
+
+309
+00:16:39,320 --> 00:16:40,800
+and what's available.
+
+310
+00:16:40,800 --> 00:16:44,360
+And so I started this saying, well, why would 12 years later,
+
+311
+00:16:44,360 --> 00:16:47,940
+maybe domain-driven design be more interesting to people
+
+312
+00:16:47,940 --> 00:16:50,360
+than it was when it was written?
+
+313
+00:16:50,360 --> 00:16:57,640
+One possibility is that there's a combination of better tools
+
+314
+00:16:57,640 --> 00:17:01,120
+and a community better at using those tools.
+
+315
+00:17:01,120 --> 00:17:05,780
+And now they're actually ready to focus on the real problem.
+
+316
+00:17:05,780 --> 00:17:08,920
+And why would I say that there are better tools aside from,
+
+317
+00:17:08,920 --> 00:17:12,620
+we like to think that, you know, time, as time goes along,
+
+318
+00:17:12,620 --> 00:17:14,320
+our technology, you know, we're going to be able
+
+319
+00:17:14,320 --> 00:17:16,320
+to make sure that our technology gets better.
+
+320
+00:17:16,320 --> 00:17:20,300
+I think in general that's true over long periods of time.
+
+321
+00:17:20,300 --> 00:17:27,640
+But let me think back to 2003.
+
+322
+00:17:27,640 --> 00:17:31,940
+The book's 2004, but of course that means it was written in 2003,
+
+323
+00:17:31,940 --> 00:17:33,740
+right, and it reflects the environment
+
+324
+00:17:33,740 --> 00:17:36,780
+at the time it was written in.
+
+325
+00:17:36,780 --> 00:17:39,140
+And I think that was not a good time
+
+326
+00:17:39,140 --> 00:17:41,880
+from a software technology point of view.
+
+327
+00:17:41,880 --> 00:17:44,220
+I started out, you know,
+
+328
+00:17:44,320 --> 00:17:50,520
+as a professional programmer I started out in the early 90s.
+
+329
+00:17:50,520 --> 00:17:52,860
+And actually that was a good time.
+
+330
+00:17:52,860 --> 00:17:57,240
+The early 90s, at least in the little world that I was in,
+
+331
+00:17:57,240 --> 00:18:01,000
+and I was a small talk programmer on Wall Street,
+
+332
+00:18:01,000 --> 00:18:03,180
+working in an investment bank.
+
+333
+00:18:03,180 --> 00:18:07,000
+I may have been, you know, may have been a bit in the service
+
+334
+00:18:07,000 --> 00:18:09,580
+of evil, but it was very interesting
+
+335
+00:18:09,580 --> 00:18:12,020
+and very wonderful technology,
+
+336
+00:18:12,020 --> 00:18:14,320
+very wonderful technology.
+
+337
+00:18:14,320 --> 00:18:20,220
+It was a lot of wonderful complex problems to dig into.
+
+338
+00:18:20,220 --> 00:18:22,620
+And small talk, you know, you've probably heard a lot
+
+339
+00:18:22,620 --> 00:18:27,460
+of old guys like me talking about how wonderful it was.
+
+340
+00:18:27,460 --> 00:18:32,100
+And it was, but I don't want to bring it back or anything.
+
+341
+00:18:32,100 --> 00:18:35,240
+But 2003 wasn't so wonderful.
+
+342
+00:18:35,240 --> 00:18:37,180
+I mean, now, don't get me wrong.
+
+343
+00:18:37,180 --> 00:18:39,480
+I actually am not one of the people who says,
+
+344
+00:18:39,480 --> 00:18:41,240
+oh, I hate Java, I just hate Java.
+
+345
+00:18:41,240 --> 00:18:43,780
+I actually think Java's okay.
+
+346
+00:18:43,780 --> 00:18:48,480
+The problem here isn't the Java, it's the only Java, right?
+
+347
+00:18:48,480 --> 00:18:51,680
+The only language anyone used in 2003 was Java,
+
+348
+00:18:51,680 --> 00:18:53,560
+and sometimes C sharp, which at that time
+
+349
+00:18:53,560 --> 00:18:56,560
+was just the dialect of Java.
+
+350
+00:18:56,560 --> 00:18:59,660
+And I mean, let's, you know, face it.
+
+351
+00:18:59,660 --> 00:19:02,800
+There was hardly any difference back then.
+
+352
+00:19:02,800 --> 00:19:06,400
+And Java 5, you know, not picking on that version.
+
+353
+00:19:06,400 --> 00:19:10,100
+I'm just saying, actually, when you look at Java 8,
+
+354
+00:19:10,100 --> 00:19:13,780
+I think it's like a different language than the old Java.
+
+355
+00:19:13,780 --> 00:19:16,320
+It's much better.
+
+356
+00:19:16,320 --> 00:19:19,960
+But if Java 8 were all we had, I'd be complaining about that,
+
+357
+00:19:19,960 --> 00:19:21,060
+right?
+
+358
+00:19:21,060 --> 00:19:24,560
+It's, we are out of that time when that was,
+
+359
+00:19:24,560 --> 00:19:29,000
+there was one language and only one language.
+
+360
+00:19:29,000 --> 00:19:33,100
+But it wasn't really Java that I didn't like, as I said.
+
+361
+00:19:33,100 --> 00:19:36,440
+J2EE, and not to pick on J2EE in particular,
+
+362
+00:19:36,440 --> 00:19:42,480
+but all the frameworks of the era were the heaviest,
+
+363
+00:19:42,480 --> 00:19:43,780
+complicated of things.
+
+364
+00:19:43,780 --> 00:19:47,360
+You know, just the hardest things you've ever seen.
+
+365
+00:19:47,360 --> 00:19:51,580
+Remember I said we have to attack complexity,
+
+366
+00:19:51,580 --> 00:19:54,460
+the critical complexity of the problem,
+
+367
+00:19:54,460 --> 00:19:57,500
+which I said is some aspect of the domain
+
+368
+00:19:57,500 --> 00:19:59,860
+that is really crucial to their success,
+
+369
+00:19:59,860 --> 00:20:02,960
+maybe a big opportunity or really, yeah,
+
+370
+00:20:02,960 --> 00:20:05,540
+but what if you just make the technology itself
+
+371
+00:20:05,540 --> 00:20:08,100
+so complicated that it's more complex
+
+372
+00:20:08,100 --> 00:20:10,900
+than any part of the business problem you're trying to solve?
+
+373
+00:20:10,900 --> 00:20:11,900
+Then that will shift the focus, right?
+
+374
+00:20:11,900 --> 00:20:12,040
+And quite appropriately,
+
+375
+00:20:13,780 --> 00:20:17,900
+your attention to the most difficult part of what you're doing. And if the most difficult
+
+376
+00:20:17,900 --> 00:20:26,960
+part of that is getting some kind of a, you know, J2E container to start, then that's
+
+377
+00:20:26,960 --> 00:20:34,280
+where you've got to put your best people. Now, about that time, I think people were
+
+378
+00:20:34,280 --> 00:20:39,840
+mostly using Spring. So I could roll back to like the year 2000 and things were even
+
+379
+00:20:39,840 --> 00:20:45,920
+worse because EJBs are one of the things I've hated the most in my whole career. But
+
+380
+00:20:45,920 --> 00:20:51,500
+by this time, Spring had rescued us from that. Now, I know that people these days, they talk
+
+381
+00:20:51,500 --> 00:20:57,900
+about Spring's so complicated, Spring's so heavy. And I get it. I do. I even basically
+
+382
+00:20:57,900 --> 00:21:03,580
+agree, but you've got to realize what Spring rescued us from. We should be so grateful
+
+383
+00:21:03,580 --> 00:21:08,640
+for Spring. Spring was the turning point. That's when things started to go the other
+
+384
+00:21:08,640 --> 00:21:09,200
+direction.
+
+385
+00:21:09,840 --> 00:21:16,040
+So, you know, I will always be grateful to them.
+
+386
+00:21:16,040 --> 00:21:22,600
+SQL. Actually, I love relational databases. But when you say all data will be in relational
+
+387
+00:21:22,600 --> 00:21:29,380
+databases, then that means you have to squeeze all data into that shape. And that was the
+
+388
+00:21:29,380 --> 00:21:36,380
+reality of 2003. And, oh, yes, the OR mapper. I forgot that part because I always try. I
+
+389
+00:21:39,840 --> 00:21:40,840
+love OR mappers.
+
+390
+00:21:40,840 --> 00:21:49,840
+You know, I think the, I know the guy, I think, who wrote the very first OR mapper.
+
+391
+00:21:50,100 --> 00:21:56,260
+Brilliant guy. I don't think he intended that this would become the only way of storing
+
+392
+00:21:56,260 --> 00:22:03,260
+data. I think his purpose really was to say, well, until we have object stores or some
+
+393
+00:22:04,400 --> 00:22:09,840
+other better way of storing data, this will at least allow us to move back and forth between
+
+394
+00:22:09,840 --> 00:22:16,840
+objects and our relational database. But we kind of got stuck. Stuck with OR mappers
+
+395
+00:22:17,080 --> 00:22:20,500
+for 10 years or even 15 years.
+
+396
+00:22:20,500 --> 00:22:27,220
+Okay. I think the less said about some things, the better. Some things are just best left
+
+397
+00:22:27,220 --> 00:22:33,060
+in the past. But there are a lot of things happening back in the early 2000's that, and
+
+398
+00:22:33,060 --> 00:22:39,600
+the late 90's. Another thing that happened in the late 90's was a huge influx of new
+
+399
+00:22:39,600 --> 00:22:47,020
+programmers because of the dot.com explosion and other things. And the problem was, I think,
+
+400
+00:22:47,020 --> 00:22:56,020
+that, on average, it was not a very skilled bunch and not a very committed bunch. I mean,
+
+401
+00:22:58,640 --> 00:23:03,360
+people didn't care the way that before and after, when we were in less heated up periods
+
+402
+00:23:03,360 --> 00:23:08,500
+of time, when people came into the world of software, because they were really fascinated
+
+403
+00:23:08,500 --> 00:23:09,580
+by software and were wondering what was new about what they were doing. And I think it,
+
+404
+00:23:09,580 --> 00:23:16,200
+wanted to learn the craft. So that probably had an effect too.
+
+405
+00:23:16,200 --> 00:23:25,780
+So let's move to the, let's move up to the present. Well, so, yeah, apparently sound
+
+406
+00:23:25,780 --> 00:23:32,900
+doesn't work on this, so I'll just skip this part. But you guys probably didn't watch classic
+
+407
+00:23:32,900 --> 00:23:39,080
+sci-fi, Star Trek anyway. So the question would be, you know, maybe one of the reasons
+
+408
+00:23:39,080 --> 00:23:48,680
+that in 2004 the uptake of domain-driven design was uneven, to say the least, is because it
+
+409
+00:23:48,680 --> 00:23:56,100
+was just too hard. The tools were not right for it. Look what we're expecting people to
+
+410
+00:23:56,100 --> 00:24:04,600
+do. We want them to express a model in code, you know. We want them to, we want code that
+
+411
+00:24:04,600 --> 00:24:09,060
+reads as if you were reading a document that explained how you solve the problem.
+
+412
+00:24:09,060 --> 00:24:15,560
+How you think about the problem and how you solve it. That would be the ideal code. And
+
+413
+00:24:15,560 --> 00:24:24,040
+yet you're supposed to do that on top of all that mess that I was just describing. Even
+
+414
+00:24:24,040 --> 00:24:28,460
+the, you know, the building blocks which have been overemphasized, but even those are hard
+
+415
+00:24:28,460 --> 00:24:36,460
+to pull off with that technology set. You know, in a, with an OR mapper and so forth,
+
+416
+00:24:39,060 --> 00:24:45,220
+it's, it's really hard.
+
+417
+00:24:45,220 --> 00:24:50,140
+We say things like, you know, define these value objects. And make them immutable and
+
+418
+00:24:50,140 --> 00:24:56,140
+in the book I sort of talk a little bit about that, but you know it's really hard, really
+
+419
+00:24:56,140 --> 00:25:01,340
+hard with that kind of technology to do it. And context boundaries, I just said that.
+
+420
+00:25:01,340 --> 00:25:08,060
+But when you're running on a monolithic server application, where everything nuovo maxed
+
+421
+00:25:08,060 --> 00:25:09,060
+in to the same data. Thewr sleeping you be really easy. You just need the idea of which
+
+422
+00:25:09,060 --> 00:25:16,740
+database, how do you do that? How do you actually say, yeah, this is the realm of the software
+
+423
+00:25:16,740 --> 00:25:23,540
+in which I can make assertions that I'm very confident of about the definitions of things,
+
+424
+00:25:23,540 --> 00:25:32,240
+the constraints between the things? It can be done. I did it some. I was involved with
+
+425
+00:25:32,240 --> 00:25:40,060
+teams that did it sometimes. And I saw other people do it. But it's very hard. Maybe too
+
+426
+00:25:40,060 --> 00:25:53,220
+hard. So, you know, I think that if you took that master carpenter and you said, well,
+
+427
+00:25:54,140 --> 00:26:02,220
+here is a stone hand axe made by an early Cro-Magnon. And you said, now make a hand
+
+428
+00:26:02,240 --> 00:26:08,740
+like your beautiful artistic table, maybe you wouldn't get the same result. So maybe
+
+429
+00:26:08,740 --> 00:26:15,740
+that's the situation. Now, the question would be things have changed, right? The NoSQL movement
+
+430
+00:26:19,060 --> 00:26:24,900
+comes along and suddenly we have all these different kinds of databases. You kind of
+
+431
+00:26:24,900 --> 00:26:30,460
+hopefully have a database that fits the data that you're working with better. And we have
+
+432
+00:26:30,460 --> 00:26:32,220
+vast quantities of memory.
+
+433
+00:26:32,220 --> 00:26:37,540
+So that for a lot of kinds of problems, instead of saying, well, I'm going to take the object
+
+434
+00:26:37,540 --> 00:26:43,760
+from store and do something and put it back and over and over, I'm saying, well, a lot
+
+435
+00:26:43,760 --> 00:26:48,320
+of the really intricate parts, the complex parts that I want to work on, I could bring
+
+436
+00:26:48,320 --> 00:26:53,800
+data in. I could transform it into a structure that I'll just let live in memory. Any kind
+
+437
+00:26:53,800 --> 00:27:00,660
+of interesting results I can write out to the store. And I don't really have to worry
+
+438
+00:27:00,660 --> 00:27:02,040
+about that part.
+
+439
+00:27:02,040 --> 00:27:08,940
+Right? You know, the, the, so that lists a big constraint. And, you know, then we have
+
+440
+00:27:08,940 --> 00:27:15,940
+sort of new ideas come along about well, maybe we should just structure our whole model and
+
+441
+00:27:17,300 --> 00:27:24,260
+design differently anyway. Things like event sourcing. So you could say, maybe, maybe
+
+442
+00:27:24,260 --> 00:27:31,260
+things, maybe we can do better now. Maybe we're ready. Maybe not. You know, but it probably
+
+443
+00:27:32,040 --> 00:27:37,560
+know, I mean, maybe we're still not there. I don't know. But I think it seems to me that
+
+444
+00:27:37,560 --> 00:27:45,300
+when I'm working with the tools of 2015, you know, now going on 2016, it feels different.
+
+445
+00:27:45,300 --> 00:27:57,260
+It feels better. More like 1994, actually. Strange as that sounds. But better. You know,
+
+446
+00:27:57,260 --> 00:28:04,100
+it's as if we have finally recovered from that era and finally gotten back on a path
+
+447
+00:28:04,100 --> 00:28:13,140
+and gotten to a place better than anything I've seen before. It could be that the, you
+
+448
+00:28:13,140 --> 00:28:17,180
+know, it could be I'm still premature about this, but I don't think so. I think we're
+
+449
+00:28:17,180 --> 00:28:27,180
+ready. So, you know, I think look at the, just the intention of the technologies that
+
+450
+00:28:27,260 --> 00:28:32,160
+we use and the frameworks and stuff that people come out with now. They tend to be
+
+451
+00:28:32,160 --> 00:28:40,240
+so much smaller and easier to work with. It's like they care about it being easy to work
+
+452
+00:28:40,240 --> 00:28:52,220
+with. And expressive. Like they have in their, at their framework or library level, they
+
+453
+00:28:52,220 --> 00:28:56,180
+have created a ubiquitous language.
+
+454
+00:28:56,180 --> 00:28:57,180
+One of my favorites.
+
+455
+00:28:57,180 --> 00:29:02,980
+It's at the moment, and it serves as a good example of the kind of thing I'm talking about
+
+456
+00:29:02,980 --> 00:29:08,940
+is the reactive extensions. That if you don't know what that is, you should really look
+
+457
+00:29:08,940 --> 00:29:17,080
+it up. It's just a wonderfully elegant model. And it's been implemented on in, I think it
+
+458
+00:29:17,080 --> 00:29:22,800
+started out in C sharp. I'm not sure. I think so. It's in Java. It's in Clojure. It's in
+
+459
+00:29:22,800 --> 00:29:25,640
+everything now.
+
+460
+00:29:25,640 --> 00:29:27,180
+And it's a good example.
+
+461
+00:29:27,180 --> 00:29:33,620
+It's a good example of, it deals with technical concerns. How do you do, you know, how do
+
+462
+00:29:33,620 --> 00:29:41,360
+you tie together these multi-threaded problems and yet not just get overwhelmed so that you
+
+463
+00:29:41,360 --> 00:29:48,360
+have to think about that all the time. And so we're in this period where we don't have
+
+464
+00:29:48,360 --> 00:29:57,180
+only this or only that of anything. And that's great. And I think that's when you can actually
+
+465
+00:29:57,180 --> 00:30:04,780
+you know, people flock toward things, generally speaking, they're flocking toward things that
+
+466
+00:30:04,780 --> 00:30:13,740
+really are rather nice. And then there's a new explosion of variation around that.
+
+467
+00:30:13,740 --> 00:30:19,700
+Let me just quickly talk about one thing. Because since domain-driven design is so much
+
+468
+00:30:19,700 --> 00:30:25,340
+about models, and there have been a lot of misconceptions about domain-driven design
+
+469
+00:30:25,340 --> 00:30:26,340
+over the years.
+
+470
+00:30:27,180 --> 00:30:32,400
+It was a big overemphasis on the building blocks, for example. And when you go into
+
+471
+00:30:32,400 --> 00:30:37,460
+something like functional programming or whatever, you're going to have to really rethink those
+
+472
+00:30:37,460 --> 00:30:40,120
+building blocks.
+
+473
+00:30:40,120 --> 00:30:46,560
+But the fundamentals, like we're trying to develop a model, that's the real, you know,
+
+474
+00:30:46,560 --> 00:30:52,100
+that's one of those real fundamentals of domain-driven design. But if you are, but it only works
+
+475
+00:30:52,100 --> 00:30:57,180
+if you're thinking about model in a certain way. If you think of model as a way of structuring
+
+476
+00:30:57,180 --> 00:31:06,180
+domain, you know, objects in an object-oriented programming language, then you say, well,
+
+477
+00:31:06,180 --> 00:31:11,960
+then DDD is very specific to a particular kind of programming environment. But that's
+
+478
+00:31:11,960 --> 00:31:16,720
+just not true. Even though all the examples, nearly all the examples in my book are that
+
+479
+00:31:16,720 --> 00:31:26,560
+way, that's because it was 2003 and we only had one language. So let me just talk a little
+
+480
+00:31:26,560 --> 00:31:33,140
+bit about what I mean by model. And some of you have heard me say this.
+
+481
+00:31:33,140 --> 00:31:38,840
+But people often talk about, you know, maps and use it as an example of a model. And,
+
+482
+00:31:38,840 --> 00:31:43,200
+of course, that's perfectly appropriate. But it's not quite the kind of model that I am
+
+483
+00:31:43,200 --> 00:31:50,920
+thinking of. But it does help, it's something I can use to explain what I mean by model.
+
+484
+00:31:50,920 --> 00:31:56,180
+So here is a map of the world, and everyone looks at it and says, okay, here's a map of
+
+485
+00:31:56,180 --> 00:31:56,560
+the world.
+
+486
+00:31:56,560 --> 00:32:03,560
+And you can look at it and learn and infer certain things. Like I'll bet you can infer
+
+487
+00:32:03,560 --> 00:32:10,560
+where this map was made. So, but in addition to that, you can look and say, okay, well,
+
+488
+00:32:11,560 --> 00:32:17,560
+let's see. There's China. There's the United States. And they look about the same size.
+
+489
+00:32:17,560 --> 00:32:21,560
+And you can look in the Wikipedia and all of a sudden you say, yeah, they are about
+
+490
+00:32:21,560 --> 00:32:26,280
+the same size. So, okay. You can tell how big things are.
+
+491
+00:32:26,280 --> 00:32:32,560
+And you can see that, you know, Western Europe is a bit smaller and to the east and China
+
+492
+00:32:32,560 --> 00:32:37,640
+is to the west and all that. You can look and see, okay, Africa and Greenland, they
+
+493
+00:32:37,640 --> 00:32:43,900
+look about the same size. And so I suppose they are. I mean, we tested it with the U.S.
+
+494
+00:32:43,900 --> 00:32:48,780
+and China. So it must work generally.
+
+495
+00:32:48,780 --> 00:32:55,780
+Now that we know that Greenland is the same size as Africa, we can continue. Okay. So,
+
+496
+00:32:56,280 --> 00:33:03,040
+well, Greenland is not the same size as Africa, it turns out. I did look it up to see exactly
+
+497
+00:33:03,040 --> 00:33:10,040
+how big the two are. Actually, Africa is 14 times bigger than Greenland, 14 times. So,
+
+498
+00:33:11,960 --> 00:33:18,360
+why is the map like this? Well, theory number one, bad data. The people who made this map
+
+499
+00:33:18,360 --> 00:33:25,360
+just didn't know how big Greenland was or Africa. This turns out not to be the explanation.
+
+500
+00:33:26,280 --> 00:33:33,280
+Theory number two, since the map was made in the U.S., but the team that made up the
+
+501
+00:33:33,600 --> 00:33:37,980
+map had a couple of immigrants from Greenland, and they said Americans don't know anything
+
+502
+00:33:37,980 --> 00:33:41,440
+about geography. If we tell them Greenland is really big, they'll make it big on the
+
+503
+00:33:41,440 --> 00:33:47,840
+map and no one will ever know the difference. That turns out not to be the explanation either.
+
+504
+00:33:47,840 --> 00:33:54,840
+The explanation actually turns out to involve a Belgian from the 1590s. So, the explanation
+
+505
+00:33:56,280 --> 00:34:00,920
+is really simple. He looked at this map and said to himself, can you tell me where to
+
+506
+00:34:00,920 --> 00:34:08,040
+get a map and what would I do here? And what would I do in Greenland? And he figured out
+
+507
+00:34:10,660 --> 00:34:15,720
+that you have to pay 20 dollars for the map and you don't know where to get the fruit.
+
+508
+00:34:15,720 --> 00:34:20,740
+So, he had something in common. He knows where to look. They were thinking why did Apple
+
+509
+00:34:20,740 --> 00:34:23,560
+take all this money? Why did they take so little money to the market? These people really
+
+510
+00:34:23,560 --> 00:34:24,340
+thought of it differently. They said you might as well make a map instead of solving with
+
+511
+00:34:24,340 --> 00:34:25,420
+a map, is that true? And the home of the technicual rapporteur was that he could do what you would
+
+512
+00:34:25,420 --> 00:34:25,620
+do in the U.S. decides that it was Wimundeen facts among us. Los blẩ EM you'll study that,
+
+513
+00:34:25,660 --> 00:34:26,120
+and, heesp and succeeded, he finds out the climate absolute 없습니다, and even then proves people with IOLA
+
+514
+00:34:26,120 --> 00:34:30,420
+And it explains why these things are distorted and the way they are.
+
+515
+00:34:30,420 --> 00:34:35,580
+Now, everyone knows, of course, that the map, that we have to distort something
+
+516
+00:34:35,580 --> 00:34:39,120
+to take the surface of the round earth and flatten it out.
+
+517
+00:34:39,680 --> 00:34:42,380
+But this one's flattened out in a very particular way.
+
+518
+00:34:42,460 --> 00:34:44,540
+There are other ways to flatten out the earth.
+
+519
+00:34:45,000 --> 00:34:46,600
+This is Mercator's way.
+
+520
+00:34:47,380 --> 00:34:48,620
+This is his projection.
+
+521
+00:34:49,740 --> 00:34:54,640
+So the curious thing about this one is that if you draw a straight line
+
+522
+00:34:54,640 --> 00:35:00,120
+between two places, let's say you drew a line between Lisbon and New York,
+
+523
+00:35:00,780 --> 00:35:03,360
+and then you look at the angle of that line on that map,
+
+524
+00:35:04,320 --> 00:35:06,420
+you can get a compass setting from that.
+
+525
+00:35:06,900 --> 00:35:09,620
+If you were to stretch a string around a globe
+
+526
+00:35:09,620 --> 00:35:13,680
+and measure the angle of that string on the globe,
+
+527
+00:35:13,840 --> 00:35:17,020
+it would be the same angle as the one you get on the map.
+
+528
+00:35:17,560 --> 00:35:24,020
+So that as the surface of the round earth is flattened,
+
+529
+00:35:24,640 --> 00:35:31,640
+onto the map, it's done in a way that makes the directions of things stay the same.
+
+530
+00:35:32,240 --> 00:35:35,880
+No matter what else has to be distorted, the directions of things stay the same.
+
+531
+00:35:36,620 --> 00:35:40,000
+That's what makes the Mercator map so valuable,
+
+532
+00:35:40,100 --> 00:35:43,420
+or what made it so valuable, you know, hundreds of years ago.
+
+533
+00:35:43,820 --> 00:35:49,520
+And we use it for other things, like teaching geography in school.
+
+534
+00:35:49,920 --> 00:35:53,400
+And so children grow up thinking that Greenland is enormous,
+
+535
+00:35:53,480 --> 00:35:54,600
+but it's not.
+
+536
+00:35:54,880 --> 00:35:56,000
+But that's the reason.
+
+537
+00:35:56,000 --> 00:35:57,160
+It wasn't made for them.
+
+538
+00:35:57,160 --> 00:36:00,060
+It was made for navigators.
+
+539
+00:36:01,820 --> 00:36:03,140
+Here's another projection.
+
+540
+00:36:03,920 --> 00:36:06,820
+This one doesn't distort the sizes or shapes of things.
+
+541
+00:36:07,420 --> 00:36:08,880
+We could use this one instead.
+
+542
+00:36:09,800 --> 00:36:14,500
+But this one might be confusing to navigators.
+
+543
+00:36:14,500 --> 00:36:17,240
+If you were trying to get from New York to Lisbon, for example,
+
+544
+00:36:17,740 --> 00:36:19,500
+and you have to go through that white part.
+
+545
+00:36:22,880 --> 00:36:23,400
+So.
+
+546
+00:36:24,640 --> 00:36:26,640
+Here's the model as I see it.
+
+547
+00:36:26,640 --> 00:36:30,640
+This is Mercator's model.
+
+548
+00:36:30,640 --> 00:36:32,640
+The earth is a sphere.
+
+549
+00:36:32,640 --> 00:36:36,640
+So we start by saying, well, this thing, the domain,
+
+550
+00:36:36,640 --> 00:36:38,640
+I'm making an abstraction of it.
+
+551
+00:36:38,640 --> 00:36:42,640
+I've taken away nearly everything about it, right?
+
+552
+00:36:42,640 --> 00:36:46,640
+This is not a kind of complete thing.
+
+553
+00:36:46,640 --> 00:36:48,640
+I'm not saying everything about the earth.
+
+554
+00:36:48,640 --> 00:36:52,640
+Then we're going to say, well, what data do I want?
+
+555
+00:36:52,640 --> 00:36:54,640
+I want the location.
+
+556
+00:36:54,640 --> 00:36:56,640
+I want the locations of certain things on the surface,
+
+557
+00:36:56,640 --> 00:37:01,640
+mostly coastlines, major port cities, maybe navigable rivers.
+
+558
+00:37:01,640 --> 00:37:05,640
+And I want this data in a particular form.
+
+559
+00:37:05,640 --> 00:37:08,640
+I probably need it in a spherical coordinate system
+
+560
+00:37:08,640 --> 00:37:13,640
+because I've described the earth as a sphere.
+
+561
+00:37:13,640 --> 00:37:15,640
+So that's latitude and longitude,
+
+562
+00:37:15,640 --> 00:37:20,640
+a Greek concept that's handy for that.
+
+563
+00:37:20,640 --> 00:37:21,640
+And then.
+
+564
+00:37:21,640 --> 00:37:26,640
+I need to turn it into a flat piece of paper.
+
+565
+00:37:26,640 --> 00:37:30,640
+So I need a little formalism there,
+
+566
+00:37:30,640 --> 00:37:33,640
+a mathematical technique called a projection.
+
+567
+00:37:33,640 --> 00:37:37,640
+Now, of course, Mercator's mathematical techniques
+
+568
+00:37:37,640 --> 00:37:40,640
+were a little different than what we would use today.
+
+569
+00:37:40,640 --> 00:37:44,640
+I'll just, you know, I'm just talking in modern mathematical terms.
+
+570
+00:37:44,640 --> 00:37:49,640
+What he did was, but what he did was functionally equivalent to that.
+
+571
+00:37:51,640 --> 00:37:54,640
+And then we have an assertion,
+
+572
+00:37:54,640 --> 00:37:58,640
+an assertion that if you apply this particular projection,
+
+573
+00:37:58,640 --> 00:38:05,640
+this particular formula for converting a sphere to a flat surface,
+
+574
+00:38:05,640 --> 00:38:10,640
+that you will be able to say that any direction on the flat surface
+
+575
+00:38:10,640 --> 00:38:16,640
+is the same as the direction on the surface of the sphere.
+
+576
+00:38:16,640 --> 00:38:20,640
+That assertion, of course, is what makes the thing valuable.
+
+577
+00:38:20,640 --> 00:38:26,640
+And this is, now, how is this different from the map itself?
+
+578
+00:38:26,640 --> 00:38:30,640
+Because if I take a different data set
+
+579
+00:38:30,640 --> 00:38:34,640
+and I apply the same model,
+
+580
+00:38:34,640 --> 00:38:38,640
+then let's say we take the data set available
+
+581
+00:38:38,640 --> 00:38:42,640
+to someone from the 1590s.
+
+582
+00:38:42,640 --> 00:38:47,640
+Then I will get, well, in this case, this is what I get.
+
+583
+00:38:47,640 --> 00:38:49,640
+This is Mercator's original model.
+
+584
+00:38:49,640 --> 00:38:52,640
+I mean, his original map.
+
+585
+00:38:52,640 --> 00:38:58,640
+And although it is, doesn't look exactly like a modern map,
+
+586
+00:38:58,640 --> 00:39:01,640
+it's actually based on the exact same model.
+
+587
+00:39:01,640 --> 00:39:03,640
+It's just the data set that's different.
+
+588
+00:39:03,640 --> 00:39:10,640
+So if we zoom in on, this is Europe and the Mediterranean,
+
+589
+00:39:10,640 --> 00:39:14,640
+you can see that it actually looks a lot like the modern map.
+
+590
+00:39:14,640 --> 00:39:18,640
+And that's because they had good data for that region.
+
+591
+00:39:19,640 --> 00:39:24,640
+But as you go further afield, you get less and less.
+
+592
+00:39:24,640 --> 00:39:30,640
+You know, the east coast of North and South America look pretty good.
+
+593
+00:39:30,640 --> 00:39:32,640
+There are some mistakes.
+
+594
+00:39:32,640 --> 00:39:36,640
+The west coast, though, of South America, for example,
+
+595
+00:39:36,640 --> 00:39:39,640
+it's a funny thing that details look okay,
+
+596
+00:39:39,640 --> 00:39:42,640
+but the whole thing's shifted hundreds of miles to the east,
+
+597
+00:39:42,640 --> 00:39:45,640
+like there's an offset error in the data.
+
+598
+00:39:45,640 --> 00:39:47,640
+Offset errors, huh?
+
+599
+00:39:47,640 --> 00:39:50,640
+And then look at the west coast of North America.
+
+600
+00:39:50,640 --> 00:39:54,640
+It's like, okay, we know there's a west coast there.
+
+601
+00:39:54,640 --> 00:39:56,640
+So they really didn't have much data.
+
+602
+00:39:56,640 --> 00:39:59,640
+And then look down here in the southern areas,
+
+603
+00:39:59,640 --> 00:40:02,640
+say around where we would put Australia,
+
+604
+00:40:02,640 --> 00:40:04,640
+and I don't know.
+
+605
+00:40:04,640 --> 00:40:06,640
+I don't know what's going on there.
+
+606
+00:40:06,640 --> 00:40:08,640
+Some bad data.
+
+607
+00:40:08,640 --> 00:40:13,640
+So hopefully this starts to connect with the kind of things we do.
+
+608
+00:40:13,640 --> 00:40:16,640
+We take a sprawling, complex domain,
+
+609
+00:40:16,640 --> 00:40:19,640
+just an overwhelming quantity of data,
+
+610
+00:40:19,640 --> 00:40:24,640
+and then we abstract that domain
+
+611
+00:40:24,640 --> 00:40:28,640
+in a way that allows us to focus
+
+612
+00:40:28,640 --> 00:40:34,640
+on some particular important problem.
+
+613
+00:40:34,640 --> 00:40:37,640
+Particular important problem.
+
+614
+00:40:37,640 --> 00:40:43,640
+And then apply a model that will transform that data
+
+615
+00:40:43,640 --> 00:40:45,640
+into a form that really supports
+
+616
+00:40:45,640 --> 00:40:48,640
+thinking about that problem
+
+617
+00:40:48,640 --> 00:40:51,640
+and coming to decisions about it.
+
+618
+00:40:51,640 --> 00:40:53,640
+I mean, some models are for different,
+
+619
+00:40:53,640 --> 00:40:56,640
+you know, some models help you predict something.
+
+620
+00:40:56,640 --> 00:41:00,640
+Some models help you make a decision.
+
+621
+00:41:00,640 --> 00:41:05,640
+But, and they all evolve.
+
+622
+00:41:05,640 --> 00:41:09,640
+I mean, this is a Portolan map.
+
+623
+00:41:09,640 --> 00:41:12,640
+It's the kind of map, one of the kinds of maps,
+
+624
+00:41:12,640 --> 00:41:14,640
+that was available before Mercator.
+
+625
+00:41:14,640 --> 00:41:17,640
+I'm sure it was one of the things that he drew upon
+
+626
+00:41:17,640 --> 00:41:18,640
+as he was figuring it out.
+
+627
+00:41:18,640 --> 00:41:23,640
+And those sort of radiating lines,
+
+628
+00:41:23,640 --> 00:41:27,640
+they allow you to know the direction between two points,
+
+629
+00:41:27,640 --> 00:41:29,640
+but specific points.
+
+630
+00:41:29,640 --> 00:41:31,640
+So on this map, you can say,
+
+631
+00:41:31,640 --> 00:41:33,640
+well, from these known points,
+
+632
+00:41:33,640 --> 00:41:35,640
+I know the direction from that known point
+
+633
+00:41:35,640 --> 00:41:37,640
+to that known point.
+
+634
+00:41:37,640 --> 00:41:40,640
+Mercator had this brilliant breakthrough in his model
+
+635
+00:41:40,640 --> 00:41:43,640
+where suddenly he could go from any point
+
+636
+00:41:43,640 --> 00:41:45,640
+to any other point, right?
+
+637
+00:41:45,640 --> 00:41:47,640
+But it wasn't like it came out of nowhere.
+
+638
+00:41:47,640 --> 00:41:49,640
+So as we are working on these domains,
+
+639
+00:41:49,640 --> 00:41:52,640
+it's not like we should feel frustrated that,
+
+640
+00:41:52,640 --> 00:41:55,640
+oh, you know, my model doesn't have the elegance
+
+641
+00:41:55,640 --> 00:41:58,640
+of the Mercator projection.
+
+642
+00:41:58,640 --> 00:42:01,640
+No, it's like you take steps.
+
+643
+00:42:01,640 --> 00:42:05,640
+This was a tremendously valuable map in its time.
+
+644
+00:42:08,640 --> 00:42:10,640
+One of the distractions, though,
+
+645
+00:42:10,640 --> 00:42:12,640
+I mean, you know, as I'm talking about,
+
+646
+00:42:12,640 --> 00:42:14,640
+what do I mean by model?
+
+647
+00:42:14,640 --> 00:42:17,640
+I'm not talking about trying to see the reality
+
+648
+00:42:17,640 --> 00:42:20,640
+of the business or anything.
+
+649
+00:42:20,640 --> 00:42:22,640
+That, I think, is actually a distraction.
+
+650
+00:42:22,640 --> 00:42:25,640
+It gets us off on the wrong track.
+
+651
+00:42:25,640 --> 00:42:32,640
+For example, is this a realistic image of the world?
+
+652
+00:42:32,640 --> 00:42:35,640
+I mean, I don't think that Greenland
+
+653
+00:42:35,640 --> 00:42:38,640
+is almost the size of Africa.
+
+654
+00:42:38,640 --> 00:42:41,640
+So that, you could say, is unrealistic.
+
+655
+00:42:41,640 --> 00:42:45,640
+We could fix that.
+
+656
+00:42:45,640 --> 00:42:47,640
+We could make Greenland smaller.
+
+657
+00:42:47,640 --> 00:42:50,640
+And probably that wouldn't cause too much trouble
+
+658
+00:42:50,640 --> 00:42:55,640
+because how often do navigators go to Greenland?
+
+659
+00:42:55,640 --> 00:43:00,640
+But we would have to make our assertion slightly different.
+
+660
+00:43:00,640 --> 00:43:05,640
+Now the assertion is that the angle between any two points
+
+661
+00:43:05,640 --> 00:43:09,640
+on this map is the same as it would be on the globe
+
+662
+00:43:09,640 --> 00:43:11,640
+unless one of the two points is the same.
+
+663
+00:43:11,640 --> 00:43:14,640
+So one of the two points is in Greenland.
+
+664
+00:43:14,640 --> 00:43:17,640
+Or we could say, well, Africa's really too small on this map,
+
+665
+00:43:17,640 --> 00:43:19,640
+so let's enlarge it a little bit,
+
+666
+00:43:19,640 --> 00:43:21,640
+make it more realistic.
+
+667
+00:43:21,640 --> 00:43:24,640
+But now we have to adjust the assertion.
+
+668
+00:43:24,640 --> 00:43:28,640
+The angle, you know, the direction between any two points
+
+669
+00:43:28,640 --> 00:43:31,640
+on the map is the same as on the sphere
+
+670
+00:43:31,640 --> 00:43:34,640
+unless one end of it is in Africa
+
+671
+00:43:34,640 --> 00:43:36,640
+and the other end out,
+
+672
+00:43:36,640 --> 00:43:39,640
+or one end is in Greenland and the other end out.
+
+673
+00:43:39,640 --> 00:43:44,640
+And by the way, doesn't that start to sound a little bit like code?
+
+674
+00:43:46,640 --> 00:43:49,640
+So that's how we end up there.
+
+675
+00:43:49,640 --> 00:43:53,640
+Is this more realistic than the Mercator map?
+
+676
+00:43:53,640 --> 00:43:58,640
+I mean, it shows Greenland and Africa in their true size.
+
+677
+00:43:58,640 --> 00:44:00,640
+I mean, their relative size.
+
+678
+00:44:00,640 --> 00:44:03,640
+On the other hand, it doesn't give you a sense
+
+679
+00:44:03,640 --> 00:44:06,640
+of the connected geography of the world
+
+680
+00:44:06,640 --> 00:44:08,640
+the same way that the Mercator map does.
+
+681
+00:44:09,640 --> 00:44:11,640
+You know, you can't really relate.
+
+682
+00:44:11,640 --> 00:44:13,640
+For example, you know,
+
+683
+00:44:13,640 --> 00:44:15,640
+South America and Africa
+
+684
+00:44:15,640 --> 00:44:19,640
+look as if they're on the opposite ends of the world.
+
+685
+00:44:19,640 --> 00:44:23,640
+I don't think it's more or less realistic.
+
+686
+00:44:23,640 --> 00:44:25,640
+I think that's the wrong question to ask.
+
+687
+00:44:25,640 --> 00:44:28,640
+If you want realistic, there's realistic.
+
+688
+00:44:28,640 --> 00:44:30,640
+Well, this is a projection, too.
+
+689
+00:44:30,640 --> 00:44:34,640
+But it's, you know, what I mean by realistic, I guess.
+
+690
+00:44:34,640 --> 00:44:36,640
+What I'm getting at here is that
+
+691
+00:44:36,640 --> 00:44:38,640
+realism doesn't have much to do with what we're doing.
+
+692
+00:44:38,640 --> 00:44:40,640
+We're writing software.
+
+693
+00:44:40,640 --> 00:44:42,640
+We're trying to solve problems.
+
+694
+00:44:42,640 --> 00:44:45,640
+We need models that are focused
+
+695
+00:44:45,640 --> 00:44:50,640
+specifically on those problems.
+
+696
+00:44:50,640 --> 00:44:52,640
+And a narrow focus.
+
+697
+00:44:52,640 --> 00:44:54,640
+When you lose the narrow focus,
+
+698
+00:44:54,640 --> 00:44:58,640
+then you get this.
+
+699
+00:44:58,640 --> 00:45:02,640
+This is something I found on the web somewhere
+
+700
+00:45:02,640 --> 00:45:06,640
+by Googling for model.
+
+701
+00:45:08,640 --> 00:45:16,640
+So we need to remember, keep remembering,
+
+702
+00:45:16,640 --> 00:45:22,640
+we need to find a focus on a specific problem,
+
+703
+00:45:22,640 --> 00:45:25,640
+on a specific reasonably complex problem.
+
+704
+00:45:25,640 --> 00:45:27,640
+Because if it's not complex,
+
+705
+00:45:27,640 --> 00:45:29,640
+why are you doing all this?
+
+706
+00:45:29,640 --> 00:45:31,640
+And an important problem,
+
+707
+00:45:31,640 --> 00:45:34,640
+because if it's not important,
+
+708
+00:45:34,640 --> 00:45:36,640
+why are you doing this?
+
+709
+00:45:36,640 --> 00:45:40,640
+And then we apply all those tools.
+
+710
+00:45:40,640 --> 00:45:43,640
+And so when I say, hey, you know,
+
+711
+00:45:43,640 --> 00:45:45,640
+we don't want a realistic model.
+
+712
+00:45:45,640 --> 00:45:47,640
+We want a useful model.
+
+713
+00:45:47,640 --> 00:45:49,640
+That sounds like, oh, yeah, you know,
+
+714
+00:45:49,640 --> 00:45:51,640
+and we want to be good.
+
+715
+00:45:51,640 --> 00:45:53,640
+But I don't mean it that way.
+
+716
+00:45:53,640 --> 00:45:56,640
+I mean to say, look, usefulness isn't like good.
+
+717
+00:45:56,640 --> 00:45:59,640
+Usefulness is specific.
+
+718
+00:45:59,640 --> 00:46:03,640
+You can't say that something is useful or not in general.
+
+719
+00:46:03,640 --> 00:46:04,640
+You know?
+
+720
+00:46:04,640 --> 00:46:05,640
+Is a handful.
+
+721
+00:46:05,640 --> 00:46:08,640
+Is a hammer useful?
+
+722
+00:46:08,640 --> 00:46:12,640
+Well, not if you want to cut a board in two pieces.
+
+723
+00:46:12,640 --> 00:46:15,640
+Then maybe a saw is useful.
+
+724
+00:46:15,640 --> 00:46:17,640
+Is a saw useful?
+
+725
+00:46:17,640 --> 00:46:21,640
+Well, not if I want to pound a nail into a board.
+
+726
+00:46:21,640 --> 00:46:22,640
+Right?
+
+727
+00:46:22,640 --> 00:46:26,640
+So things are useful relative to some specific problem,
+
+728
+00:46:26,640 --> 00:46:28,640
+not in general.
+
+729
+00:46:28,640 --> 00:46:30,640
+There's nothing that's generally useful,
+
+730
+00:46:30,640 --> 00:46:33,640
+which is what you've got to keep in mind with the models.
+
+731
+00:46:33,640 --> 00:46:35,640
+In fact, it's quite easy to find something
+
+732
+00:46:35,640 --> 00:46:37,640
+that's not useful for anything.
+
+733
+00:46:37,640 --> 00:46:39,640
+A lot of, you know, okay.
+
+734
+00:46:39,640 --> 00:46:43,640
+There we go.
+
+735
+00:46:43,640 --> 00:46:47,640
+It's easy to find something that's not useful for anything.
+
+736
+00:46:47,640 --> 00:46:50,640
+Actually, this might be useful for one thing,
+
+737
+00:46:50,640 --> 00:46:54,640
+which is I need to have a kind of generic schema
+
+738
+00:46:54,640 --> 00:46:57,640
+that I can just shove all our data into
+
+739
+00:46:57,640 --> 00:47:01,640
+as a kind of a repository of some stuff
+
+740
+00:47:01,640 --> 00:47:03,640
+that we might look up from time to time.
+
+741
+00:47:03,640 --> 00:47:05,640
+But if you're actually trying to do the things
+
+742
+00:47:05,640 --> 00:47:07,640
+that domain-driven design is focused on,
+
+743
+00:47:07,640 --> 00:47:09,640
+this is not useful.
+
+744
+00:47:09,640 --> 00:47:11,640
+Well, as I was saying,
+
+745
+00:47:11,640 --> 00:47:14,640
+and I want to wrap up with a little optimism,
+
+746
+00:47:14,640 --> 00:47:17,640
+because sometimes I don't sound very optimistic
+
+747
+00:47:17,640 --> 00:47:21,640
+because I talk about how not all of a large system
+
+748
+00:47:21,640 --> 00:47:23,640
+will be well designed.
+
+749
+00:47:23,640 --> 00:47:26,640
+And I talk about all the dysfunction in a large organization
+
+750
+00:47:26,640 --> 00:47:29,640
+that is going to make sure that is always true.
+
+751
+00:47:29,640 --> 00:47:32,640
+And the intrinsic difficulty of software development
+
+752
+00:47:32,640 --> 00:47:35,640
+that will ensure that it's always true anyway.
+
+753
+00:47:35,640 --> 00:47:37,640
+And so people say, oh, this just sounds,
+
+754
+00:47:37,640 --> 00:47:39,640
+this makes me feel bad.
+
+755
+00:47:39,640 --> 00:47:41,640
+Well, I don't mean it that way.
+
+756
+00:47:41,640 --> 00:47:43,640
+I mean it like, let's be realistic.
+
+757
+00:47:43,640 --> 00:47:45,640
+Not all of the software will be well designed,
+
+758
+00:47:45,640 --> 00:47:49,640
+and so we'd better focus, create a boundary,
+
+759
+00:47:49,640 --> 00:47:52,640
+and make one piece that's well designed,
+
+760
+00:47:52,640 --> 00:47:55,640
+an important piece.
+
+761
+00:47:55,640 --> 00:47:57,640
+But optimism.
+
+762
+00:47:57,640 --> 00:48:00,640
+Because I think there's reason to think
+
+763
+00:48:00,640 --> 00:48:02,640
+that the present,
+
+764
+00:48:02,640 --> 00:48:04,640
+and the future,
+
+765
+00:48:04,640 --> 00:48:07,640
+are going to be better than the recent past.
+
+766
+00:48:07,640 --> 00:48:10,640
+In a way, you could say that we have,
+
+767
+00:48:10,640 --> 00:48:12,640
+at this point,
+
+768
+00:48:12,640 --> 00:48:15,640
+at least three, maybe more,
+
+769
+00:48:15,640 --> 00:48:17,640
+actual modeling paradigms.
+
+770
+00:48:17,640 --> 00:48:19,640
+As I said, in 2003,
+
+771
+00:48:19,640 --> 00:48:21,640
+everything was object-oriented.
+
+772
+00:48:21,640 --> 00:48:23,640
+If you wanted to do,
+
+773
+00:48:23,640 --> 00:48:27,640
+you know, if you wanted to use models in software,
+
+774
+00:48:27,640 --> 00:48:30,640
+object-oriented was the first place,
+
+775
+00:48:30,640 --> 00:48:32,640
+the first paradigm,
+
+776
+00:48:32,640 --> 00:48:34,640
+the first time of programming
+
+777
+00:48:34,640 --> 00:48:37,640
+that took that concept seriously.
+
+778
+00:48:37,640 --> 00:48:40,640
+But we have more now.
+
+779
+00:48:40,640 --> 00:48:41,640
+I mean, and by the way,
+
+780
+00:48:41,640 --> 00:48:43,640
+I love object-oriented programming,
+
+781
+00:48:43,640 --> 00:48:45,640
+and I know it's a little out of vogue right now,
+
+782
+00:48:45,640 --> 00:48:48,640
+and I actually find that quite refreshing.
+
+783
+00:48:48,640 --> 00:48:51,640
+I'm enjoying doing things in different ways.
+
+784
+00:48:51,640 --> 00:48:57,640
+In fact, but this is one of the options we have now.
+
+785
+00:48:57,640 --> 00:48:59,640
+Event sourcing, I would say,
+
+786
+00:48:59,640 --> 00:49:01,640
+after thinking about it for a few years,
+
+787
+00:49:01,640 --> 00:49:03,640
+I realized that it's essentially
+
+788
+00:49:03,640 --> 00:49:05,640
+a different modeling paradigm.
+
+789
+00:49:05,640 --> 00:49:08,640
+It says, you know, that you'll represent things
+
+790
+00:49:08,640 --> 00:49:10,640
+primarily as a sequence of events,
+
+791
+00:49:10,640 --> 00:49:14,640
+and then you will infer,
+
+792
+00:49:14,640 --> 00:49:18,640
+or you will project from those events
+
+793
+00:49:18,640 --> 00:49:20,640
+to create a view of whatever it is
+
+794
+00:49:20,640 --> 00:49:22,640
+that you're interested in.
+
+795
+00:49:22,640 --> 00:49:25,640
+And it eliminates mutation of data,
+
+796
+00:49:25,640 --> 00:49:28,640
+and it can be very expressive
+
+797
+00:49:28,640 --> 00:49:30,640
+for certain kinds of problems.
+
+798
+00:49:30,640 --> 00:49:33,640
+But your model takes a different shape.
+
+799
+00:49:33,640 --> 00:49:34,640
+It's not like, well, okay,
+
+800
+00:49:34,640 --> 00:49:35,640
+let's figure out what the model is,
+
+801
+00:49:35,640 --> 00:49:37,640
+and now we're going to program it
+
+802
+00:49:37,640 --> 00:49:40,640
+in whatever language that we choose independently.
+
+803
+00:49:40,640 --> 00:49:42,640
+No, the two shape each other.
+
+804
+00:49:42,640 --> 00:49:44,640
+You have to create a model
+
+805
+00:49:44,640 --> 00:49:46,640
+that fits the paradigm
+
+806
+00:49:46,640 --> 00:49:50,640
+that you're going to use to build it.
+
+807
+00:49:50,640 --> 00:49:52,640
+Relational.
+
+808
+00:49:52,640 --> 00:49:54,640
+I think relational is a genuine modeling paradigm.
+
+809
+00:49:54,640 --> 00:49:56,640
+It was intended to be that.
+
+810
+00:49:56,640 --> 00:49:59,640
+They had, you know, ER models
+
+811
+00:49:59,640 --> 00:50:01,640
+and...
+
+812
+00:50:01,640 --> 00:50:03,640
+But we stopped using it for that, basically,
+
+813
+00:50:03,640 --> 00:50:06,640
+because it became, for a decade or more,
+
+814
+00:50:06,640 --> 00:50:09,640
+just a bad way to store objects.
+
+815
+00:50:09,640 --> 00:50:11,640
+And so people have practically forgotten
+
+816
+00:50:11,640 --> 00:50:14,640
+what a really powerful tool it is.
+
+817
+00:50:14,640 --> 00:50:16,640
+If you actually say,
+
+818
+00:50:16,640 --> 00:50:18,640
+hey, this is a problem where we have to,
+
+819
+00:50:18,640 --> 00:50:23,640
+you know, compare and manipulate big sets,
+
+820
+00:50:23,640 --> 00:50:25,640
+I'm going to actually just express that
+
+821
+00:50:25,640 --> 00:50:28,640
+in terms of SQL queries,
+
+822
+00:50:28,640 --> 00:50:32,640
+and I will create a schema
+
+823
+00:50:32,640 --> 00:50:34,640
+that is actually tailored
+
+824
+00:50:34,640 --> 00:50:38,640
+to the problems I'm trying to compute about.
+
+825
+00:50:38,640 --> 00:50:40,640
+That's not the kind of schema people have made
+
+826
+00:50:40,640 --> 00:50:42,640
+for the last 20 years, in my experience.
+
+827
+00:50:42,640 --> 00:50:44,640
+They create schemas that are meant to be
+
+828
+00:50:44,640 --> 00:50:46,640
+sort of generalized places
+
+829
+00:50:46,640 --> 00:50:49,640
+to put all of our data.
+
+830
+00:50:49,640 --> 00:50:51,640
+That's not what I mean by, you know, a model.
+
+831
+00:50:51,640 --> 00:50:53,640
+And that's not what I mean when I say
+
+832
+00:50:53,640 --> 00:50:55,640
+relational is a paradigm that you can use
+
+833
+00:50:55,640 --> 00:50:57,640
+for domain-driven design.
+
+834
+00:50:57,640 --> 00:50:58,640
+What I mean, though, if you say,
+
+835
+00:50:58,640 --> 00:51:00,640
+okay, I'm not going to use that schema,
+
+836
+00:51:00,640 --> 00:51:01,640
+it's fine for that one to exist,
+
+837
+00:51:01,640 --> 00:51:03,640
+but I'm not using it for this.
+
+838
+00:51:03,640 --> 00:51:06,640
+What I'm going to do is create a schema
+
+839
+00:51:06,640 --> 00:51:10,640
+where we take just the information we want to apply
+
+840
+00:51:10,640 --> 00:51:13,640
+and structure it in a certain way
+
+841
+00:51:13,640 --> 00:51:16,640
+that allows us to do, you know,
+
+842
+00:51:16,640 --> 00:51:19,640
+set operations, basically, to find our answer.
+
+843
+00:51:19,640 --> 00:51:25,640
+So in that sense, I think it's a modeling paradigm.
+
+844
+00:51:25,640 --> 00:51:26,640
+And then functional.
+
+845
+00:51:26,640 --> 00:51:30,640
+Now, you know, functional is a big thing,
+
+846
+00:51:30,640 --> 00:51:32,640
+maybe more than one thing.
+
+847
+00:51:32,640 --> 00:51:34,640
+And so there are people, though,
+
+848
+00:51:34,640 --> 00:51:37,640
+who have been talking about modeling
+
+849
+00:51:37,640 --> 00:51:40,640
+in the functional realm
+
+850
+00:51:40,640 --> 00:51:43,640
+and doing very interesting things.
+
+851
+00:51:43,640 --> 00:51:48,640
+The thing is, models are just systems of abstraction.
+
+852
+00:51:48,640 --> 00:51:52,640
+And so if you have a powerful mechanism for abstraction,
+
+853
+00:51:52,640 --> 00:51:56,640
+you should be able to implement
+
+854
+00:51:56,640 --> 00:51:59,640
+and you should be able to express models.
+
+855
+00:51:59,640 --> 00:52:02,640
+Furthermore, if you want to, you know,
+
+856
+00:52:02,640 --> 00:52:06,640
+bring that ubiquitous language to life in the code,
+
+857
+00:52:06,640 --> 00:52:08,640
+well, some of the functional languages, I think,
+
+858
+00:52:08,640 --> 00:52:14,640
+are really nice for making language in the code.
+
+859
+00:52:14,640 --> 00:52:17,640
+And it might be a good mate with event sourcing.
+
+860
+00:52:17,640 --> 00:52:19,640
+I mean, I'm just sort of laying out, like,
+
+861
+00:52:19,640 --> 00:52:22,640
+I'm pointing out that we have so many options,
+
+862
+00:52:22,640 --> 00:52:25,640
+options that were really not there
+
+863
+00:52:25,640 --> 00:52:28,640
+in 2003.
+
+864
+00:52:28,640 --> 00:52:30,640
+And graphs, graph databases,
+
+865
+00:52:30,640 --> 00:52:33,640
+it's more than just a way to store data,
+
+866
+00:52:33,640 --> 00:52:35,640
+store highly connected data.
+
+867
+00:52:35,640 --> 00:52:36,640
+That's the way they describe it.
+
+868
+00:52:36,640 --> 00:52:38,640
+That's not what I think about when I look at it.
+
+869
+00:52:38,640 --> 00:52:42,640
+I think this is a way to model certain kinds of problems,
+
+870
+00:52:42,640 --> 00:52:44,640
+you know.
+
+871
+00:52:44,640 --> 00:52:48,640
+And it's brilliantly clear.
+
+872
+00:52:48,640 --> 00:52:51,640
+You know, this is one of those classic kind of modeling paradigms
+
+873
+00:52:51,640 --> 00:52:53,640
+that goes back long before computers.
+
+874
+00:52:53,640 --> 00:52:54,640
+So...
+
+875
+00:52:55,640 --> 00:52:58,640
+Anyway...
+
+876
+00:52:58,640 --> 00:53:02,640
+And maybe this one will come along, but...
+
+877
+00:53:02,640 --> 00:53:05,640
+So, in a nutshell, I would say that
+
+878
+00:53:05,640 --> 00:53:09,640
+maybe it's a good time to be
+
+879
+00:53:09,640 --> 00:53:13,640
+taking DDD to the next level a little bit.
+
+880
+00:53:13,640 --> 00:53:15,640
+Maybe our tools are ready.
+
+881
+00:53:15,640 --> 00:53:20,640
+Maybe there are things, too, that are pushing us toward...
+
+882
+00:53:20,640 --> 00:53:24,640
+toward more concern about design.
+
+883
+00:53:24,640 --> 00:53:27,640
+If you look at the typical, you know,
+
+884
+00:53:27,640 --> 00:53:32,640
+cloud-based application or mobile,
+
+885
+00:53:32,640 --> 00:53:35,640
+you know, tying all these things together,
+
+886
+00:53:35,640 --> 00:53:38,640
+it becomes perhaps a bit more...
+
+887
+00:53:38,640 --> 00:53:42,640
+That is, you can't get away with some of the sloppiness
+
+888
+00:53:42,640 --> 00:53:44,640
+that you can get away with
+
+889
+00:53:44,640 --> 00:53:47,640
+if everything's together on one server.
+
+890
+00:53:47,640 --> 00:53:52,640
+And the fact that you will not be forgiven for sloppiness
+
+891
+00:53:52,640 --> 00:53:55,640
+leads to people thinking about the design
+
+892
+00:53:55,640 --> 00:53:58,640
+and wanting to have assertions about what will happen,
+
+893
+00:53:58,640 --> 00:54:00,640
+for example.
+
+894
+00:54:00,640 --> 00:54:04,640
+So...
+
+895
+00:54:04,640 --> 00:54:07,640
+Having those pressures...
+
+896
+00:54:07,640 --> 00:54:09,640
+You know, why does...
+
+897
+00:54:09,640 --> 00:54:11,640
+Why has software sometimes been so bad?
+
+898
+00:54:11,640 --> 00:54:13,640
+I think one of the reasons
+
+899
+00:54:13,640 --> 00:54:16,640
+is because you can get away with so much.
+
+900
+00:54:16,640 --> 00:54:19,640
+You know, the...
+
+901
+00:54:19,640 --> 00:54:21,640
+Someone once said that if...
+
+902
+00:54:21,640 --> 00:54:24,640
+If you built a bridge the way
+
+903
+00:54:24,640 --> 00:54:27,640
+that people typically write software,
+
+904
+00:54:27,640 --> 00:54:30,640
+that it would fall down in the slightest breeze.
+
+905
+00:54:30,640 --> 00:54:33,640
+And yet, there are no breezes,
+
+906
+00:54:33,640 --> 00:54:35,640
+so, you know, it works.
+
+907
+00:54:35,640 --> 00:54:37,640
+Well, kind of.
+
+908
+00:54:37,640 --> 00:54:38,640
+But...
+
+909
+00:54:38,640 --> 00:54:43,640
+And also the same for, like, efficiency.
+
+910
+00:54:43,640 --> 00:54:48,640
+You can kind of get away with roundabout ways of doing things.
+
+911
+00:54:48,640 --> 00:54:50,640
+But the environment that we're in,
+
+912
+00:54:50,640 --> 00:54:52,640
+just at this moment,
+
+913
+00:54:52,640 --> 00:54:53,640
+might be less favorable than that,
+
+914
+00:54:53,640 --> 00:54:55,640
+might be putting more pressure.
+
+915
+00:54:55,640 --> 00:54:56,640
+So that might be another reason
+
+916
+00:54:56,640 --> 00:54:59,640
+that things are going another way.
+
+917
+00:54:59,640 --> 00:55:01,640
+Well, basically,
+
+918
+00:55:01,640 --> 00:55:03,640
+that's what I wanted to say.
+
+919
+00:55:03,640 --> 00:55:06,640
+I want to say that I feel pretty positive.
+
+920
+00:55:06,640 --> 00:55:07,640
+I mean, I see, you know,
+
+921
+00:55:07,640 --> 00:55:08,640
+we announced this thing,
+
+922
+00:55:08,640 --> 00:55:11,640
+and we thought it might be like
+
+923
+00:55:11,640 --> 00:55:14,640
+100 people
+
+924
+00:55:14,640 --> 00:55:16,640
+or 200 people, maybe.
+
+925
+00:55:16,640 --> 00:55:18,640
+And then 500 people showed up,
+
+926
+00:55:18,640 --> 00:55:19,640
+and...
+
+927
+00:55:19,640 --> 00:55:21,640
+Then we had to stop.
+
+928
+00:55:21,640 --> 00:55:22,640
+I mean...
+
+929
+00:55:22,640 --> 00:55:24,640
+So that was exciting.
+
+930
+00:55:24,640 --> 00:55:26,640
+And I hope that, you know,
+
+931
+00:55:26,640 --> 00:55:28,640
+this conference that's about to happen
+
+932
+00:55:28,640 --> 00:55:30,640
+will fulfill your expectations.
+
+933
+00:55:30,640 --> 00:55:32,640
+I think it will.
+
+934
+00:55:32,640 --> 00:55:34,640
+I'm rather excited about some of the things
+
+935
+00:55:34,640 --> 00:55:35,640
+that are happening.
+
+936
+00:55:35,640 --> 00:55:37,640
+I'm going to go around.
+
+937
+00:55:37,640 --> 00:55:38,640
+Now, see, I've done mine,
+
+938
+00:55:38,640 --> 00:55:41,640
+so I get to just focus on other people's talks
+
+939
+00:55:41,640 --> 00:55:44,640
+and some of the model with strangers stuff.
+
+940
+00:55:44,640 --> 00:55:45,640
+That sounds fun.
+
+941
+00:55:45,640 --> 00:55:47,640
+So I'm really looking forward to all that.
+
+942
+00:55:49,640 --> 00:55:51,640
+Thank you.
