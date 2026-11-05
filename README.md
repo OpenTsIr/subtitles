@@ -1,6 +1,7 @@
+# OpenTS Subtitles
+
 <div dir="rtl">
 
-# OpenTS Subtitles
 
 مجموعه‌ای مشارکتی برای نگهداری و بهبود زیرنویس فارسی و انگلیسی ویدیوهای مرتبط با مهندسی نرم‌افزار. هدف این پروژه آن است که هرکس بتواند اشتباهات پیاده‌سازی، ترجمه یا زمان‌بندی را گزارش کند و برای بهبودشان Pull Request بفرستد.
 
@@ -8,7 +9,8 @@
 
 | عنوان | سخنران | رویداد | فایل‌ها |
 | --- | --- | --- | --- |
-| What is DDD? | Eric Evans | DDD Europe 2019 | [مشاهده](videos/ddd-europe/2019-what-is-ddd-eric-evans/) |
+| 1-What is DDD - Eric Evans - DDD Europe 2019 | Eric Evans | DDD Europe 2019 | [مشاهده](videos/ddd-europe/1-What-is-DDD-Eric-Evans-DDD-Europe-2019/) |
+| Eric Evans — Tackling Complexity in the Heart of Software | Eric Evans | DDD Europe 2016 | [مشاهده](videos/ddd-europe/2-Eric-Evans—Tackling-Complexity-in-the-Heart-of-Software/) |
 
 در پوشهٔ هر ویدیو، `subtitles/en.srt` متن انگلیسی و `subtitles/fa.srt` ترجمهٔ فارسی است. وضعیت بررسی و منبع فایل‌ها در README همان ویدیو آمده است. این نسخه‌ها نیاز به بازبینی دارند؛ فایل انگلیسی را لزوماً زیرنویس رسمی در نظر نگیرید.
 
