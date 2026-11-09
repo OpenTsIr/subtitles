@@ -1,0 +1,611 @@
+1
+00:00:00,000 --> 00:00:06,480
+You can call me Javi. I'm a full-stack software developer. I'm from Chile, and I really like to do
+
+2
+00:00:07,440 --> 00:00:14,320
+a lot of things. So to begin, I want to introduce which type of work I do.
+
+3
+00:00:15,200 --> 00:00:22,960
+I'm a consultant. So what does that mean? Everything depends, and we usually go to
+
+4
+00:00:22,960 --> 00:00:28,800
+clients that aren't using agile methodologies, mostly waterfall, and they want to change that
+
+5
+00:00:28,800 --> 00:00:34,880
+or migrate their own system to new platforms that can respond in a custom way. I work for
+
+6
+00:00:34,880 --> 00:00:44,000
+Topworks, so we sell a lot of agile projects. My team is called Zapallo, or Pumpkin. That's why
+
+7
+00:00:44,000 --> 00:00:52,560
+you see this big pumpkin in the ocean. Our client, it is a big real estate company that is present
+
+8
+00:00:52,560 --> 00:00:58,160
+in a few countries of Latin America. I'm from Chile, as I said before, that is small and long
+
+9
+00:00:58,160 --> 00:00:58,780
+country. I'm from Chile, as I said before, that is small and long country. I'm from Chile, as I
+
+10
+00:00:58,780 --> 00:00:59,580
+said before, that is small and long country. I'm from Chile, as I said before, that is small and long
+
+11
+00:00:59,580 --> 00:01:01,160
+country. I'm from Chile, as I said before, that is small and long country. It is just on Chile,
+
+12
+00:01:01,160 --> 00:01:06,760
+our client has more than 20 shopping centers in Chile. When you think about real estate,
+
+13
+00:01:06,760 --> 00:01:13,240
+it usually doesn't come up to your mind like a shopping mall or shopping center,
+
+14
+00:01:13,240 --> 00:01:22,760
+but it is a big market for it because they rent those stores. The task was easy in a certain way
+
+15
+00:01:22,760 --> 00:01:28,680
+because they were using all different systems for everything, like regular mail for notifications,
+
+16
+00:01:28,780 --> 00:01:36,620
+of communications like oh here's your bill of water so i mail you uh what's up for emergencies
+
+17
+00:01:36,620 --> 00:01:43,580
+for example no water in the store or uh i don't know i need some internet and register the cells
+
+18
+00:01:43,580 --> 00:01:51,580
+in an excel sheet and mail in it and many more if you think about okay a mall with 200 stores okay
+
+19
+00:01:51,580 --> 00:01:58,140
+no problem but remember you have this system for each mall in the whole country even different
+
+20
+00:01:58,140 --> 00:02:05,020
+countries and if you need to do some data analysis well good luck checking those spreadsheets and
+
+21
+00:02:05,020 --> 00:02:12,220
+cross them not very good also we were the first agile team so we decided to do a evidence storming
+
+22
+00:02:12,220 --> 00:02:19,020
+session with the domain expert and we identify some key points using this strategic modeling
+
+23
+00:02:19,740 --> 00:02:26,300
+where we define our abundant context using for sure ubiquitous language in that way we can
+
+24
+00:02:28,140 --> 00:02:34,220
+connect with people the technical team and the domain expert in order to have these nice contact
+
+25
+00:02:34,220 --> 00:02:43,180
+maps that brings to life a roadmap and our new architecture strategy we decide to use our very
+
+26
+00:02:43,180 --> 00:02:51,820
+well-known clean architecture from uh uncle bob i know that many of you already know uh this person
+
+27
+00:02:52,700 --> 00:02:57,980
+why we choose that is because as you can see here is independent from the framework
+
+28
+00:02:58,140 --> 00:03:04,780
+independent from the ui from the db more tolerant to changes reusable maintainable
+
+29
+00:03:04,780 --> 00:03:12,380
+and as i say before our client was uh taking some decisions uh in terms of what system work
+
+30
+00:03:12,380 --> 00:03:18,460
+we can use in the very last minute so this architecture works perfectly with those
+
+31
+00:03:18,460 --> 00:03:28,060
+delay decisions one of the decisions that uh all that we needed to took was the framework migration
+
+32
+00:03:28,140 --> 00:03:34,380
+we were using a lot of uh spring boot with a microservice architecture for this system the
+
+33
+00:03:34,380 --> 00:03:41,900
+checks in that sends email that collects sales and that was kind of uh a ross uh used the spring
+
+34
+00:03:41,900 --> 00:03:49,660
+boot so our in our cold start 21 seconds for the app took long time at least for the business so
+
+35
+00:03:49,660 --> 00:03:56,540
+what we needed to do here we just go and touch the framework layer and change this for something
+
+36
+00:03:56,540 --> 00:03:58,060
+different like spark jobs
+
+37
+00:03:58,140 --> 00:04:03,820
+that it's not the nicest spark apache it's a spark java if you haven't used it before for rest
+
+38
+00:04:05,180 --> 00:04:12,940
+services so we changed this in this layer then it was just a the connection that we were using we
+
+39
+00:04:12,940 --> 00:04:20,780
+delete the spring boot and the only hard part to implement was uh create a middleware because the
+
+40
+00:04:20,780 --> 00:04:28,060
+springboard had it all these root configuration files but was very easy and this was a decision
+
+41
+00:04:28,060 --> 00:04:35,340
+that it was like um on monday and we needed to implement it on friday so okay uh good we have
+
+42
+00:04:35,340 --> 00:04:41,740
+this screen architecture we can do this in at least one microsurface at a time so pretty cool
+
+43
+00:04:41,740 --> 00:04:52,060
+in that way uh something else uh it was the email provider so our email provider we were using send
+
+44
+00:04:52,060 --> 00:04:58,060
+grid to send emails but uh the business says no i need more metrics so i need more metrics so i need
+
+45
+00:04:58,060 --> 00:05:06,060
+to change to mailchimp and we were like okay let's do that so in when we go to our use case it was
+
+46
+00:05:06,060 --> 00:05:13,660
+like send mail use case this was so it's clear that it's a use case uh you just changed your
+
+47
+00:05:13,660 --> 00:05:21,340
+email provider and also again you make some kind of different configurations and does it you already
+
+48
+00:05:21,340 --> 00:05:26,540
+changed the email provider we no problem this happened also for us with the database we were
+
+49
+00:05:26,540 --> 00:05:27,100
+using my sql and the theme was all the same so we were like what is this with an email your e-mail uh
+
+50
+00:05:27,100 --> 00:05:27,900
+you can wanna see it yeah okay um so we were like okay we're gonna try to add a little bit more of that
+
+51
+00:05:27,900 --> 00:05:32,900
+And the client says, guys, we're migrating everything to GCP,
+
+52
+00:05:32,900 --> 00:05:35,760
+so no more relational databases.
+
+53
+00:05:35,760 --> 00:05:37,800
+Let's go to Firebase.
+
+54
+00:05:37,800 --> 00:05:39,420
+And we were, OK.
+
+55
+00:05:39,420 --> 00:05:40,500
+We change it again.
+
+56
+00:05:40,500 --> 00:05:43,920
+We just run a script, and we change some configuration file,
+
+57
+00:05:43,920 --> 00:05:45,000
+and that's it.
+
+58
+00:05:45,000 --> 00:05:48,180
+It was pretty good for us.
+
+59
+00:05:48,180 --> 00:05:55,140
+So with this nice, big modeling, we
+
+60
+00:05:55,140 --> 00:05:58,440
+could have our bounded context well-identified,
+
+61
+00:05:58,440 --> 00:06:01,560
+and we could create our system in a way
+
+62
+00:06:01,560 --> 00:06:05,380
+that these bounded contexts are accessible for everyone.
+
+63
+00:06:05,380 --> 00:06:08,940
+And for sure, we also do our C4 models
+
+64
+00:06:08,940 --> 00:06:11,940
+where we can go to the business and say, hey,
+
+65
+00:06:11,940 --> 00:06:16,560
+person of the business, let's talk about the requirements,
+
+66
+00:06:16,560 --> 00:06:20,340
+or let's talk about the sales, and just go with them.
+
+67
+00:06:20,340 --> 00:06:23,420
+And they could give us their clear minds
+
+68
+00:06:23,420 --> 00:06:25,000
+and what were they expecting.
+
+69
+00:06:25,000 --> 00:06:29,200
+So it was a very challenge considering
+
+70
+00:06:29,200 --> 00:06:31,620
+that they were never working with Agile
+
+71
+00:06:31,620 --> 00:06:34,780
+and never, ever even considering what
+
+72
+00:06:34,780 --> 00:06:37,760
+bounded context they have it.
+
+73
+00:06:37,760 --> 00:06:41,840
+So in here, because I'm running out of time,
+
+74
+00:06:41,840 --> 00:06:44,260
+I want to tell us a little bit what
+
+75
+00:06:44,260 --> 00:06:48,280
+we learned to maintain this domain-centered architecture
+
+76
+00:06:48,280 --> 00:06:51,960
+and how, as my knowledge, we rock it.
+
+77
+00:06:51,960 --> 00:06:54,880
+And it was using some pretty basic tools.
+
+78
+00:06:54,880 --> 00:06:55,000
+OK.
+
+79
+00:06:55,000 --> 00:06:59,380
+Things like ADRs, because I don't even
+
+80
+00:06:59,380 --> 00:07:01,240
+remember what I ate yesterday.
+
+81
+00:07:01,240 --> 00:07:05,400
+ADR is a very good tool to keep this in the paper,
+
+82
+00:07:05,400 --> 00:07:12,280
+at least in the virtual paper, but also the testing.
+
+83
+00:07:12,280 --> 00:07:15,160
+I hope many of you know some ARG unit
+
+84
+00:07:15,160 --> 00:07:17,140
+where you can test your architecture.
+
+85
+00:07:17,140 --> 00:07:19,440
+This helps us to maintain this.
+
+86
+00:07:19,440 --> 00:07:24,880
+So if I don't want anything to access to the infrastructure,
+
+87
+00:07:24,880 --> 00:07:28,120
+or if I don't want anything to be in layers,
+
+88
+00:07:28,120 --> 00:07:30,640
+or each service has to be independent,
+
+89
+00:07:30,640 --> 00:07:35,440
+you can test in a way that no one can violate those rules.
+
+90
+00:07:35,440 --> 00:07:38,560
+So it's super good to have this in your team,
+
+91
+00:07:38,560 --> 00:07:42,820
+even when you have a different point of view.
+
+92
+00:07:42,820 --> 00:07:46,660
+Because most of us came from a background of MVC.
+
+93
+00:07:46,660 --> 00:07:50,740
+So you change to this new DDD clean architecture,
+
+94
+00:07:50,740 --> 00:07:54,760
+and you need to, OK, I need to remember which are the key points
+
+95
+00:07:54,760 --> 00:07:56,080
+to maintain it.
+
+96
+00:07:56,080 --> 00:07:58,600
+Another part that it was super cool for us
+
+97
+00:07:58,600 --> 00:08:03,000
+to involve the business was the use of fitness functions.
+
+98
+00:08:03,000 --> 00:08:04,880
+Because we usually, in our process,
+
+99
+00:08:04,880 --> 00:08:09,220
+we do a lot of unit tests, integration, acceptance.
+
+100
+00:08:09,220 --> 00:08:12,700
+But the fitness function really helped us
+
+101
+00:08:12,700 --> 00:08:15,520
+to connect with the business.
+
+102
+00:08:15,520 --> 00:08:18,000
+You see here the Chaos Monkey, if you don't know it,
+
+103
+00:08:18,000 --> 00:08:21,520
+from Netflix that can randomly terminate instance
+
+104
+00:08:21,520 --> 00:08:24,640
+in production to assure that we develop a system that
+
+105
+00:08:24,640 --> 00:08:26,560
+must be resilient to failures.
+
+106
+00:08:26,560 --> 00:08:28,420
+But some fitness functions that we really
+
+107
+00:08:28,420 --> 00:08:30,700
+connect with the business was performance.
+
+108
+00:08:30,700 --> 00:08:33,980
+For example, I said before that we really
+
+109
+00:08:33,980 --> 00:08:38,300
+needed to increase the performance for us
+
+110
+00:08:38,300 --> 00:08:42,640
+in the boot of a system that it took 20 seconds and now took 20.
+
+111
+00:08:42,640 --> 00:08:44,500
+For me, 20 seconds maybe is nothing.
+
+112
+00:08:44,500 --> 00:08:47,200
+But for the business, it was very critical.
+
+113
+00:08:47,200 --> 00:08:49,880
+So this performance test that is a fitness function
+
+114
+00:08:49,880 --> 00:08:51,460
+helped us to keep that.
+
+115
+00:08:51,460 --> 00:08:54,640
+The security analysis, like, OK, keep in mind that you
+
+116
+00:08:54,640 --> 00:08:58,020
+shouldn't put your credentials out in production.
+
+117
+00:08:58,020 --> 00:08:59,640
+Please don't.
+
+118
+00:08:59,640 --> 00:09:03,520
+And there also is a fitness function.
+
+119
+00:09:03,520 --> 00:09:05,740
+And finally, the business metrics
+
+120
+00:09:05,740 --> 00:09:08,920
+that I wanted to show you, like, how we really
+
+121
+00:09:08,920 --> 00:09:15,400
+communicate with the system in a way that can be helped.
+
+122
+00:09:15,400 --> 00:09:19,220
+So in here, you see a board that is super green.
+
+123
+00:09:19,220 --> 00:09:20,500
+And you see some numbers.
+
+124
+00:09:20,500 --> 00:09:22,020
+But what do those numbers mean?
+
+125
+00:09:22,020 --> 00:09:23,440
+What do those colors mean?
+
+126
+00:09:23,440 --> 00:09:23,860
+Well.
+
+127
+00:09:23,860 --> 00:09:26,500
+And the first one, you just are seeing
+
+128
+00:09:26,500 --> 00:09:29,500
+how many payments are being created
+
+129
+00:09:29,500 --> 00:09:32,740
+and how many payments are being paid and everything.
+
+130
+00:09:32,740 --> 00:09:33,900
+And you see green.
+
+131
+00:09:33,900 --> 00:09:34,660
+Why is green?
+
+132
+00:09:34,660 --> 00:09:35,800
+Who put the green?
+
+133
+00:09:35,800 --> 00:09:36,900
+Well, the business.
+
+134
+00:09:36,900 --> 00:09:39,140
+The business put the green in here.
+
+135
+00:09:39,140 --> 00:09:40,720
+And if it decrease, what happened?
+
+136
+00:09:40,720 --> 00:09:42,700
+OK, it goes yellow or goes red.
+
+137
+00:09:42,700 --> 00:09:46,420
+And we have this usually in our office in a big full screen
+
+138
+00:09:46,420 --> 00:09:49,140
+when the business is walking and says, oh my gosh,
+
+139
+00:09:49,140 --> 00:09:51,940
+that is super yellow.
+
+140
+00:09:51,940 --> 00:09:52,860
+What happened?
+
+141
+00:09:52,860 --> 00:09:53,620
+So you have a.
+
+142
+00:09:53,860 --> 00:09:56,160
+You have some feedback, like, hey, can you check it?
+
+143
+00:09:56,160 --> 00:09:57,640
+And you are checking with them.
+
+144
+00:09:57,640 --> 00:10:00,820
+And they can understand a little bit how are we working
+
+145
+00:10:00,820 --> 00:10:03,140
+and how we can improve.
+
+146
+00:10:03,140 --> 00:10:03,940
+OK?
+
+147
+00:10:03,940 --> 00:10:08,800
+So and to finalize this, I want to show you
+
+148
+00:10:08,800 --> 00:10:11,260
+what was our main output.
+
+149
+00:10:11,260 --> 00:10:16,780
+We did a roll off of 30 moles with 2,000 daily users.
+
+150
+00:10:16,780 --> 00:10:19,620
+And we have 100% success until now.
+
+151
+00:10:19,620 --> 00:10:22,600
+I could say 99 because we are still working there.
+
+152
+00:10:22,600 --> 00:10:23,740
+But.
+
+153
+00:10:23,860 --> 00:10:27,320
+Because it's my story.
