@@ -1,0 +1,3623 @@
+1
+00:00:00,000 --> 00:00:07,000
+Tijana Mihajlović Reviewer. Denise RQ
+
+2
+00:00:13,840 --> 00:00:15,840
+Well, good morning, everybody.
+
+3
+00:00:18,200 --> 00:00:21,200
+So, it really is such a privilege to be here.
+
+4
+00:00:21,200 --> 00:00:26,200
+DDD Europe is, and this community is really one of my favorites.
+
+5
+00:00:26,200 --> 00:00:30,760
+And I kind of think of this talk, this keynote,
+
+6
+00:00:30,760 --> 00:00:34,600
+as kind of like an appetizer for a tasting menu today
+
+7
+00:00:34,600 --> 00:00:35,800
+for domain-driven design.
+
+8
+00:00:35,800 --> 00:00:40,360
+My hope is that I will encourage you
+
+9
+00:00:40,360 --> 00:00:42,720
+to learn more about domain-driven design
+
+10
+00:00:42,720 --> 00:00:44,720
+and to take advantage of the opportunity
+
+11
+00:00:44,720 --> 00:00:46,280
+that you have today to do that.
+
+12
+00:00:46,280 --> 00:00:48,840
+So, you can think of it like an appetizer
+
+13
+00:00:48,840 --> 00:00:53,760
+or maybe like an appetif, if that is more your style.
+
+14
+00:00:53,760 --> 00:00:55,760
+And what I'm going to...
+
+15
+00:00:56,200 --> 00:01:07,200
+try and do is to give you some signposts in your journey
+
+16
+00:01:07,200 --> 00:01:09,880
+as you discover domain-driven design
+
+17
+00:01:09,880 --> 00:01:12,480
+and not only as you move through today,
+
+18
+00:01:12,480 --> 00:01:14,720
+but the rest of this week and beyond.
+
+19
+00:01:14,720 --> 00:01:18,280
+My hope is for you to come away from this
+
+20
+00:01:18,280 --> 00:01:21,600
+with not only an understanding of what domain-driven design is,
+
+21
+00:01:21,600 --> 00:01:25,960
+but also some signposts for your journey as well.
+
+22
+00:01:25,960 --> 00:01:28,160
+So, in the last 10 years,
+
+23
+00:01:28,160 --> 00:01:30,760
+I've been working as a trainer and a coach,
+
+24
+00:01:30,760 --> 00:01:34,360
+helping teams succeed with domain-driven design.
+
+25
+00:01:34,360 --> 00:01:37,440
+I've seen teams do amazing work
+
+26
+00:01:37,440 --> 00:01:39,560
+and I've seen some other teams really struggle
+
+27
+00:01:39,560 --> 00:01:43,160
+and have a lot of challenges.
+
+28
+00:01:43,160 --> 00:01:46,960
+DDD can seem abstract.
+
+29
+00:01:46,960 --> 00:01:48,880
+If you've read any of the material,
+
+30
+00:01:48,880 --> 00:01:49,760
+maybe you feel like,
+
+31
+00:01:49,760 --> 00:01:52,640
+oh, there seems to be a lot of jargon involved in this.
+
+32
+00:01:52,640 --> 00:01:54,280
+Where do I start?
+
+33
+00:01:54,280 --> 00:01:55,760
+It's a little bit, I think,
+
+34
+00:01:55,760 --> 00:02:00,720
+sometimes like learning a new skill,
+
+35
+00:02:00,720 --> 00:02:05,720
+like you take up a new hobby and you get on YouTube
+
+36
+00:02:05,720 --> 00:02:08,280
+and you start watching videos of people talking about that hobby
+
+37
+00:02:08,280 --> 00:02:10,640
+and pretty soon you're mired down in the details
+
+38
+00:02:10,640 --> 00:02:13,040
+of these experts talking about all this stuff
+
+39
+00:02:13,040 --> 00:02:14,720
+that you think, well, I'm just a beginner.
+
+40
+00:02:14,720 --> 00:02:16,640
+I'm trying to get my head around this.
+
+41
+00:02:16,640 --> 00:02:20,640
+Do I really need to worry about these kinds of things?
+
+42
+00:02:20,640 --> 00:02:24,640
+And since domain-driven design is a little bit like that
+
+43
+00:02:24,640 --> 00:02:25,760
+and it also involves
+
+44
+00:02:25,760 --> 00:02:28,520
+an evolving set of patterns and techniques,
+
+45
+00:02:28,520 --> 00:02:32,000
+it can be a little hard to pin down.
+
+46
+00:02:32,000 --> 00:02:36,800
+I really want to say don't let this discourage you, though.
+
+47
+00:02:36,800 --> 00:02:39,560
+There are common elements that carry through signposts,
+
+48
+00:02:39,560 --> 00:02:43,120
+as I mentioned, and these are what I'm going to cover today
+
+49
+00:02:43,120 --> 00:02:47,000
+to give you a place to start.
+
+50
+00:02:47,000 --> 00:02:49,240
+Let me tell you about my first experience
+
+51
+00:02:49,240 --> 00:02:50,920
+with domain-driven design.
+
+52
+00:02:50,920 --> 00:02:54,920
+I was a tech lead for a company that sold extended warranties.
+
+53
+00:02:54,920 --> 00:02:55,720
+Let me tell you about my first experience with domain-driven design.
+
+54
+00:02:55,720 --> 00:02:57,280
+Let me tell you about my first experience with domain-driven design.
+
+55
+00:02:57,280 --> 00:03:01,080
+And so this isn't the exact slogan for the company,
+
+56
+00:03:01,080 --> 00:03:03,280
+but something similar to that.
+
+57
+00:03:03,280 --> 00:03:08,960
+Extended warranties are warranties that a consumer can buy,
+
+58
+00:03:08,960 --> 00:03:10,920
+perhaps when they're in an appliance store
+
+59
+00:03:10,920 --> 00:03:13,360
+or something like that, to cover their product
+
+60
+00:03:13,360 --> 00:03:15,840
+after the manufacturer warranty expires.
+
+61
+00:03:15,840 --> 00:03:18,880
+So I was the technical lead for this major development project
+
+62
+00:03:18,880 --> 00:03:23,920
+to develop a completely new warranty platform for our company.
+
+63
+00:03:23,920 --> 00:03:25,520
+This was a major project, and I was a part of that.
+
+64
+00:03:25,520 --> 00:03:25,560
+So I was the technical lead for this major development project to develop a completely new warranty platform for our company. This was a major project, and I was a part of that.
+
+65
+00:03:25,560 --> 00:03:25,680
+So I was a part of that. So I was a part of that.
+
+66
+00:03:25,680 --> 00:03:29,580
+I was excited but nervous to take it on.
+
+67
+00:03:29,580 --> 00:03:33,360
+The project seemed to be going very well at first.
+
+68
+00:03:33,360 --> 00:03:34,360
+We had our challenges.
+
+69
+00:03:34,360 --> 00:03:36,600
+We had a distributed development team.
+
+70
+00:03:36,600 --> 00:03:38,960
+It was spread across three cities.
+
+71
+00:03:38,960 --> 00:03:40,800
+I worked in Denver.
+
+72
+00:03:40,800 --> 00:03:44,700
+We also had a group in Chicago and one in Buenos Aires.
+
+73
+00:03:44,700 --> 00:03:50,680
+So we had three time zones, two languages, people just getting to know each other on
+
+74
+00:03:50,680 --> 00:03:51,860
+the team.
+
+75
+00:03:51,860 --> 00:03:56,620
+That whole aspect of it made everything more challenging.
+
+76
+00:03:56,620 --> 00:04:03,400
+The other thing is that the communication style in the company I was working in was
+
+77
+00:04:03,400 --> 00:04:07,380
+perhaps not ideal for the type of project we were doing.
+
+78
+00:04:07,380 --> 00:04:12,200
+So this is a sample email exchange that occurred around this time.
+
+79
+00:04:12,200 --> 00:04:16,280
+What we found was that the developers, so this is someone on the business side of things.
+
+80
+00:04:16,280 --> 00:04:18,120
+This is Pam, the accountant.
+
+81
+00:04:18,120 --> 00:04:19,780
+Now what language is she speaking?
+
+82
+00:04:19,780 --> 00:04:21,860
+She's speaking primarily the language of the business.
+
+83
+00:04:21,860 --> 00:04:22,860
+Right?
+
+84
+00:04:22,860 --> 00:04:25,100
+She's asking about a thing called retail price.
+
+85
+00:04:25,100 --> 00:04:27,620
+That's a business term.
+
+86
+00:04:27,620 --> 00:04:33,400
+And so the business people would tend to speak in their business language.
+
+87
+00:04:33,400 --> 00:04:37,000
+And the developers spoke a different language.
+
+88
+00:04:37,000 --> 00:04:38,960
+This was the response from John, the developer.
+
+89
+00:04:38,960 --> 00:04:45,320
+This is the actual response from John.
+
+90
+00:04:45,320 --> 00:04:48,680
+I'm not even going to try and read it.
+
+91
+00:04:48,680 --> 00:04:51,620
+Now I could probably figure out what some of these things mean.
+
+92
+00:04:51,620 --> 00:04:54,840
+Just by squinting a little bit.
+
+93
+00:04:54,840 --> 00:04:57,620
+Maybe it's something to do with an amount.
+
+94
+00:04:57,620 --> 00:05:01,380
+And there seems to be some STPF is maybe a percentage.
+
+95
+00:05:01,380 --> 00:05:04,160
+I don't know.
+
+96
+00:05:04,160 --> 00:05:09,580
+But this was the style of communication that was typical when we started.
+
+97
+00:05:09,580 --> 00:05:11,980
+So John replied to Pam.
+
+98
+00:05:11,980 --> 00:05:14,140
+And then Pam emailed the business analyst.
+
+99
+00:05:14,140 --> 00:05:15,140
+And this was her response.
+
+100
+00:05:15,140 --> 00:05:19,860
+I'm not even going to read it, but it's hilarious.
+
+101
+00:05:19,860 --> 00:05:20,860
+So the development culture.
+
+102
+00:05:20,860 --> 00:05:24,240
+The development culture in this organization was that developers spoke their technical
+
+103
+00:05:24,240 --> 00:05:28,600
+jargon and the business spoke their business jargon and there was very little overlap.
+
+104
+00:05:28,600 --> 00:05:35,080
+So we worked really hard to improve the communication and collaboration between the business and
+
+105
+00:05:35,080 --> 00:05:36,080
+the development team.
+
+106
+00:05:36,080 --> 00:05:37,080
+But it wasn't easy.
+
+107
+00:05:37,080 --> 00:05:38,080
+We were doing agile.
+
+108
+00:05:38,080 --> 00:05:40,780
+We were delivering and demoing every two weeks.
+
+109
+00:05:40,780 --> 00:05:42,560
+And we were producing high quality code.
+
+110
+00:05:42,560 --> 00:05:46,200
+So I was feeling really good about this as the technical lead.
+
+111
+00:05:46,200 --> 00:05:48,860
+And things seemed to be going really well.
+
+112
+00:05:48,860 --> 00:05:49,860
+Okay.
+
+113
+00:05:49,860 --> 00:05:50,860
+Great.
+
+114
+00:05:50,860 --> 00:05:56,160
+So fast forward to the end of the year and it was really discouraging to learn that after
+
+115
+00:05:56,160 --> 00:06:01,760
+about six months of hard work, our business stakeholders were very unhappy with our progress.
+
+116
+00:06:01,760 --> 00:06:04,860
+They told us they were ready to cancel the project.
+
+117
+00:06:04,860 --> 00:06:06,860
+Why?
+
+118
+00:06:06,860 --> 00:06:14,560
+Well, looking back, a big part of the reason was that the project had taken the safe route.
+
+119
+00:06:14,560 --> 00:06:17,460
+We'd focused primarily on technical success.
+
+120
+00:06:17,460 --> 00:06:19,860
+We'd been able to pull together a great team of smart people.
+
+121
+00:06:19,860 --> 00:06:23,460
+And the functionality we were demoing was really good.
+
+122
+00:06:23,460 --> 00:06:28,320
+But it wasn't really what was most important to our organization.
+
+123
+00:06:28,320 --> 00:06:33,360
+What we had decided to do was migrate over one of our existing clients.
+
+124
+00:06:33,360 --> 00:06:42,120
+And that client was low risk, which made it easier for us, but also low value to the business.
+
+125
+00:06:42,120 --> 00:06:47,860
+So it didn't really matter much to them if we succeeded or not.
+
+126
+00:06:47,860 --> 00:06:52,860
+For example, we could import warranty data from our clients into our database.
+
+127
+00:06:52,860 --> 00:06:56,060
+But we hadn't delivered much more than basic functionality beyond that.
+
+128
+00:06:56,060 --> 00:07:01,360
+And after giving a demo of our latest iterations work to them at the end of that year, this
+
+129
+00:07:01,360 --> 00:07:03,960
+was the thing that really killed me.
+
+130
+00:07:03,960 --> 00:07:12,160
+One of our stakeholders, senior stakeholders, the VP asked me why she should even care.
+
+131
+00:07:12,160 --> 00:07:15,360
+So after six months, I felt like a failure.
+
+132
+00:07:15,360 --> 00:07:16,460
+Somehow we had failed.
+
+133
+00:07:16,460 --> 00:07:17,460
+I had failed.
+
+134
+00:07:17,460 --> 00:07:19,060
+I didn't even know why at the time.
+
+135
+00:07:19,060 --> 00:07:20,460
+I was worried and I was scared.
+
+136
+00:07:20,460 --> 00:07:24,360
+Was I going to lose my job?
+
+137
+00:07:24,360 --> 00:07:29,660
+Even more concerning to me was this nagging thought that we were focusing mostly on the
+
+138
+00:07:29,660 --> 00:07:34,260
+easy bits, as I said, the technical parts we understood.
+
+139
+00:07:34,260 --> 00:07:40,460
+I was nervous about all the complicated business logic that we would be implementing later on.
+
+140
+00:07:40,460 --> 00:07:42,760
+It was lurking there, dangerous.
+
+141
+00:07:42,760 --> 00:07:45,260
+And one day it was going to surface.
+
+142
+00:07:45,260 --> 00:07:47,260
+You had that feeling on your projects sometimes?
+
+143
+00:07:47,460 --> 00:07:50,860
+Something had to change if we were to turn this around.
+
+144
+00:07:50,860 --> 00:07:55,560
+What could we do differently?
+
+145
+00:07:55,560 --> 00:08:00,960
+Now what I've discovered in the last ten years is many so-called modernization or legacy
+
+146
+00:08:00,960 --> 00:08:09,060
+rewrite projects fall into the same trap that we did, you know, focusing on the things that
+
+147
+00:08:09,060 --> 00:08:14,160
+are not all that valuable to the business, of being mired in implementing what you might
+
+148
+00:08:14,160 --> 00:08:16,460
+call table stakes functionality.
+
+149
+00:08:17,460 --> 00:08:22,160
+Maybe functionality that's mission critical, but that's not market differentiating.
+
+150
+00:08:22,160 --> 00:08:24,060
+That is not actually moving the business forward.
+
+151
+00:08:24,060 --> 00:08:27,460
+And that was certainly a trap that we'd fallen into.
+
+152
+00:08:27,460 --> 00:08:29,560
+Be wary of that.
+
+153
+00:08:29,560 --> 00:08:34,160
+Well, it wasn't easy convincing our stakeholders, but what we decided to do was to change direction
+
+154
+00:08:34,160 --> 00:08:35,660
+in the new year.
+
+155
+00:08:35,660 --> 00:08:42,060
+To go all in and migrate our most challenging client over to this new system we were developing.
+
+156
+00:08:42,060 --> 00:08:44,060
+I was terrified.
+
+157
+00:08:44,060 --> 00:08:46,860
+We were going to be implementing an end-to-end solution.
+
+158
+00:08:46,860 --> 00:08:48,760
+We were going to be implementing an end-to-end solution that didn't shy away from the inherent
+
+159
+00:08:48,760 --> 00:08:55,960
+complexity of, that was there in supporting this client.
+
+160
+00:08:55,960 --> 00:09:00,360
+They had the most data and also the most complicated business processes.
+
+161
+00:09:00,360 --> 00:09:04,160
+So this was terrifying for me as the tech lead.
+
+162
+00:09:04,160 --> 00:09:05,160
+Why?
+
+163
+00:09:05,160 --> 00:09:07,460
+Because this new effort could not fail.
+
+164
+00:09:07,460 --> 00:09:12,360
+Because if we did, we'd probably all be looking for new jobs.
+
+165
+00:09:12,360 --> 00:09:14,860
+Cue nervous laughter, right?
+
+166
+00:09:14,860 --> 00:09:16,660
+As we move forward with this new direction.
+
+167
+00:09:16,860 --> 00:09:20,860
+We immediately noticed an improved level of engagement from everyone on the business
+
+168
+00:09:20,860 --> 00:09:21,860
+side of things.
+
+169
+00:09:21,860 --> 00:09:24,360
+And that's what we were hoping for.
+
+170
+00:09:24,360 --> 00:09:30,860
+Conversely, if we succeeded, we'd have delivered some new capabilities that really would start
+
+171
+00:09:30,860 --> 00:09:32,760
+to set us apart in the market.
+
+172
+00:09:32,760 --> 00:09:34,360
+And we were really excited about that.
+
+173
+00:09:34,360 --> 00:09:37,860
+And so was the business.
+
+174
+00:09:37,860 --> 00:09:41,860
+But fixing the product management piece of the puzzle, and that's really what that was.
+
+175
+00:09:41,860 --> 00:09:42,860
+Sophia will be talking later today about the product, the connection with product management.
+
+176
+00:09:42,860 --> 00:09:43,860
+And that's really what that was.
+
+177
+00:09:43,860 --> 00:09:44,860
+Sophia will be talking later today about the product, the connection with product management.
+
+178
+00:09:44,860 --> 00:09:45,860
+And that's really what that was.
+
+179
+00:09:45,860 --> 00:09:46,860
+Sophia will be talking later today about the product, the connection with product management.
+
+180
+00:09:46,860 --> 00:09:47,860
+And that's really what that was.
+
+181
+00:09:47,860 --> 00:09:49,560
+Sophia will be talking later today about the product, the connection with product management.
+
+182
+00:09:49,560 --> 00:09:50,860
+That wasn't the whole solution.
+
+183
+00:09:50,860 --> 00:09:56,860
+As I mentioned, we still had this entire iceberg of hidden complexity to deal with.
+
+184
+00:09:56,860 --> 00:10:01,860
+We could see some of it above the waterline, but most of it was hidden and unknown.
+
+185
+00:10:01,860 --> 00:10:06,360
+So what do you do in the face of this kind of complexity?
+
+186
+00:10:06,360 --> 00:10:10,340
+We dealt with a lot of the technical complexity earlier in the project, so I was less worried
+
+187
+00:10:10,340 --> 00:10:11,340
+about that.
+
+188
+00:10:11,340 --> 00:10:14,860
+We knew how to persist data, we knew how to use our frameworks and those types of things,
+
+189
+00:10:14,860 --> 00:10:15,860
+but I needed to continually apply those techniques.
+
+190
+00:10:15,860 --> 00:10:19,800
+to figure out how to deal with the bigger concerns. So I was reading everything I could
+
+191
+00:10:19,800 --> 00:10:26,620
+get my hands on. I was studying software patterns. I was, this was .NET development at the time,
+
+192
+00:10:26,620 --> 00:10:31,980
+so as a developer, I was trying to improve my skills in those areas. Trying to learn
+
+193
+00:10:31,980 --> 00:10:35,760
+test-driven development, behavior-driven development, a lot of these other approaches that were
+
+194
+00:10:35,760 --> 00:10:41,460
+out there. I went to a conference, like you are today, attended some workshops to try
+
+195
+00:10:41,460 --> 00:10:47,080
+and get my skills up, and all that was useful, but the real struggle that I kept coming back
+
+196
+00:10:47,080 --> 00:10:53,900
+to was understanding these core business concepts, such as the intricate life cycle of an extended
+
+197
+00:10:53,900 --> 00:11:01,860
+warranty and how did this claim process work, and trying to come up with names for things
+
+198
+00:11:01,860 --> 00:11:05,160
+that the business would agree on. We talked to three different groups of people and get
+
+199
+00:11:05,160 --> 00:11:09,560
+three different ideas of what we should call something in the software.
+
+200
+00:11:09,560 --> 00:11:10,560
+Jason A. Cullinan.
+
+201
+00:11:10,560 --> 00:11:11,360
+How is it different?
+
+202
+00:11:11,360 --> 00:11:11,440
+Jason A. Cullinan, That's good.
+
+203
+00:11:11,440 --> 00:11:14,420
+How are we going to represent these ideas in our software?
+
+204
+00:11:14,580 --> 00:11:18,600
+Well, it was about this time that my boss actually recommended
+
+205
+00:11:18,600 --> 00:11:21,220
+I read the Domain Driven Design book.
+
+206
+00:11:23,120 --> 00:11:28,480
+I started my programming career actually doing software modeling
+
+207
+00:11:28,480 --> 00:11:31,080
+for geology and geotechnical engineering.
+
+208
+00:11:31,220 --> 00:11:33,340
+My very first experience of programming
+
+209
+00:11:33,340 --> 00:11:36,140
+was getting in a small 10-seater aircraft,
+
+210
+00:11:36,420 --> 00:11:38,860
+flying out to a mine site like this,
+
+211
+00:11:38,860 --> 00:11:43,160
+and spending a week, maybe two weeks,
+
+212
+00:11:43,780 --> 00:11:47,060
+working with the geologist or the geotechnical engineer,
+
+213
+00:11:47,680 --> 00:11:50,700
+trying to understand how they did what they did.
+
+214
+00:11:51,160 --> 00:11:55,720
+How did they use the software to model this mine site?
+
+215
+00:11:55,840 --> 00:12:00,880
+How did they use it to figure out how to cut the berms that you can see here?
+
+216
+00:12:00,880 --> 00:12:03,540
+And what angle to make them so they would be safe?
+
+217
+00:12:06,300 --> 00:12:08,680
+I read books on geotechnical modeling,
+
+218
+00:12:08,860 --> 00:12:12,540
+so the idea was to take our software
+
+219
+00:12:12,540 --> 00:12:18,440
+and actually implement some of these geotechnical techniques in our software.
+
+220
+00:12:19,440 --> 00:12:21,860
+We'd code up some experimental ideas,
+
+221
+00:12:22,100 --> 00:12:25,460
+send him an updated release, get his feedback, make improvements,
+
+222
+00:12:25,900 --> 00:12:28,420
+and we'd repeat this process until we had something
+
+223
+00:12:28,420 --> 00:12:30,680
+that he really felt he could use on a daily basis.
+
+224
+00:12:30,680 --> 00:12:34,540
+And what I really loved about that collaborative kind of process
+
+225
+00:12:34,540 --> 00:12:38,320
+was his mounting enthusiasm as we converged on something
+
+226
+00:12:38,320 --> 00:12:38,680
+that was really important.
+
+227
+00:12:38,680 --> 00:12:39,720
+Something that was really useful for him.
+
+228
+00:12:42,820 --> 00:12:47,260
+So these were some of the artifacts that we actually brought into the software
+
+229
+00:12:47,260 --> 00:12:49,600
+that are used in geotechnical analysis.
+
+230
+00:12:50,040 --> 00:12:53,980
+And what's fascinating to me is I wrote the original version of this software
+
+231
+00:12:53,980 --> 00:12:58,560
+back in 1994, and I took this off the web yesterday
+
+232
+00:12:58,560 --> 00:13:01,360
+as something that's still used in the same product today.
+
+233
+00:13:03,120 --> 00:13:06,320
+Software can be long-lived, sometimes more than we would think.
+
+234
+00:13:08,680 --> 00:13:12,520
+The thing that attracted me with domain-driven design
+
+235
+00:13:12,520 --> 00:13:15,860
+was that it seemed to work the same way.
+
+236
+00:13:17,640 --> 00:13:19,020
+It was a simple idea.
+
+237
+00:13:19,200 --> 00:13:22,320
+Collaborate closely with the experts in your business.
+
+238
+00:13:22,900 --> 00:13:24,240
+Come up with a shared language.
+
+239
+00:13:25,000 --> 00:13:26,880
+Understand how they do what they do
+
+240
+00:13:26,880 --> 00:13:29,520
+and work to represent that in the software.
+
+241
+00:13:33,560 --> 00:13:37,520
+And then as you learn, refactor and refine the...
+
+242
+00:13:38,680 --> 00:13:43,680
+the code to more closely match what the business is doing.
+
+243
+00:13:44,860 --> 00:13:46,480
+This is a simple idea in theory,
+
+244
+00:13:46,640 --> 00:13:49,440
+but I found it really tricky to pull off on a real project,
+
+245
+00:13:49,600 --> 00:13:55,480
+especially one with tight deadlines and nervous stakeholders.
+
+246
+00:13:57,020 --> 00:14:01,720
+The book provided a set of coding patterns and techniques for doing this,
+
+247
+00:14:01,720 --> 00:14:03,540
+and while I didn't understand them all,
+
+248
+00:14:03,640 --> 00:14:05,580
+if you've seen this book, it's a big book.
+
+249
+00:14:06,480 --> 00:14:07,780
+While I didn't understand them all,
+
+250
+00:14:07,860 --> 00:14:08,660
+what I did understand,
+
+251
+00:14:08,800 --> 00:14:11,400
+we started putting into practice on our projects.
+
+252
+00:14:12,180 --> 00:14:14,480
+Now, you can imagine, based on that email exchange,
+
+253
+00:14:14,480 --> 00:14:18,800
+this caused quite a bit of friction and confusion with our business experts.
+
+254
+00:14:18,980 --> 00:14:20,980
+They weren't used to this level of collaboration.
+
+255
+00:14:21,700 --> 00:14:26,520
+It went from passive-aggressive email exchanges, like you saw,
+
+256
+00:14:26,900 --> 00:14:29,280
+to actually wanting to talk with them
+
+257
+00:14:29,280 --> 00:14:31,900
+to understand how these things in the business worked.
+
+258
+00:14:35,320 --> 00:14:38,440
+Not only were they not used to close interaction,
+
+259
+00:14:38,440 --> 00:14:39,000
+as I mentioned,
+
+260
+00:14:39,140 --> 00:14:42,480
+but they were also quite disillusioned about this project, as I said.
+
+261
+00:14:42,600 --> 00:14:45,640
+So, this had to change if we were going to succeed, but how?
+
+262
+00:14:47,520 --> 00:14:49,080
+Well, we started small.
+
+263
+00:14:49,800 --> 00:14:50,700
+We started small.
+
+264
+00:14:50,820 --> 00:14:54,940
+We asked for help on some of the key specific concepts
+
+265
+00:14:54,940 --> 00:14:56,100
+that we were working on.
+
+266
+00:14:56,960 --> 00:14:58,760
+And one of the key ideas here
+
+267
+00:14:58,760 --> 00:15:03,720
+is to approach from a position of humble curiosity.
+
+268
+00:15:05,560 --> 00:15:06,720
+Technical people often...
+
+269
+00:15:08,440 --> 00:15:09,640
+find that difficult.
+
+270
+00:15:09,640 --> 00:15:11,140
+I am speaking for myself.
+
+271
+00:15:11,540 --> 00:15:14,740
+And, you know, we think we know everything.
+
+272
+00:15:14,740 --> 00:15:16,240
+Just ask my wife, right?
+
+273
+00:15:18,040 --> 00:15:21,040
+And so, being able to approach people in the business and say,
+
+274
+00:15:21,040 --> 00:15:23,540
+I don't understand this, but I need to understand this
+
+275
+00:15:23,540 --> 00:15:25,840
+if the software is going to do what you want it to do.
+
+276
+00:15:25,840 --> 00:15:27,440
+Can you explain it to me?
+
+277
+00:15:27,440 --> 00:15:28,840
+Can you give me an example?
+
+278
+00:15:29,640 --> 00:15:32,540
+We asked them to tell stories of how extended warranties
+
+279
+00:15:32,540 --> 00:15:35,240
+and the claims process work to provide real examples.
+
+280
+00:15:35,240 --> 00:15:36,640
+And we listened and took notes.
+
+281
+00:15:37,220 --> 00:15:38,400
+And we asked lots...
+
+282
+00:15:38,400 --> 00:15:40,200
+lots and lots of clarifying questions.
+
+283
+00:15:40,200 --> 00:15:42,200
+So, here's an example of this.
+
+284
+00:15:43,300 --> 00:15:47,700
+Imagine I went to one of our business people and I said,
+
+285
+00:15:47,700 --> 00:15:50,600
+how does an extended warranty work from a customer perspective?
+
+286
+00:15:50,600 --> 00:15:52,500
+And the answer might go something like this.
+
+287
+00:15:53,300 --> 00:15:56,100
+David and Claudia have six children living at home.
+
+288
+00:15:56,800 --> 00:15:58,800
+So, there are always a lot of dishes to clean.
+
+289
+00:15:58,800 --> 00:16:02,100
+And on March 10th, after a particularly horrible experience
+
+290
+00:16:02,500 --> 00:16:07,500
+where their current dishwasher just stopped working for good,
+
+291
+00:16:07,500 --> 00:16:10,700
+they purchased a new one at the local appliance store.
+
+292
+00:16:10,700 --> 00:16:15,100
+They needed a quiet, dependable, high-capacity dishwasher
+
+293
+00:16:15,100 --> 00:16:18,400
+since their last dishwasher had been such a major headache.
+
+294
+00:16:20,200 --> 00:16:21,900
+So, they chose a KitchenAid dishwasher
+
+295
+00:16:21,900 --> 00:16:26,600
+because it had a good reputation for high quality and few issues.
+
+296
+00:16:27,300 --> 00:16:32,400
+The dishwasher was on sale for US$1,199
+
+297
+00:16:32,400 --> 00:16:36,900
+and included free installation, saving them US$200 off the regular retail price,
+
+298
+00:16:36,900 --> 00:16:39,200
+and a US$75 installation fee.
+
+299
+00:16:40,100 --> 00:16:43,900
+And it automatically came with a one-year manufacturer warranty from KitchenAid.
+
+300
+00:16:44,400 --> 00:16:47,000
+There's a lot of details in that, right?
+
+301
+00:16:47,000 --> 00:16:49,400
+So, what we would do is we would frantically take notes
+
+302
+00:16:49,900 --> 00:16:52,800
+and then try to understand what are the key details
+
+303
+00:16:52,800 --> 00:16:56,100
+relative to what we're trying to model here, what we're trying to do.
+
+304
+00:16:58,100 --> 00:17:02,200
+So, I say, well, that sounds good because I understand how they bought this product,
+
+305
+00:17:02,200 --> 00:17:04,800
+but what about the extended warranty?
+
+306
+00:17:04,800 --> 00:17:05,700
+How does that fit?
+
+307
+00:17:06,200 --> 00:17:06,800
+And so,
+
+308
+00:17:06,900 --> 00:17:11,400
+the expert in extended warranties would probably say something like,
+
+309
+00:17:11,400 --> 00:17:16,800
+well, they paid an extra US$82 at the checkout to purchase an extended warranty.
+
+310
+00:17:16,800 --> 00:17:20,800
+And that would cover the KitchenAid dishwasher for another three years
+
+311
+00:17:20,800 --> 00:17:23,200
+after the manufacturer's warranty expires.
+
+312
+00:17:24,000 --> 00:17:28,000
+And it would cover that dishwasher for any repairs that needed to happen.
+
+313
+00:17:29,400 --> 00:17:32,400
+And also, they would get a similar replacement dishwasher
+
+314
+00:17:32,400 --> 00:17:34,100
+if their appliance could not be fixed.
+
+315
+00:17:35,300 --> 00:17:36,200
+That's a wealth of information.
+
+316
+00:17:36,200 --> 00:17:39,200
+That's a wealth of information packed into a very short story.
+
+317
+00:17:40,300 --> 00:17:44,800
+But what that allowed us to do is to start diagramming this thing out.
+
+318
+00:17:44,800 --> 00:17:46,400
+So, we would walk over to a whiteboard and say,
+
+319
+00:17:46,400 --> 00:17:49,100
+okay, well, sounds like we have, you call it an extended warranty.
+
+320
+00:17:49,600 --> 00:17:51,800
+And they say, well, sometimes we call it a contract.
+
+321
+00:17:51,800 --> 00:17:54,400
+And it's like, okay, well, we have to make a decision.
+
+322
+00:17:54,400 --> 00:17:56,000
+Let's put contract for now,
+
+323
+00:17:56,500 --> 00:17:59,700
+but maybe it's going to need to be called extended warranty in the software.
+
+324
+00:17:59,700 --> 00:18:00,800
+We're not sure.
+
+325
+00:18:01,000 --> 00:18:02,100
+Or maybe something else.
+
+326
+00:18:02,700 --> 00:18:04,800
+Maybe extended warranty is too specific.
+
+327
+00:18:04,800 --> 00:18:06,100
+We'll have to figure that out.
+
+328
+00:18:06,200 --> 00:18:08,500
+And then we heard you say some other things.
+
+329
+00:18:08,500 --> 00:18:14,200
+So, we heard you say that there's a, well, you said they pulled it from their appliance store.
+
+330
+00:18:14,200 --> 00:18:17,900
+That sounds like that's a company that we have and a client of ours.
+
+331
+00:18:17,900 --> 00:18:21,800
+Let's, maybe we'll call that a client company for now, just tentatively.
+
+332
+00:18:21,800 --> 00:18:24,500
+Like, in the U.S., it would be a company like Best Buy.
+
+333
+00:18:24,500 --> 00:18:26,200
+And they said, yeah, that kind of makes sense.
+
+334
+00:18:26,700 --> 00:18:27,800
+Well, what about the dishwasher?
+
+335
+00:18:27,800 --> 00:18:28,400
+What is that?
+
+336
+00:18:28,400 --> 00:18:31,000
+Well, that's the product that's covered by the warranty.
+
+337
+00:18:31,400 --> 00:18:31,800
+Okay.
+
+338
+00:18:32,200 --> 00:18:34,400
+Well, how about we call that the covered product?
+
+339
+00:18:34,400 --> 00:18:36,100
+And that's where we put the details about that.
+
+340
+00:18:36,200 --> 00:18:37,000
+Okay.
+
+341
+00:18:37,000 --> 00:18:37,800
+That makes sense.
+
+342
+00:18:38,500 --> 00:18:39,100
+Well, what else?
+
+343
+00:18:39,100 --> 00:18:40,600
+Well, we need the customer information.
+
+344
+00:18:40,600 --> 00:18:43,000
+We need their name and address and information like that.
+
+345
+00:18:43,000 --> 00:18:43,300
+Okay.
+
+346
+00:18:43,300 --> 00:18:45,300
+Well, let's call that customer information.
+
+347
+00:18:46,100 --> 00:18:51,200
+Well, now we have the beginnings of some kind of thing that we could represent in software.
+
+348
+00:18:51,200 --> 00:18:53,600
+So, we're trying to start to bridge that gap.
+
+349
+00:18:54,100 --> 00:19:02,800
+And then we would draw a lot of other diagrams and come up with other examples to try and figure out how these business concepts work.
+
+350
+00:19:02,800 --> 00:19:04,900
+And what are the relationships between them?
+
+351
+00:19:06,200 --> 00:19:11,100
+And, like I said, we'd experiment with different ways, different names for things, different ways of expressing that.
+
+352
+00:19:14,100 --> 00:19:24,500
+Now, sometimes our business analysts use sticky notes to map out these stories that the business was telling us.
+
+353
+00:19:24,500 --> 00:19:35,400
+Maybe they would do it in real time as the business people were telling the story or maybe they would do it after the fact to provide a shared visual understanding of how these things work.
+
+354
+00:19:35,400 --> 00:19:35,900
+So,
+
+355
+00:19:36,200 --> 00:19:43,200
+what we would do is we'd have a lively debate about these business concepts and how they relate to each other.
+
+356
+00:19:45,200 --> 00:19:48,200
+The idea is we're trying to do iterative collaborative design.
+
+357
+00:19:48,200 --> 00:19:52,700
+So, we're trying to come up with something that's an initial idea and then go from there.
+
+358
+00:19:52,700 --> 00:20:02,700
+So, another example of this is how might we handle the repair process when something does go wrong on an appliance like that dishwasher you were just talking about?
+
+359
+00:20:04,000 --> 00:20:05,600
+And they might say something like, well,
+
+360
+00:20:06,200 --> 00:20:11,300
+the customer calls our 1-800 number and they speak to a customer service representative.
+
+361
+00:20:11,300 --> 00:20:14,100
+We call them CSRs at our call center.
+
+362
+00:20:14,100 --> 00:20:21,400
+The CSR asks the customer to provide either the warranty ID or the brand and serial number of the appliance.
+
+363
+00:20:21,400 --> 00:20:26,700
+Either one of those will allow us to look up the contract in the system.
+
+364
+00:20:26,700 --> 00:20:35,100
+And from there, if we find out that the covered product failed during the time that the contract is active based on the effective date and the expiration date,
+
+365
+00:20:35,100 --> 00:20:36,100
+then we know that it's not going to be a good thing.
+
+366
+00:20:36,100 --> 00:20:40,720
+that this is a valid claim.
+
+367
+00:20:40,720 --> 00:20:45,120
+So then the CSR would open a new claim and record all the relevant info.
+
+368
+00:20:45,120 --> 00:20:50,120
+They would create a purchase order, send it to our Acme Appliance Repair Company that
+
+369
+00:20:50,120 --> 00:20:53,500
+does all our appliance repairs.
+
+370
+00:20:53,500 --> 00:20:57,400
+Once the repair is completed, that company would update the purchase order and send it
+
+371
+00:20:57,400 --> 00:21:05,660
+back to us and we'd use that to get all the financials to send to accounting.
+
+372
+00:21:05,660 --> 00:21:09,560
+So we would do things like map that out on sticky notes.
+
+373
+00:21:09,560 --> 00:21:14,260
+Kenny will be talking about this type of technique later today, have different ways of doing
+
+374
+00:21:14,260 --> 00:21:20,220
+these kinds of collaborations, being able to see how a process works.
+
+375
+00:21:20,220 --> 00:21:21,500
+And we'd iterate over that.
+
+376
+00:21:21,500 --> 00:21:27,020
+We'd assume that the first idea that we're coming up with is probably somewhat naive,
+
+377
+00:21:27,020 --> 00:21:31,200
+somewhat superficial, but we can iterate over that and see if we can improve it over time
+
+378
+00:21:31,200 --> 00:21:34,700
+as we work through it.
+
+379
+00:21:34,700 --> 00:21:35,640
+Okay.
+
+380
+00:21:35,640 --> 00:21:42,860
+Another thing that was critical for us, so not only humility in our curiosity and not
+
+381
+00:21:42,860 --> 00:21:46,840
+only iterative and collaborative design working together, but short feedback loops.
+
+382
+00:21:46,840 --> 00:21:52,100
+And I think this is true whether you're doing domain-driven design or any kind of process
+
+383
+00:21:52,100 --> 00:21:57,320
+is working in small batches and having short feedback loops.
+
+384
+00:21:57,320 --> 00:21:58,380
+This is critical.
+
+385
+00:21:58,380 --> 00:21:59,880
+So what do I mean by that?
+
+386
+00:21:59,880 --> 00:22:04,360
+Well, what we did is we usually started with understanding and implementing what you might
+
+387
+00:22:04,360 --> 00:22:05,440
+call the happy path.
+
+388
+00:22:05,440 --> 00:22:09,120
+The simple option first.
+
+389
+00:22:09,120 --> 00:22:16,040
+And then quickly pivoted to experimenting with the more valuable, higher risk complex cases.
+
+390
+00:22:16,040 --> 00:22:20,120
+I think of it a little bit like crash testing our ideas, right?
+
+391
+00:22:20,120 --> 00:22:22,480
+Crash testing our model.
+
+392
+00:22:22,480 --> 00:22:27,280
+We'd come up with some initial ideas, developers would code them up fairly quickly.
+
+393
+00:22:27,280 --> 00:22:31,160
+And then we'd walk through them with our warranty and claim experts to see how well they work.
+
+394
+00:22:31,160 --> 00:22:35,320
+So at this point in the process, we're not necessarily right.
+
+395
+00:22:35,320 --> 00:22:35,440
+Okay.
+
+396
+00:22:35,440 --> 00:22:36,840
+We're writing production code.
+
+397
+00:22:36,840 --> 00:22:41,100
+We're writing experimental code to see if we can understand how the concepts work before
+
+398
+00:22:41,100 --> 00:22:44,680
+we actually commit to writing production code.
+
+399
+00:22:44,680 --> 00:22:50,040
+When you don't know yet the right way to implement something, trying a few options is a really
+
+400
+00:22:50,040 --> 00:22:55,900
+smart way to figure out the best option, right, rather than committing to the first idea you
+
+401
+00:22:55,900 --> 00:23:00,980
+have, which is probably not going to be the best idea.
+
+402
+00:23:00,980 --> 00:23:02,940
+So short feedback loops.
+
+403
+00:23:02,940 --> 00:23:05,320
+And I'm talking days here, not weeks.
+
+404
+00:23:05,440 --> 00:23:11,800
+And showing unfinished work as part of this as well.
+
+405
+00:23:11,800 --> 00:23:18,880
+Now, related to this is the idea of as we were going through this, like I mentioned,
+
+406
+00:23:18,880 --> 00:23:23,400
+as they're telling the story, what we're trying to do is identify key concepts that we would
+
+407
+00:23:23,400 --> 00:23:25,160
+need to express.
+
+408
+00:23:25,160 --> 00:23:29,640
+So in that story, I told you, okay, so we have this KitchenAid dishwasher.
+
+409
+00:23:29,640 --> 00:23:31,060
+That's a covered product.
+
+410
+00:23:31,060 --> 00:23:32,900
+We have a manufacturer's warranty.
+
+411
+00:23:32,900 --> 00:23:34,280
+That's going to be important.
+
+412
+00:23:34,280 --> 00:23:35,320
+How are we going to represent that?
+
+413
+00:23:35,320 --> 00:23:40,680
+How are we going to represent that in the software?
+
+414
+00:23:40,680 --> 00:23:42,500
+There's this $1,199.
+
+415
+00:23:42,500 --> 00:23:44,420
+That's the cost of the product.
+
+416
+00:23:44,420 --> 00:23:46,100
+But that's a separate cost.
+
+417
+00:23:46,100 --> 00:23:47,600
+That's a purchase price.
+
+418
+00:23:47,600 --> 00:23:50,400
+But it's the purchase price of the dishwasher.
+
+419
+00:23:50,400 --> 00:23:54,920
+It's not the purchase price for the extended warranty, right?
+
+420
+00:23:54,920 --> 00:23:59,460
+These were all things that we kind of struggled with because in the code, or if people just
+
+421
+00:23:59,460 --> 00:24:02,360
+talked about purchase price, we didn't know what they were talking about.
+
+422
+00:24:02,360 --> 00:24:04,320
+Are you talking about what you paid for the dishwasher?
+
+423
+00:24:04,320 --> 00:24:05,320
+Are you talking about what you paid for the dishwasher?
+
+424
+00:24:05,320 --> 00:24:06,780
+Are you talking about what you paid for the actual warranty?
+
+425
+00:24:06,780 --> 00:24:09,240
+Because those are two separate things.
+
+426
+00:24:09,240 --> 00:24:13,560
+We had to distinguish between those two things, and in the code, we had to make sure that
+
+427
+00:24:13,560 --> 00:24:16,440
+we called them different things as well.
+
+428
+00:24:16,440 --> 00:24:20,440
+We had other ideas that are expressed here, like terms and conditions.
+
+429
+00:24:20,440 --> 00:24:21,440
+What is that?
+
+430
+00:24:21,440 --> 00:24:22,440
+What does that mean?
+
+431
+00:24:22,440 --> 00:24:23,960
+We didn't know.
+
+432
+00:24:23,960 --> 00:24:28,520
+And then how do we express this idea of a period of three years past the manufacturer's
+
+433
+00:24:28,520 --> 00:24:34,480
+warranty so that we could avoid fraud and the kinds of things like that?
+
+434
+00:24:34,480 --> 00:24:35,160
+And then...
+
+435
+00:24:35,160 --> 00:24:40,240
+Another question that came up in that story was, well, how do we handle replacements?
+
+436
+00:24:40,240 --> 00:24:42,780
+How do we handle that situation where...
+
+437
+00:24:42,780 --> 00:24:51,120
+Well, firstly, how do we know how to evaluate if the product couldn't be fixed, right?
+
+438
+00:24:51,120 --> 00:24:52,780
+Who makes that decision?
+
+439
+00:24:52,780 --> 00:24:55,560
+And then from there, how do we then pivot to handling a replacement?
+
+440
+00:24:55,560 --> 00:24:59,520
+We had to figure all that out and express that in the software as well.
+
+441
+00:24:59,520 --> 00:25:05,040
+So a lot of complexity in terms of what was going on here, and we needed to express that.
+
+442
+00:25:05,040 --> 00:25:09,600
+So an example of this was, expanding on this previous one, was the idea that a contract
+
+443
+00:25:09,600 --> 00:25:14,720
+had a claim, could have multiple claims associated with it.
+
+444
+00:25:14,720 --> 00:25:19,600
+And then these claims had one or more repair purchase orders, which was what was talked
+
+445
+00:25:19,600 --> 00:25:21,020
+about in the story.
+
+446
+00:25:21,020 --> 00:25:26,600
+And then on those repair purchase orders, we had line items to represent costs associated
+
+447
+00:25:26,600 --> 00:25:27,640
+with that repair.
+
+448
+00:25:27,640 --> 00:25:31,920
+So maybe the servicer goes and replaces the soap dispenser in the dishwasher, so there
+
+449
+00:25:31,920 --> 00:25:34,880
+would be a cost for that soap dispenser.
+
+450
+00:25:34,880 --> 00:25:41,260
+And also for the labor associated with that.
+
+451
+00:25:41,260 --> 00:25:43,040
+Now why am I mentioning all these details?
+
+452
+00:25:43,040 --> 00:25:47,120
+This may, you know, 9.30 in the morning, this may seem like a little bit overwhelming.
+
+453
+00:25:47,120 --> 00:25:49,260
+I apologize for that.
+
+454
+00:25:49,260 --> 00:25:54,260
+But I want you to get a sense of when you are working in a complex domain, it's like
+
+455
+00:25:54,260 --> 00:25:55,260
+this.
+
+456
+00:25:55,260 --> 00:25:59,060
+When you start, you can feel overwhelmed by all these details.
+
+457
+00:25:59,060 --> 00:26:02,940
+And what I'd encourage you is don't feel overwhelmed, right?
+
+458
+00:26:02,940 --> 00:26:04,840
+Or if you start to feel that way, just remind yourself.
+
+459
+00:26:04,840 --> 00:26:07,560
+We just need to get to the next step.
+
+460
+00:26:07,560 --> 00:26:10,400
+And so it's modeling these things in stages.
+
+461
+00:26:10,400 --> 00:26:16,040
+And what really helped us was this idea of not only short feedback loops, but tying that
+
+462
+00:26:16,040 --> 00:26:17,600
+to implementation as well.
+
+463
+00:26:17,600 --> 00:26:20,200
+So rapid and frequent delivery.
+
+464
+00:26:20,200 --> 00:26:24,940
+What I mean by that is once we had a good enough understanding of how a particular concept
+
+465
+00:26:24,940 --> 00:26:28,360
+worked, we'd implement it in code as quickly as we could.
+
+466
+00:26:28,360 --> 00:26:29,360
+We'd try out options.
+
+467
+00:26:29,360 --> 00:26:33,980
+And once we felt like we understood how it should work, then we'd deliver it as production
+
+468
+00:26:33,980 --> 00:26:34,820
+quality code.
+
+469
+00:26:34,840 --> 00:26:37,560
+And that's how we got to where we are today, and that's how we got to where we are today.
+
+470
+00:26:37,560 --> 00:26:38,560
+And that's how we got to where we are today.
+
+471
+00:26:38,560 --> 00:26:42,280
+And it was primarily our rapid and frequent delivery of these key capabilities that led
+
+472
+00:26:42,280 --> 00:26:44,860
+to trust with our stakeholders.
+
+473
+00:26:44,860 --> 00:26:50,200
+They trusted us because they could see that we were actually delivering things.
+
+474
+00:26:50,200 --> 00:26:57,400
+I think on a lot of projects, the tendency for management or stakeholders to emphasize
+
+475
+00:26:57,400 --> 00:27:02,600
+estimation and forecasting so much is because they're not seeing delivery.
+
+476
+00:27:02,600 --> 00:27:04,600
+They're not seeing the team.
+
+477
+00:27:04,600 --> 00:27:06,920
+They're not seeing the team actually producing anything.
+
+478
+00:27:06,920 --> 00:27:11,280
+And so when you don't have visibility into what's being produced, you find something
+
+479
+00:27:11,280 --> 00:27:16,100
+else that you can manage, which is numbers and estimates and things like that.
+
+480
+00:27:16,100 --> 00:27:21,260
+I'm not saying those things aren't important in a lot of contexts, but rapid and frequent
+
+481
+00:27:21,260 --> 00:27:23,020
+delivery trumps all of that.
+
+482
+00:27:23,020 --> 00:27:29,500
+If you are consistently having conversations with people in the business, or if you're
+
+483
+00:27:29,500 --> 00:27:33,820
+a product owner and you're working with a team and you're consistently seeing work coming
+
+484
+00:27:33,820 --> 00:27:34,360
+out of that team.
+
+485
+00:27:34,360 --> 00:27:37,360
+It's a lot easier to make the case for we're moving forward.
+
+486
+00:27:37,360 --> 00:27:40,740
+Yes, we're tracking towards that.
+
+487
+00:27:40,740 --> 00:27:46,240
+As with all language learning, we made a lot of mistakes in this.
+
+488
+00:27:46,240 --> 00:27:50,700
+For example, we started out calling them contracts and then later out found that that name wasn't
+
+489
+00:27:50,700 --> 00:27:52,900
+going to work and we had to change it.
+
+490
+00:27:52,900 --> 00:27:57,140
+That was a big change for us, but it ultimately ended up being a real improvement to the way
+
+491
+00:27:57,140 --> 00:27:59,860
+the software worked.
+
+492
+00:27:59,860 --> 00:28:03,680
+Because we had this trust, we were able to pull that off.
+
+493
+00:28:03,680 --> 00:28:08,180
+And they could see our steady progress in learning and understanding the domain, but
+
+494
+00:28:08,180 --> 00:28:13,100
+more importantly, they could see it implemented in software, the actual examples we were talking
+
+495
+00:28:13,100 --> 00:28:16,760
+about.
+
+496
+00:28:16,760 --> 00:28:22,880
+Fast forward a little bit later that year, we went live in production with that client.
+
+497
+00:28:22,880 --> 00:28:27,440
+We migrated all their data from the legacy system over to the new platform in record
+
+498
+00:28:27,440 --> 00:28:28,440
+time.
+
+499
+00:28:28,440 --> 00:28:33,680
+Our stakeholders were really, really happy with how the project had gone.
+
+500
+00:28:33,680 --> 00:28:40,120
+And we basically turned things around from where they were at the start of the year.
+
+501
+00:28:40,120 --> 00:28:44,860
+I was pretty confident by that point I wasn't going to lose my job.
+
+502
+00:28:44,860 --> 00:28:52,200
+As the year progressed, we continued to learn new things and had to improve the code, the
+
+503
+00:28:52,200 --> 00:28:53,320
+model.
+
+504
+00:28:53,320 --> 00:28:57,440
+We branched out into new capabilities and had to sort of start that process all over
+
+505
+00:28:57,440 --> 00:28:58,760
+again in these new areas.
+
+506
+00:28:58,760 --> 00:28:59,760
+But what I found was, because we had expressed the model in the code, we were able to do
+
+507
+00:28:59,760 --> 00:29:00,760
+a lot of things.
+
+508
+00:29:00,760 --> 00:29:01,760
+We were able to do a lot of things.
+
+509
+00:29:01,760 --> 00:29:02,760
+We were able to do a lot of things.
+
+510
+00:29:02,760 --> 00:29:03,560
+We were able to do a lot of things.
+
+511
+00:29:03,560 --> 00:29:03,640
+We were able to do a lot of things.
+
+512
+00:29:03,680 --> 00:29:04,680
+We were able to do a lot of things.
+
+513
+00:29:04,680 --> 00:29:08,000
+The effort actually continued to accelerate.
+
+514
+00:29:08,000 --> 00:29:11,860
+Because we paid attention to design as we were going along, it wasn't an afterthought.
+
+515
+00:29:11,860 --> 00:29:14,200
+It was baked into the process.
+
+516
+00:29:14,200 --> 00:29:23,260
+We were able to accelerate our development throughout the year.
+
+517
+00:29:23,260 --> 00:29:33,200
+Now, in the last 10 years, as I've coached and trained teams, I've seen some teams that
+
+518
+00:29:33,200 --> 00:29:39,180
+try to pull this off in a similar context to ours where that culture of collaboration
+
+519
+00:29:39,180 --> 00:29:43,040
+and communication wasn't there and for some reason it just fell flat and they weren't
+
+520
+00:29:43,040 --> 00:29:50,540
+able to pull it off. And so some teams may find themselves in that kind of situation.
+
+521
+00:29:50,540 --> 00:29:54,420
+Some teams may think, well, I'm going to do all this collaborative stuff but then maybe
+
+522
+00:29:54,420 --> 00:29:59,500
+they pick a part of the problem that is not that complex and so it can seem like overkill
+
+523
+00:29:59,500 --> 00:30:04,420
+and it probably is. So you have to be very careful with this kind of approach to say,
+
+524
+00:30:04,420 --> 00:30:08,720
+well, here's a bunch of domain-driven designers presenting a bunch of tools and techniques
+
+525
+00:30:08,720 --> 00:30:13,380
+and you're all coming into this room and you've already got a tool belt of tools and techniques.
+
+526
+00:30:13,380 --> 00:30:17,260
+So I'd really encourage you today and over the course of this week and in the reading
+
+527
+00:30:17,260 --> 00:30:21,440
+that you do to look at those tools and techniques and say, which ones are for me? Which ones
+
+528
+00:30:21,440 --> 00:30:25,860
+do I want to try? You know, maybe this one over here, that doesn't make sense to me at
+
+529
+00:30:25,860 --> 00:30:29,020
+the moment. So, well, don't worry about it, all right?
+
+530
+00:30:29,020 --> 00:30:29,480
+Like I said, when I'm talking to people, I'm talking to them. When I'm talking to people,
+
+531
+00:30:29,480 --> 00:30:34,920
+when I started with this project, there was a lot I didn't understand and really when
+
+532
+00:30:34,920 --> 00:30:41,240
+I started, there was only the blue book and a book by Jimmy Nielsen. There were only two
+
+533
+00:30:41,240 --> 00:30:45,540
+whereas now there's a multitude of resources. There weren't any conferences on domain-driven
+
+534
+00:30:45,540 --> 00:30:52,940
+design. You've got a wealth of resources to draw from now.
+
+535
+00:30:52,940 --> 00:30:59,000
+Some teams are in a situation where I might characterize it like a feature factory where
+
+536
+00:30:59,000 --> 00:31:05,520
+the idea is that the business or the product management, product owners are really just
+
+537
+00:31:05,520 --> 00:31:10,080
+saying here's the next feature, here's how you do it, go, all right, where it's more
+
+538
+00:31:10,080 --> 00:31:15,180
+of a handoff. And that can work really well in some contexts like where the functionality
+
+539
+00:31:15,180 --> 00:31:19,500
+is really simple. That's probably not going to work well for the kinds of things we're
+
+540
+00:31:19,500 --> 00:31:26,500
+talking about today. That works well often in this type of thing. Some projects are like
+
+541
+00:31:29,000 --> 00:31:36,860
+layer cakes. This is from the book Shape Up. I love this diagram. Where basically if you
+
+542
+00:31:36,860 --> 00:31:40,160
+think about it in terms of the application, you've got the front end and the back end
+
+543
+00:31:40,160 --> 00:31:45,100
+and it's kind of like a layer cake where the effort to build and the functionality is fairly
+
+544
+00:31:45,100 --> 00:31:51,380
+straightforward. And with a project like this, most of the risk and the complexity is in
+
+545
+00:31:51,380 --> 00:31:59,000
+deciding what to build and what do we build next, right? You still have to do a good job
+
+546
+00:31:59,000 --> 00:32:03,460
+of figuring out how the functionality should work. There may still be a lot you have to
+
+547
+00:32:03,460 --> 00:32:09,280
+do from a UX perspective. But it's more about how do we store the data and how do we move
+
+548
+00:32:09,280 --> 00:32:15,880
+the data around. The intensity of collaboration and experimentation with language that I've
+
+549
+00:32:15,880 --> 00:32:23,800
+described in my story would probably be overkill for a project like this. However, if you're
+
+550
+00:32:23,800 --> 00:32:28,860
+working on a large project that has a lot of different interactions, you're probably
+
+551
+00:32:28,860 --> 00:32:34,620
+interacting pieces to it. And this will be talked about later today. A lot of different
+
+552
+00:32:34,620 --> 00:32:40,620
+contexts. Maybe what you could do is carve out one of those contexts as kind of its own
+
+553
+00:32:40,620 --> 00:32:45,160
+scope. And if it's a relatively simple one like this, this might be a better approach
+
+554
+00:32:45,160 --> 00:32:52,860
+is to use some kind of simple approach for that.
+
+555
+00:32:52,860 --> 00:32:58,860
+These are the types of projects I'm talking about. Iceberg projects. Where, you know,
+
+556
+00:32:58,860 --> 00:33:06,220
+the bulk of the complexity, the bulk of the functionality and effort to build is hidden
+
+557
+00:33:06,220 --> 00:33:12,200
+below the surface like I was talking about earlier. Now, some projects are actually,
+
+558
+00:33:12,200 --> 00:33:18,680
+you might say, upside down icebergs. Right? Where you still have to do a lot of design,
+
+559
+00:33:18,680 --> 00:33:22,400
+but it's more on the front end. It's more on the user experience. So, for example, if
+
+560
+00:33:22,400 --> 00:33:27,280
+you're implementing a calendar control for scheduling, then there's probably a lot of
+
+561
+00:33:27,280 --> 00:33:28,280
+UI work you have to do. And you're probably going to have to do a lot of UI work. And
+
+562
+00:33:28,280 --> 00:33:28,840
+you're probably going to have to do a lot of UI work. And you're probably going to have
+
+563
+00:33:28,860 --> 00:33:34,600
+to do, and maybe the effort is more on the front end for something like that. But with
+
+564
+00:33:34,600 --> 00:33:38,900
+most of the projects that I work with, most of the teams I work with, it's more like this,
+
+565
+00:33:38,900 --> 00:33:45,280
+where the complexity is in what we might say in the domain itself, in the business itself,
+
+566
+00:33:45,280 --> 00:33:49,820
+and what I mean by that, as I described in the story, the complexity is in the business
+
+567
+00:33:49,820 --> 00:33:56,700
+concepts. It's in the logic. It's in the rules. It's in the way that people interact. It may
+
+568
+00:33:56,700 --> 00:33:58,860
+also be in the integration with other stuff. In both ways, the fantasy is more than just
+
+569
+00:33:58,860 --> 00:34:05,780
+systems that are out there and the way they need to interact as well. So if the complexity
+
+570
+00:34:05,780 --> 00:34:10,360
+is in the domain itself, then driving your design by modeling the domain deeply in the
+
+571
+00:34:10,360 --> 00:34:16,580
+code, which is what domain-driven design talks about, is what I found to be the most successful
+
+572
+00:34:16,580 --> 00:34:26,000
+way, most effective way to move forward successfully. There's three key ingredients to domain-driven
+
+573
+00:34:26,000 --> 00:34:29,840
+design in my story. The first one I want to talk about is what's called in the book
+
+574
+00:34:29,840 --> 00:34:34,260
+ubiquitous language. Don't get hung up on the word ubiquitous. It's this idea of having
+
+575
+00:34:34,260 --> 00:34:43,260
+a shared common language that you are cultivating and growing. So I gave examples of that, understanding
+
+576
+00:34:43,260 --> 00:34:47,560
+what a repair purchase order is and how that relates to a claim. That was all part of our
+
+577
+00:34:47,560 --> 00:34:53,640
+ubiquitous language. And as new terms got introduced into that language, we would migrate
+
+578
+00:34:53,640 --> 00:34:55,040
+those.
+
+579
+00:34:55,040 --> 00:34:55,980
+We would start trying to
+
+580
+00:34:55,980 --> 00:35:04,060
+use them as much as we could. So if I had to define it, this is, well, let me just talk
+
+581
+00:35:04,060 --> 00:35:09,600
+about this. It doesn't mean just writing things down. This is an actual sign from a store
+
+582
+00:35:09,600 --> 00:35:16,980
+window near my house. Writing things down is inherently ambiguous. I'm really not sure
+
+583
+00:35:16,980 --> 00:35:22,000
+when I go into the store how much I'm going to pay. In the U.S., they have the, I don't
+
+584
+00:35:22,000 --> 00:35:25,420
+know if they have them in Europe, but they have this notion of a 99-cent store where
+
+585
+00:35:25,420 --> 00:35:25,960
+everything is 99 cents. And I think that's a really good idea. I think that's a really
+
+586
+00:35:25,960 --> 00:35:26,460
+good idea. That's a really good idea. I think that's a really good idea. I think that's a really good idea.
+
+587
+00:35:26,460 --> 00:35:32,960
+But I'm really not sure if this store is charging that. Language can be very ambiguous. Here's
+
+588
+00:35:36,240 --> 00:35:43,240
+another example. Who would like to sit in a gravy hot tub? There's a certain ambiguity
+
+589
+00:35:43,240 --> 00:35:51,360
+Who would like to sit in a gravy hot tub?
+
+590
+00:35:54,420 --> 00:35:56,360
+There's a certain ambiguity to language.
+
+591
+00:35:56,520 --> 00:35:58,680
+What we're talking about with ubiquitous language
+
+592
+00:35:58,680 --> 00:36:00,720
+is we're talking about a language
+
+593
+00:36:00,720 --> 00:36:05,120
+that is common, that is shared between...
+
+594
+00:36:05,120 --> 00:36:08,240
+It forms a bridge between the technical jargon of the developers,
+
+595
+00:36:08,240 --> 00:36:09,300
+which doesn't go away,
+
+596
+00:36:09,300 --> 00:36:13,380
+and the business jargon that is used.
+
+597
+00:36:13,740 --> 00:36:15,900
+So it's structured around the domain model.
+
+598
+00:36:16,060 --> 00:36:18,100
+It's structured around this set of concepts
+
+599
+00:36:18,100 --> 00:36:20,620
+that the team is coming up with.
+
+600
+00:36:20,960 --> 00:36:24,000
+And it's used by the team members
+
+601
+00:36:24,000 --> 00:36:27,840
+to connect everything they do with the software.
+
+602
+00:36:29,980 --> 00:36:32,000
+So what do I mean by that?
+
+603
+00:36:32,080 --> 00:36:34,460
+Well, examples of that would be...
+
+604
+00:36:36,320 --> 00:36:38,460
+If we are talking about...
+
+605
+00:36:38,460 --> 00:36:41,380
+In the domain, the extended warranty domain,
+
+606
+00:36:41,480 --> 00:36:43,680
+if we're talking about how we handle a replacement
+
+607
+00:36:43,680 --> 00:36:45,320
+of a dishwasher on a claim,
+
+608
+00:36:46,080 --> 00:36:49,600
+then the user story or the epic or whatever it is
+
+609
+00:36:49,600 --> 00:36:52,920
+needs to talk about that in the language
+
+610
+00:36:52,920 --> 00:36:54,460
+that we're talking about.
+
+611
+00:36:54,580 --> 00:36:57,460
+So if it's called, for example, a product replacement,
+
+612
+00:36:57,920 --> 00:36:59,560
+then that's what the story should be about,
+
+613
+00:36:59,600 --> 00:37:00,500
+is product replacement.
+
+614
+00:37:01,800 --> 00:37:02,940
+If, on the other hand,
+
+615
+00:37:02,940 --> 00:37:05,260
+we're calling it a customer reimbursement,
+
+616
+00:37:05,880 --> 00:37:07,940
+the story should be about customer reimbursement.
+
+617
+00:37:08,460 --> 00:37:11,640
+And we should be able to be clear
+
+618
+00:37:11,640 --> 00:37:13,440
+on what those things mean.
+
+619
+00:37:14,440 --> 00:37:16,900
+And if we decide to change the language,
+
+620
+00:37:17,220 --> 00:37:18,880
+then we need to change the code.
+
+621
+00:37:19,000 --> 00:37:21,000
+We need to update the stories.
+
+622
+00:37:21,660 --> 00:37:23,400
+When you add a new concept in,
+
+623
+00:37:23,480 --> 00:37:25,120
+that should be reflected in your documentation,
+
+624
+00:37:25,520 --> 00:37:27,180
+in the code, in the stories,
+
+625
+00:37:27,300 --> 00:37:28,380
+in the acceptance criteria.
+
+626
+00:37:33,040 --> 00:37:34,700
+So the idea with ubiquitous
+
+627
+00:37:34,700 --> 00:37:36,920
+is we're not saying across the entire business.
+
+628
+00:37:36,920 --> 00:37:37,640
+We're not saying,
+
+629
+00:37:37,640 --> 00:37:40,280
+oh, just because we call it a claim on this project,
+
+630
+00:37:40,440 --> 00:37:42,300
+everyone in the business needs to call it a claim.
+
+631
+00:37:43,220 --> 00:37:44,640
+Different parts of the business
+
+632
+00:37:44,640 --> 00:37:47,060
+are going to mean different things by the word claim.
+
+633
+00:37:47,320 --> 00:37:49,720
+But in the context of this particular application
+
+634
+00:37:49,720 --> 00:37:51,000
+doing this certain thing,
+
+635
+00:37:51,380 --> 00:37:53,560
+it needs to mean a certain thing.
+
+636
+00:37:53,820 --> 00:37:55,400
+And that meaning needs to be clear.
+
+637
+00:37:56,960 --> 00:38:00,920
+And that is a fundamental idea in domain-driven design,
+
+638
+00:38:01,080 --> 00:38:02,880
+is this notion of having a language
+
+639
+00:38:02,880 --> 00:38:05,380
+that is ubiquitous throughout the code,
+
+640
+00:38:05,380 --> 00:38:07,400
+throughout everything the team does,
+
+641
+00:38:07,400 --> 00:38:08,960
+in terms of how they talk about that.
+
+642
+00:38:08,960 --> 00:38:14,960
+We're very, very good at learning languages, generally.
+
+643
+00:38:15,960 --> 00:38:17,960
+We're wired to do it from a young age.
+
+644
+00:38:19,160 --> 00:38:21,600
+We don't get taught the language
+
+645
+00:38:21,600 --> 00:38:23,600
+that we end up being native speakers.
+
+646
+00:38:23,600 --> 00:38:26,480
+We are wired to actually learn that language.
+
+647
+00:38:27,080 --> 00:38:28,280
+And as we grow older,
+
+648
+00:38:28,280 --> 00:38:31,440
+we tend to diminish in our capability to do that.
+
+649
+00:38:31,440 --> 00:38:33,160
+But domain-driven design says,
+
+650
+00:38:33,160 --> 00:38:34,680
+no, we need to push forward on that
+
+651
+00:38:34,680 --> 00:38:36,680
+and actually get better at that.
+
+652
+00:38:36,680 --> 00:38:39,480
+And it's particularly on the technical people on the team
+
+653
+00:38:39,480 --> 00:38:42,680
+to go out of their comfort zone to do that.
+
+654
+00:38:42,680 --> 00:38:45,480
+So the first element is ubiquitous language.
+
+655
+00:38:45,480 --> 00:38:47,480
+The second one is modeling by example.
+
+656
+00:38:48,920 --> 00:38:52,120
+What I mean by that is, as I mentioned earlier,
+
+657
+00:38:52,120 --> 00:38:56,760
+is working to talk about concrete, specific examples.
+
+658
+00:38:58,520 --> 00:39:01,800
+So when we talked about, when we,
+
+659
+00:39:01,800 --> 00:39:04,760
+another way of saying is telling stories
+
+660
+00:39:04,760 --> 00:39:06,360
+and getting good at telling stories.
+
+661
+00:39:07,640 --> 00:39:12,200
+So knowing, understanding the story of how David and Claudia
+
+662
+00:39:12,200 --> 00:39:14,200
+bought their extended warranty.
+
+663
+00:39:15,160 --> 00:39:16,840
+If everyone understands that story
+
+664
+00:39:16,840 --> 00:39:19,960
+and then they understand purchasing that extended warranty
+
+665
+00:39:19,960 --> 00:39:21,240
+for their KitchenAid dishwasher,
+
+666
+00:39:21,240 --> 00:39:23,960
+well, that becomes part of kind of the folklore of,
+
+667
+00:39:23,960 --> 00:39:27,000
+if you want to call it that, of the background information,
+
+668
+00:39:27,000 --> 00:39:28,920
+the background narrative for how things work.
+
+669
+00:39:29,880 --> 00:39:32,040
+And that becomes a way of driving the model.
+
+670
+00:39:32,680 --> 00:39:35,400
+A lot of teams fall into the trap of,
+
+671
+00:39:36,680 --> 00:39:38,280
+well, how does a replacement work?
+
+672
+00:39:38,280 --> 00:39:39,800
+It's too hard to tell if it works.
+
+673
+00:39:39,800 --> 00:39:41,080
+And so you have to be able to tell
+
+674
+00:39:41,080 --> 00:39:42,440
+what's going on in the environment,
+
+675
+00:39:42,440 --> 00:39:45,320
+how the customer's thinking about the product.
+
+676
+00:39:45,320 --> 00:39:48,680
+And the second element is becoming very abstract.
+
+677
+00:39:49,160 --> 00:39:50,680
+Going back to those diagrams,
+
+678
+00:39:50,680 --> 00:39:53,560
+those bubble box diagrams I showed you earlier.
+
+679
+00:39:53,560 --> 00:39:56,200
+Everything works on a whiteboard, right?
+
+680
+00:39:56,200 --> 00:39:58,360
+But once you start talking about the specifics of,
+
+681
+00:39:58,360 --> 00:39:59,800
+well, how does a replacement work?
+
+682
+00:39:59,800 --> 00:40:03,800
+Or how do these particular reimbursements work?
+
+683
+00:40:03,800 --> 00:40:06,360
+Well, now you have to actually anchor it in something real.
+
+684
+00:40:06,680 --> 00:40:13,400
+the word model there, if you like. We must give the rule as applied to a particular case.
+
+685
+00:40:13,400 --> 00:40:18,800
+So if a business person said something like, well, the rule is once we hit the limit of
+
+686
+00:40:18,800 --> 00:40:22,520
+liability in the terms and conditions, then we need to perform a replacement, what would
+
+687
+00:40:22,520 --> 00:40:28,500
+be the question that we would need to ask? Okay. Can you give me an example of a limit
+
+688
+00:40:28,500 --> 00:40:35,000
+of liability? What is that? I don't even know what that is. What are the terms and conditions?
+
+689
+00:40:35,000 --> 00:40:39,520
+Can you give me an example of that? Can you tell me a story of how that worked? Right?
+
+690
+00:40:39,520 --> 00:40:44,920
+Anchoring it in something real. The, you know, on the business side of things, they deal
+
+691
+00:40:44,920 --> 00:40:50,920
+with the specifics all the time. Whereas people on the technical side of things, developers
+
+692
+00:40:50,920 --> 00:40:56,100
+are much more, I think, you know, we tend to be better on the technical side of coming
+
+693
+00:40:56,100 --> 00:41:00,580
+up with abstractions for things. But these abstractions need to be anchored in something
+
+694
+00:41:00,580 --> 00:41:03,660
+real.
+
+695
+00:41:03,660 --> 00:41:05,000
+And then the third thing here.
+
+696
+00:41:05,000 --> 00:41:13,060
+The third element is refining the model. Is being able to look at what you have and
+
+697
+00:41:13,060 --> 00:41:18,500
+say, okay, well, that's good. And the technical people on the team getting good at being able
+
+698
+00:41:18,500 --> 00:41:22,620
+to look at it in the code and say, well, this doesn't exactly match what we were talking
+
+699
+00:41:22,620 --> 00:41:27,120
+about. Up until now, we were talking about product replacements. But now we're talking
+
+700
+00:41:27,120 --> 00:41:34,360
+about customer reimbursements. We need to update the code to reflect that. I went into
+
+701
+00:41:34,360 --> 00:41:34,920
+one organization.
+
+702
+00:41:34,920 --> 00:41:34,980
+I went into one organization. I went into one organization. I went into one organization.
+
+703
+00:41:34,980 --> 00:41:42,700
+I went into one organization where everyone in the organization talked about missions.
+
+704
+00:41:42,700 --> 00:41:47,380
+We're completing missions. I thought, that's great. When I looked at the code, the word
+
+705
+00:41:47,380 --> 00:41:56,900
+mission wasn't anywhere to be found. It was all campaigns. It was talking about campaigns.
+
+706
+00:41:56,900 --> 00:42:04,900
+It kind of meant the same thing, but not exactly. So how do you think it would be joining that
+
+707
+00:42:04,900 --> 00:42:08,060
+new developer and coming in and everyone's talking about missions, and then you go in
+
+708
+00:42:08,060 --> 00:42:13,480
+the code and in the database and it talks about campaigns?
+
+709
+00:42:13,480 --> 00:42:17,540
+That's just one example. But it starts to feel a little bit like a Rosetta Stone, right,
+
+710
+00:42:17,540 --> 00:42:21,460
+where you've got one group of people talking about this thing, and every time they mention
+
+711
+00:42:21,460 --> 00:42:30,080
+it, you have to translate in your mind to something else. What they didn't do, and it
+
+712
+00:42:30,080 --> 00:42:34,820
+was a lost opportunity, I think, at some point in the past, they had the opportunity to say,
+
+713
+00:42:34,820 --> 00:42:39,120
+well, the business has renamed this. I'm guessing this is what happened from campaigns to mission.
+
+714
+00:42:39,120 --> 00:42:44,520
+And that's a, you know, for whatever reason. And they had the opportunity to say, well,
+
+715
+00:42:44,520 --> 00:42:49,540
+let's update the code to reflect that, but they didn't. And that decision now is so much
+
+716
+00:42:49,540 --> 00:42:55,920
+harder. That work would be so much harder to do. It was a lost opportunity to refine
+
+717
+00:42:55,920 --> 00:43:00,940
+the model and improve it. Why does this matter?
+
+718
+00:43:00,940 --> 00:43:03,860
+Why does this matter?
+
+719
+00:43:04,820 --> 00:43:19,820
+There's a lot of teams that I see that go very fast, and they make a lot of progress
+
+720
+00:43:19,820 --> 00:43:22,220
+very quickly on something new.
+
+721
+00:43:22,220 --> 00:43:26,980
+But then over time, it starts to get harder and harder, and they slow down.
+
+722
+00:43:26,980 --> 00:43:32,780
+And the speed that they were able to crank out functionality at the beginning is not
+
+723
+00:43:32,780 --> 00:43:35,080
+there anymore.
+
+724
+00:43:35,080 --> 00:43:39,760
+They become more and more mired in what they were creating, and it becomes more and more
+
+725
+00:43:39,760 --> 00:43:50,080
+of an effort of duct taping what they've done and writing workarounds for what they've done.
+
+726
+00:43:50,080 --> 00:43:56,280
+And they don't get the benefit of investing in design as they go along.
+
+727
+00:43:56,280 --> 00:44:02,320
+The idea is to make design part of your development culture.
+
+728
+00:44:02,320 --> 00:44:02,760
+A lot of...
+
+729
+00:44:02,760 --> 00:44:07,560
+A lot of organizations are very good at UX and product management in terms of building
+
+730
+00:44:07,560 --> 00:44:11,900
+the right thing and building it in a way that is a really great experience for the user.
+
+731
+00:44:11,900 --> 00:44:14,980
+What DDD brings is more that...
+
+732
+00:44:14,980 --> 00:44:19,140
+It's a little bit more hidden, is that design that is happening that informs everything
+
+733
+00:44:19,140 --> 00:44:21,160
+else that the team is doing.
+
+734
+00:44:21,160 --> 00:44:25,600
+It's having a consistent set of concepts that represent that.
+
+735
+00:44:25,600 --> 00:44:30,660
+And the goal, as I mentioned in the abstract, the goal is not to say, well, we're doing
+
+736
+00:44:30,660 --> 00:44:31,660
+DDD.
+
+737
+00:44:31,660 --> 00:44:32,660
+You know?
+
+738
+00:44:32,660 --> 00:44:33,660
+We're doing design.
+
+739
+00:44:33,660 --> 00:44:34,660
+That's not the goal.
+
+740
+00:44:34,660 --> 00:44:36,000
+That's the means to the end.
+
+741
+00:44:36,000 --> 00:44:43,620
+The end is to deliver the functionality and to meet the needs of the users.
+
+742
+00:44:43,620 --> 00:44:50,220
+So what's your journey going to look like?
+
+743
+00:44:50,220 --> 00:44:56,160
+I mentioned some things that work for us.
+
+744
+00:44:56,160 --> 00:45:02,460
+One of the things that I think, as I look back, was incredibly valuable for us was the
+
+745
+00:45:02,460 --> 00:45:03,460
+idea of prioritizing making over analysis.
+
+746
+00:45:03,460 --> 00:45:04,460
+You know what I mean by that?
+
+747
+00:45:04,460 --> 00:45:15,940
+There's a tendency, and I feel this sometimes, is to want to make things perfect and to not
+
+748
+00:45:15,940 --> 00:45:20,340
+move forward until I have a really good understanding of something.
+
+749
+00:45:20,340 --> 00:45:26,400
+And with domain-driven design, the idea is what you should try and do is to take what
+
+750
+00:45:26,400 --> 00:45:30,460
+you understand and make something, and then get some feedback on that, learn from that,
+
+751
+00:45:30,460 --> 00:45:31,460
+and expand on it as you go.
+
+752
+00:45:31,460 --> 00:45:32,460
+That's the goal.
+
+753
+00:45:32,460 --> 00:45:38,040
+That's that iterative, collaborative aspect of design.
+
+754
+00:45:38,040 --> 00:45:43,060
+Rather than getting paralyzed with trying to analyze it and get it perfect, is learn
+
+755
+00:45:43,060 --> 00:45:47,560
+enough of it to be able to make something, get some feedback on it, and move forward,
+
+756
+00:45:47,560 --> 00:45:48,760
+because you're learning as you're going.
+
+757
+00:45:48,760 --> 00:45:50,160
+It's the same way with learning a language.
+
+758
+00:45:50,160 --> 00:45:55,540
+You have to practice speaking it to be able to make progress.
+
+759
+00:45:55,540 --> 00:46:01,460
+I remember being, years ago, I was in Bangkok, and I was walking around the city with a friend,
+
+760
+00:46:01,460 --> 00:46:07,780
+and I'd done six months of language learning at my university back in Australia in the
+
+761
+00:46:07,780 --> 00:46:08,780
+Thai language.
+
+762
+00:46:08,780 --> 00:46:13,460
+And so I was practicing every opportunity I could to speak Thai phrases.
+
+763
+00:46:13,460 --> 00:46:14,520
+And she was so polite.
+
+764
+00:46:14,520 --> 00:46:20,220
+It was about mid-afternoon, where she said, you know, I just have to say something, and
+
+765
+00:46:20,220 --> 00:46:23,700
+I don't want to embarrass you, but that word that you think means beautiful when you're
+
+766
+00:46:23,700 --> 00:46:26,140
+talking about the buildings actually means ugly.
+
+767
+00:46:26,140 --> 00:46:28,460
+I was like, oh.
+
+768
+00:46:28,460 --> 00:46:30,620
+Well, I'm glad you told me now.
+
+769
+00:46:30,620 --> 00:46:34,180
+That I know.
+
+770
+00:46:34,180 --> 00:46:39,400
+And I think that's part of it, is a willingness to experiment and make mistakes, to prioritize
+
+771
+00:46:39,400 --> 00:46:42,660
+making over analysis.
+
+772
+00:46:42,660 --> 00:46:44,820
+Experiment in small batches.
+
+773
+00:46:44,820 --> 00:46:46,180
+Perfection is a trap.
+
+774
+00:46:46,180 --> 00:46:51,260
+What we're really talking about here is continuous discovery.
+
+775
+00:46:51,260 --> 00:46:57,080
+And to a certain extent, working on projects where there's a lot of uncertainty because
+
+776
+00:46:57,080 --> 00:46:59,900
+of this complexity.
+
+777
+00:46:59,900 --> 00:47:00,620
+A number of years ago, I was working on a project.
+
+778
+00:47:00,620 --> 00:47:06,580
+So a friend of mine who lives on Lake Michigan, he's actually been involved, there's a race
+
+779
+00:47:06,580 --> 00:47:14,180
+every year where they sail Catalina sailboats up the lake over the course of more than 24
+
+780
+00:47:14,180 --> 00:47:15,180
+hours.
+
+781
+00:47:15,180 --> 00:47:16,180
+It's a very grueling race.
+
+782
+00:47:16,180 --> 00:47:17,740
+He's an experienced sailor.
+
+783
+00:47:17,740 --> 00:47:21,180
+He came to Denver, and we went up in the mountains, and it was my first time sailing.
+
+784
+00:47:21,180 --> 00:47:23,640
+I had no idea what we were doing.
+
+785
+00:47:23,640 --> 00:47:25,540
+But he did.
+
+786
+00:47:25,540 --> 00:47:30,180
+And what fascinated me was when we turned around.
+
+787
+00:47:30,180 --> 00:47:36,860
+When we turned the Catalina, the sailboat around, and started to head into the wind,
+
+788
+00:47:36,860 --> 00:47:39,900
+his whole approach to sailing changed.
+
+789
+00:47:39,900 --> 00:47:43,980
+And I'd read about this, I understood in principle what it was like.
+
+790
+00:47:43,980 --> 00:47:49,100
+But it was very disorienting to think, okay, well I'm heading towards over there, I'm heading
+
+791
+00:47:49,100 --> 00:47:55,980
+to that part of the lake, but most of the time I seem to be going in other directions.
+
+792
+00:47:55,980 --> 00:47:58,740
+Because he's tacking, what he's doing is tacking against the wind, right?
+
+793
+00:47:58,740 --> 00:48:05,100
+He has this prevailing force, and he knows where he's going to get to, and he keeps that
+
+794
+00:48:05,100 --> 00:48:13,020
+as kind of his goal, but he has to pivot his way there in, you know, in small ways.
+
+795
+00:48:13,020 --> 00:48:17,480
+And so what we did was we focused on, and he was teaching me how to do this, on getting
+
+796
+00:48:17,480 --> 00:48:19,520
+really good at tacking.
+
+797
+00:48:19,520 --> 00:48:25,500
+And once we got really good at changing direction and reading the wind, then I was a lot more
+
+798
+00:48:25,500 --> 00:48:27,420
+comfortable as we moved across the lake.
+
+799
+00:48:27,420 --> 00:48:28,540
+And of course we got to where we wanted to be.
+
+800
+00:48:28,540 --> 00:48:31,400
+We got to where we wanted to go.
+
+801
+00:48:31,400 --> 00:48:35,980
+And I think software development and domain-driven design really shines when you're in that kind
+
+802
+00:48:35,980 --> 00:48:41,220
+of area of uncertainty where you're tacking against the wind and you're trying to deal
+
+803
+00:48:41,220 --> 00:48:52,100
+with that uncertainty by working in small batches, by pivoting on a very frequent basis.
+
+804
+00:48:52,100 --> 00:48:57,120
+There's one team I wanted to mention that I've coached for on and off for a number of
+
+805
+00:48:57,120 --> 00:48:58,080
+years now in the U.S.
+
+806
+00:48:58,080 --> 00:48:58,520
+There's one team I wanted to mention that I've coached for on and off for a number of years now in the U.S.
+
+807
+00:48:58,540 --> 00:49:05,260
+And they seem, their context seems to have all the characteristics that would make doing
+
+808
+00:49:05,260 --> 00:49:06,700
+this impossible.
+
+809
+00:49:06,700 --> 00:49:16,580
+They work in a very tightly managed, high-stakes compliance environment.
+
+810
+00:49:16,580 --> 00:49:25,160
+And yet they've been able to pull off domain-driven design year after year and seen the advantages
+
+811
+00:49:25,160 --> 00:49:26,580
+from that in terms of delivery.
+
+812
+00:49:26,580 --> 00:49:28,080
+They have a great relationship with their client.
+
+813
+00:49:28,080 --> 00:49:34,240
+The software has continued to improve and evolve as they've worked on it.
+
+814
+00:49:34,240 --> 00:49:36,960
+And that hasn't happened by default.
+
+815
+00:49:36,960 --> 00:49:44,060
+They've invested in carving out time to do design and developing close relationships
+
+816
+00:49:44,060 --> 00:49:48,440
+between the team and the product managers to really understand what it is that the business
+
+817
+00:49:48,440 --> 00:49:52,480
+needs and doing all the kinds of things that we were talking about in here.
+
+818
+00:49:52,480 --> 00:49:58,000
+And you know, month after month, week after week, year after year, they've been able to
+
+819
+00:49:58,000 --> 00:50:04,560
+continue to deliver.
+
+820
+00:50:04,560 --> 00:50:06,160
+What's your journey going to be like?
+
+821
+00:50:06,160 --> 00:50:10,780
+I just want to close with a couple of thoughts.
+
+822
+00:50:10,780 --> 00:50:16,540
+Last year, after maybe a break of 10, 20 years, I can't even remember now, I took up playing
+
+823
+00:50:16,540 --> 00:50:17,880
+electric guitar again.
+
+824
+00:50:17,880 --> 00:50:22,760
+I hadn't played guitar for a long time, not electric anyway.
+
+825
+00:50:22,760 --> 00:50:28,000
+And I'd been exploring a bunch of other hobbies.
+
+826
+00:50:28,000 --> 00:50:29,760
+It wasn't like I hated guitar or anything.
+
+827
+00:50:29,760 --> 00:50:32,480
+I just had other hobbies that I was interested in.
+
+828
+00:50:32,480 --> 00:50:38,940
+And what I found is that it took months of practice just to return back to the ability
+
+829
+00:50:38,940 --> 00:50:43,360
+that I had when I stopped playing years ago.
+
+830
+00:50:43,360 --> 00:50:48,620
+And it's taken a lot of hard work to get to the point now where I'm playing better than
+
+831
+00:50:48,620 --> 00:50:52,420
+I remember playing when I stopped.
+
+832
+00:50:52,420 --> 00:50:54,560
+What have I learned through that process?
+
+833
+00:50:54,560 --> 00:50:56,520
+I think it's important.
+
+834
+00:50:56,520 --> 00:50:57,520
+Yeah.
+
+835
+00:50:57,520 --> 00:50:58,000
+Yeah.
+
+836
+00:50:58,000 --> 00:51:05,060
+One thing is consistency, is this idea of consistent practice and experimentation.
+
+837
+00:51:05,060 --> 00:51:10,320
+And related to that, and you hear about this in the, there's a lot of talk of deliberate
+
+838
+00:51:10,320 --> 00:51:11,320
+practice.
+
+839
+00:51:11,320 --> 00:51:16,900
+It's the idea of learning from your mistakes, of reflecting on your mistakes.
+
+840
+00:51:16,900 --> 00:51:23,020
+So individually, being able to reflect on what I'm doing and say, where do I need to
+
+841
+00:51:23,020 --> 00:51:24,020
+improve?
+
+842
+00:51:24,020 --> 00:51:27,520
+Where do I need to maybe go into a smaller circle and focus on this?
+
+843
+00:51:27,520 --> 00:51:31,360
+Where do I need to focus on this one area that is not working for me?
+
+844
+00:51:31,360 --> 00:51:37,200
+So consistent practice and experimentation trumps theorizing about perfection.
+
+845
+00:51:37,200 --> 00:51:44,340
+Now on any given day or when I'm practicing guitar, it doesn't feel like I'm making progress.
+
+846
+00:51:44,340 --> 00:51:47,200
+And maybe it's like that for you on your projects.
+
+847
+00:51:47,200 --> 00:51:50,800
+I expect you've experienced something similar in any endeavor where you're trying to improve
+
+848
+00:51:50,800 --> 00:51:53,080
+your skills.
+
+849
+00:51:53,080 --> 00:51:56,520
+And as I work on speeding up a particular lick or arpeggio.
+
+850
+00:51:56,520 --> 00:51:59,160
+I'm making mistakes.
+
+851
+00:51:59,160 --> 00:52:02,840
+And it doesn't sound very nice sometimes.
+
+852
+00:52:02,840 --> 00:52:12,400
+It's only as I look back over the last year that I can see relative progress in my skills.
+
+853
+00:52:12,400 --> 00:52:18,680
+As you move forward in your journey with domain driven design, to learn effectively, you have
+
+854
+00:52:18,680 --> 00:52:21,140
+to overcome your fear of making mistakes.
+
+855
+00:52:21,140 --> 00:52:26,400
+Designers like artists, musicians, and athletes get better by sharpening their skills.
+
+856
+00:52:26,520 --> 00:52:29,140
+Or by acquiring new ones.
+
+857
+00:52:29,140 --> 00:52:34,120
+They get better by learning to work and by learning from their work.
+
+858
+00:52:34,120 --> 00:52:35,900
+Learning to work and learning from their work.
+
+859
+00:52:35,900 --> 00:52:37,280
+And it's the same in software development.
+
+860
+00:52:37,280 --> 00:52:38,900
+It's the same in software design.
+
+861
+00:52:38,900 --> 00:52:45,060
+DDD is about applying that same mindset towards your business domain in all its apparent complexity
+
+862
+00:52:45,060 --> 00:52:48,120
+and messiness.
+
+863
+00:52:48,120 --> 00:52:55,400
+It's about you applying your skills, your tools, to cultivate a common language in your
+
+864
+00:52:55,400 --> 00:52:56,400
+team.
+
+865
+00:52:56,400 --> 00:52:58,120
+And it's about you applying your skills to the community around the domain model expressed
+
+866
+00:52:58,120 --> 00:52:59,420
+in the software.
+
+867
+00:52:59,420 --> 00:53:01,420
+And to work as a team in that.
+
+868
+00:53:01,420 --> 00:53:06,780
+Because it's not enough just to practice a particular technique.
+
+869
+00:53:06,780 --> 00:53:10,900
+When I'm learning guitar, I really have to do two things if I'm going to take a skill
+
+870
+00:53:10,900 --> 00:53:12,040
+to the next level.
+
+871
+00:53:12,040 --> 00:53:17,960
+One is I have to take that isolated thing that I'm learning and put it, practice it
+
+872
+00:53:17,960 --> 00:53:19,980
+in the context of something I already know.
+
+873
+00:53:19,980 --> 00:53:21,960
+Like a song that I already know.
+
+874
+00:53:21,960 --> 00:53:25,160
+And then the second thing I have to do to really take it to the next level is to try
+
+875
+00:53:25,160 --> 00:53:26,260
+and incorporate that.
+
+876
+00:53:26,400 --> 00:53:27,780
+And I'm not really going to do that.
+
+877
+00:53:27,780 --> 00:53:28,780
+It's not going to be something that I do when I'm playing in a band with other people.
+
+878
+00:53:28,780 --> 00:53:34,700
+Because then I really start to see how that applies in the broader context of being a
+
+879
+00:53:34,700 --> 00:53:35,780
+musician in a band.
+
+880
+00:53:35,780 --> 00:53:37,520
+And it's like that as a designer.
+
+881
+00:53:37,520 --> 00:53:40,480
+It's like that in software.
+
+882
+00:53:40,480 --> 00:53:45,280
+You not only need to improve your own skills, but get better at using those skills in the
+
+883
+00:53:45,280 --> 00:53:51,660
+context of other people.
+
+884
+00:53:51,660 --> 00:53:53,400
+So it's not enough just to practice a particular technique in isolation.
+
+885
+00:53:53,400 --> 00:53:54,400
+I think that's a really important thing to do.
+
+886
+00:53:54,400 --> 00:53:55,400
+It's not enough just to practice a particular technique in isolation.
+
+887
+00:53:55,400 --> 00:53:56,400
+It's not enough just to practice a particular technique in isolation.
+
+888
+00:53:56,400 --> 00:53:56,980
+It's not enough to practice a particular technique in isolation.
+
+889
+00:53:56,980 --> 00:54:01,820
+My musical capacity and proficiency have increased, and it makes me not only a better musician,
+
+890
+00:54:01,820 --> 00:54:05,480
+but also a better band member, and it makes the music overall better.
+
+891
+00:54:05,480 --> 00:54:11,000
+Now what I would encourage you to do, just closing thoughts today, is take advantage
+
+892
+00:54:11,000 --> 00:54:12,460
+of this day.
+
+893
+00:54:12,460 --> 00:54:19,180
+Like I mentioned at the start, that I'm really trying to present an appetizer to you of what's
+
+894
+00:54:19,180 --> 00:54:24,380
+coming, and whet your appetite for what's coming along.
+
+895
+00:54:24,380 --> 00:54:25,820
+So don't be a doing-it-all.
+
+896
+00:54:25,820 --> 00:54:26,320
+Just do what you feel is right.
+
+897
+00:54:26,320 --> 00:54:26,360
+Now that's it.
+
+898
+00:54:26,360 --> 00:54:26,400
+Bye.
+
+899
+00:54:26,400 --> 00:54:34,840
+So take this as the opportunity that it is to embrace what other people are saying,
+
+900
+00:54:34,940 --> 00:54:38,880
+to evaluate it, decide what is for you and what might work in your context
+
+901
+00:54:38,880 --> 00:54:40,640
+and be willing to experiment with that.
+
+902
+00:54:41,140 --> 00:54:44,120
+Experiment with new techniques, challenge your assumptions
+
+903
+00:54:44,120 --> 00:54:47,320
+and learn from others in your design journey.
+
+904
+00:54:48,420 --> 00:54:49,100
+Thank you.
+
+905
+00:54:49,100 --> 00:54:49,120
+Thank you.
+
+906
+00:54:56,400 --> 00:55:26,380
+Thank you.
