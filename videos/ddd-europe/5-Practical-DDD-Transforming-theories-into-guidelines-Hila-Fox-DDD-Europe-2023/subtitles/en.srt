@@ -1,0 +1,2915 @@
+1
+00:00:00,000 --> 00:00:23,300
+Okay. Hi, everyone. Welcome to Practical DDD Transforming Theories into Guidelines. First
+
+2
+00:00:23,300 --> 00:00:27,880
+of all, hi. My name is Hila. I'm a software architect with eight years of experience,
+
+3
+00:00:27,880 --> 00:00:35,220
+and in the past three years, I've been working in a company called Augury. Okay? I also manage
+
+4
+00:00:35,220 --> 00:00:43,260
+the company tech blog, and I'm a public speaker. I'm here, obviously. Active in some communities,
+
+5
+00:00:43,620 --> 00:00:49,940
+and I write some content. So if you want, look me up on LinkedIn or Medium. And I'm super
+
+6
+00:00:49,940 --> 00:00:57,480
+passionate about architecture, DDD, everything about that. So that's me. Before we dive into
+
+7
+00:00:57,480 --> 00:01:03,980
+the real content, I do want to talk a little bit about Augury, because we're in the industry
+
+8
+00:01:03,980 --> 00:01:10,640
+4.0 world, and I don't know, not everyone is aware of our domain. So I do want to share
+
+9
+00:01:10,640 --> 00:01:17,440
+some things. I'm going to use this in examples later on. So Augury, our mission is to provide
+
+10
+00:01:17,440 --> 00:01:22,940
+manufacturers and other industrial sectors with insights into the health of machines,
+
+11
+00:01:22,940 --> 00:01:27,420
+processes, and operations to transform how people work and what they can
+
+12
+00:01:27,420 --> 00:01:34,800
+create. Together with our customers, we are building a world where the combined work of
+
+13
+00:01:34,800 --> 00:01:43,020
+people and machines makes life better in every way. Right? Our product, so Augury's product,
+
+14
+00:01:43,400 --> 00:01:50,480
+is full-stack machine health solution that uses sensors to capture vibration, like in the picture.
+
+15
+00:01:51,260 --> 00:01:56,600
+Not sure if you can see it very well, but there are like blue boxes that are actually sensors that
+
+16
+00:01:57,420 --> 00:02:03,500
+are in the house. They capture vibration, temperature, and magnetic data from the machines.
+
+17
+00:02:03,500 --> 00:02:10,260
+It's transported to the cloud, and our advanced AI diagnostics and human reliability experts
+
+18
+00:02:10,260 --> 00:02:15,980
+use this information to improve the health and performance of industrial machines. Okay?
+
+19
+00:02:15,980 --> 00:02:22,260
+So we have, let's say, all of it all, right? We have IoT, we have data, we have an AI engine,
+
+20
+00:02:22,260 --> 00:02:27,300
+we have a mobile app, a web app, everything you can think of.
+
+21
+00:02:27,300 --> 00:02:36,440
+It's a complex world. And in regards to a product R&D mindset, okay, our thinking is we are here to
+
+22
+00:02:36,440 --> 00:02:42,060
+stay. Okay? We are looking at ourselves. We are going to build a generational company. Okay? We
+
+23
+00:02:42,060 --> 00:02:47,580
+are still a startup, and I'll go through our journey, but this also impacts decisions that
+
+24
+00:02:47,580 --> 00:02:54,480
+we're making in architecture. We are really like almost religious about empowered squads,
+
+25
+00:02:55,080 --> 00:02:57,280
+so this leads us in a lot of thinking.
+
+26
+00:02:57,300 --> 00:03:02,400
+We are thinking of how we build our processes, and we really, truly believe in growth mindset.
+
+27
+00:03:02,400 --> 00:03:10,220
+So we have all of this. Now, the talk. So I'm going to separate the talk into three
+
+28
+00:03:10,220 --> 00:03:15,240
+parts. First of all, I'm going to talk about what are we trying to solve, what am I talking
+
+29
+00:03:15,240 --> 00:03:20,580
+about here, like, in general, what I'm doing. Afterwards, how we made it practical, something
+
+30
+00:03:20,580 --> 00:03:27,080
+that we can really use in our company. And the rest of the talk will be about how we
+
+31
+00:03:27,080 --> 00:03:32,780
+build a company around architectural topics and examples from real life initiatives that
+
+32
+00:03:32,780 --> 00:03:40,220
+were happening in our company and how it was used. So I was told that a good presentation
+
+33
+00:03:40,220 --> 00:03:48,940
+starts with a joke. I hope you're ready. Knock, knock. Awesome. Thank you, by the way.
+
+34
+00:03:48,940 --> 00:03:56,860
+So some fade, ghost-like sound, hypergrowth. Oh, no. Oh, yeah. So it's usually, it depends.
+
+35
+00:03:56,860 --> 00:03:56,960
+It depends. It depends. It depends. It depends. It depends. It depends. It depends. It depends.
+
+36
+00:03:56,960 --> 00:03:57,060
+It depends. It depends. It depends. It depends. It depends. It depends. It depends. It depends.
+
+37
+00:03:57,080 --> 00:03:58,080
+It depends. It depends. It depends. It depends. It depends. It depends. It depends. It depends.
+
+38
+00:03:58,080 --> 00:04:02,340
+It gets crazy when a company enters the situation of hypergrowth. You need to start scaling
+
+39
+00:04:02,340 --> 00:04:08,080
+a lot of things. Everything is going out of hand. And Augury's journey, while it started
+
+40
+00:04:08,080 --> 00:04:16,240
+somewhere in 2011, and it sort of changed in 2017, because we pivoted to a different
+
+41
+00:04:16,240 --> 00:04:21,860
+kind of customer. And this is when things really started going up for us. We reached
+
+42
+00:04:21,860 --> 00:04:26,960
+product market fit, and then we needed to think what's the next step. So we decided
+
+43
+00:04:26,960 --> 00:04:34,820
+to become a portfolio company. And this introduces a whole bunch of new problems. So either by
+
+44
+00:04:34,820 --> 00:04:42,360
+partnerships with other big companies or by acquisition or by even developing more products
+
+45
+00:04:42,360 --> 00:04:47,760
+in-house, we started doing all of this. We raised more money. We're a startup. We're privately owned
+
+46
+00:04:47,760 --> 00:04:56,640
+and went from 110 to 420, I think, in a year and a half, something like that. So you realize you
+
+47
+00:04:56,640 --> 00:05:01,780
+need to scale your product, your people, and your technology all at the same time.
+
+48
+00:05:04,280 --> 00:05:11,980
+Obviously, this is the sentiment. Yeah, we went from being seven squads. As I said,
+
+49
+00:05:11,980 --> 00:05:21,020
+we also have IoT, and we also have AI, and we have web teams. All of this transitioned into
+
+50
+00:05:21,020 --> 00:05:26,640
+five R&D groups. So it was suddenly a lot of new boundaries, a lot of new
+
+51
+00:05:26,640 --> 00:05:37,360
+structures. And as we are scaling, we want to achieve some things. Like I said, we are almost
+
+52
+00:05:37,360 --> 00:05:43,540
+religious about empowered teams. And we actually want to scale the decision-making process within
+
+53
+00:05:43,540 --> 00:05:50,120
+the squads. As the company grows and we're starting to see a lot of situations that we
+
+54
+00:05:50,120 --> 00:05:56,480
+need architectural decisions, we wanted to keep this in the squads. So to enable this for the
+
+55
+00:05:56,640 --> 00:06:02,260
+squads, we understood that we need to generate very clear boundaries between the R&D groups that
+
+56
+00:06:02,260 --> 00:06:10,140
+are forming. So we wanted to do that. But also, when the company is growing, you're trying to
+
+57
+00:06:10,140 --> 00:06:15,580
+solve so many things. We needed to really narrow our thinking to what will actually impact what
+
+58
+00:06:15,580 --> 00:06:20,460
+we're doing, what will actually help the company's growth at this point in time. So we need to focus
+
+59
+00:06:20,460 --> 00:06:26,540
+on our specific pain points. And we wanted to generate a process for us or guidelines so we
+
+60
+00:06:26,640 --> 00:06:33,360
+can propagate knowledge across all of the R&D. Because at the stage of hypergrowth and changing
+
+61
+00:06:33,360 --> 00:06:40,760
+from squads to groups, the concept of word-to-mouth stops working. You had three back-end developers,
+
+62
+00:06:40,900 --> 00:06:46,660
+they did everything. And suddenly you have 15, and they're distributed along all of the company.
+
+63
+00:06:47,660 --> 00:06:53,340
+And we believe that if we'll do that, we'll manage to scale the decision-making process and so on.
+
+64
+00:06:54,780 --> 00:06:56,540
+Okay. So
+
+65
+00:06:56,640 --> 00:07:01,080
+we had that in mind because, truly, what we want to avoid is this, this
+
+66
+00:07:03,240 --> 00:07:05,520
+mess of a situation that you have
+
+67
+00:07:07,080 --> 00:07:13,260
+different squads potentially, even from different R&D groups, sharing architectural and technological
+
+68
+00:07:13,260 --> 00:07:20,160
+components in an unhealthy way. And the problem is, it's that it will harm their autonomy, and it
+
+69
+00:07:20,160 --> 00:07:24,780
+will harm their ownership to truly move on with their domain.
+
+70
+00:07:26,140 --> 00:07:26,640
+One sec.
+
+71
+00:07:26,640 --> 00:07:28,640
+I'm excited.
+
+72
+00:07:30,640 --> 00:07:32,640
+Okay. Awesome.
+
+73
+00:07:32,640 --> 00:07:39,640
+So we want to reach this, we need some guiding principles to lead us through the way. First of all, we have
+
+74
+00:07:39,640 --> 00:07:48,640
+Conway's Law. Conway's Law says, any organization that designs a system will produce a design whose structure is a copy of
+
+75
+00:07:48,640 --> 00:07:56,140
+the organization's communication structure. Right? So we'll have our organization structure, and it will mirror that.
+
+76
+00:07:56,140 --> 00:08:04,140
+It will mirror our architecture, or our architecture will mirror it, whatever you want to look at, see the perspective from.
+
+77
+00:08:04,140 --> 00:08:12,140
+Another guiding principle is DDD, the reason we are all here. And if I would just, like, give a one-liner.
+
+78
+00:08:12,140 --> 00:08:22,140
+So DDD is a software design approach focusing on modeling software to match the domain according to input from the domain experts.
+
+79
+00:08:22,140 --> 00:08:24,140
+And what we wanted to achieve using this is to break down our solution domains.
+
+80
+00:08:24,140 --> 00:08:26,140
+And what we wanted to achieve using this is to break down our solution domains.
+
+81
+00:08:26,140 --> 00:08:32,140
+So we can feed the R&D groups to support the squad's collaboration with as less friction as possible.
+
+82
+00:08:32,140 --> 00:08:36,140
+This comes with good boundaries. And we wanted to generate common language.
+
+83
+00:08:36,140 --> 00:08:44,140
+Because we understood that now that we have grown, it's very hard. If we're not understanding each other, it won't work.
+
+84
+00:08:44,140 --> 00:08:50,140
+And this is basically what we wanted to enable. Okay? So we have a development group with several squads.
+
+85
+00:08:50,140 --> 00:08:55,640
+And we have a domain. And we have some bounded contexts in this domain. And we wanted to be able to take a bounded context,
+
+86
+00:08:55,640 --> 00:08:57,640
+And we have some bounded contexts in this domain. And we wanted to be able to take a bounded context,
+
+87
+00:08:57,640 --> 00:09:01,640
+which has a very clear boundary and assign it to a squad and keep this ownership long-leaving.
+
+88
+00:09:01,640 --> 00:09:03,640
+which has a very clear boundary and assign it to a squad and keep this ownership long-leaving.
+
+89
+00:09:03,640 --> 00:09:05,640
+Okay.
+
+90
+00:09:05,640 --> 00:09:09,640
+So all of this was kind of like fluff. Okay, that's nice.
+
+91
+00:09:09,640 --> 00:09:11,640
+But what do you actually do with all of this information?
+
+92
+00:09:11,640 --> 00:09:13,640
+But what do you actually do with all of this information?
+
+93
+00:09:13,640 --> 00:09:15,640
+How do we make it practical?
+
+94
+00:09:15,640 --> 00:09:21,640
+So first of all, we needed to decide who is going to make it practical.
+
+95
+00:09:21,640 --> 00:09:23,640
+And this is where comes the role of the architect.
+
+96
+00:09:23,640 --> 00:09:25,640
+And this is where comes the role of the architect.
+
+97
+00:09:25,640 --> 00:09:37,780
+Architects, I think, traditionally are people that look from above on everything and make decisions on how things should interact with each other.
+
+98
+00:09:38,380 --> 00:09:42,540
+But as I said, we really love empowering our squads.
+
+99
+00:09:42,720 --> 00:09:52,440
+So how will we introduce a persona to the company that will help us have this wide enough vision, but also not take the power from the squads themselves?
+
+100
+00:09:52,440 --> 00:09:58,180
+And this is where we thought, and this is a quote from Martin Fowler,
+
+101
+00:09:58,600 --> 00:10:05,160
+your role is no longer to make choices, but to help others make the right choice and that radiate that information.
+
+102
+00:10:06,440 --> 00:10:11,200
+Okay, taking that, the architect's role transformed.
+
+103
+00:10:11,880 --> 00:10:16,600
+Okay, so it became a lot more about helping others make the right choices,
+
+104
+00:10:16,600 --> 00:10:22,400
+a lot on propagating knowledge to other people and to lead without offense.
+
+105
+00:10:23,000 --> 00:10:27,940
+Because once again, if you're not making the decision, you need people to still take your advice.
+
+106
+00:10:28,660 --> 00:10:33,460
+So what we did, and you can see the picture at the bottom, this is our architecture guild.
+
+107
+00:10:33,840 --> 00:10:37,220
+We also have guilds in the company, which is a completely different topic.
+
+108
+00:10:37,220 --> 00:10:45,120
+But what we actually did is we assigned an architect for each R&D group,
+
+109
+00:10:45,320 --> 00:10:50,980
+and we sort of form a bi-directional channel in between all of the R&D groups to one central place.
+
+110
+00:10:51,600 --> 00:10:52,160
+Because what?
+
+111
+00:10:52,440 --> 00:10:56,240
+Instead, we want to generate like a cross R&D alignment and guidelines.
+
+112
+00:10:56,420 --> 00:10:57,620
+So we need these channels.
+
+113
+00:10:57,760 --> 00:11:00,100
+So the architects are not just floating everywhere.
+
+114
+00:11:00,540 --> 00:11:03,220
+They're assigned to actual groups with specific domains.
+
+115
+00:11:03,880 --> 00:11:07,600
+And in the guild, we tackle what we see that is broad enough
+
+116
+00:11:07,600 --> 00:11:13,660
+and will impact actually the company's, I don't know, velocity and good practices
+
+117
+00:11:13,660 --> 00:11:15,860
+and stuff like that that are broad enough.
+
+118
+00:11:17,800 --> 00:11:20,000
+So what actually happened?
+
+119
+00:11:20,500 --> 00:11:21,820
+The architect transformed.
+
+120
+00:11:22,440 --> 00:11:26,640
+From being decision makers to agents of change.
+
+121
+00:11:27,640 --> 00:11:32,060
+From being diagram creators to guidelines generators.
+
+122
+00:11:33,260 --> 00:11:33,320
+Okay?
+
+123
+00:11:35,160 --> 00:11:35,520
+Okay.
+
+124
+00:11:36,140 --> 00:11:37,680
+So the guidelines.
+
+125
+00:11:37,960 --> 00:11:45,640
+And remember, what we want to do is to be able to assign these areas,
+
+126
+00:11:45,640 --> 00:11:49,500
+these boundaries to specific squads so they can take them and take full ownership.
+
+127
+00:11:51,340 --> 00:11:52,300
+So the next step.
+
+128
+00:11:52,440 --> 00:11:54,060
+Is if we look at the bounded context.
+
+129
+00:11:54,060 --> 00:11:58,640
+Now we need to start to think about the architecture, you know, like what lies underneath.
+
+130
+00:11:59,040 --> 00:12:05,200
+So we need to understand how to take architectural and technical components and put them in those boundaries.
+
+131
+00:12:05,200 --> 00:12:05,440
+Right.
+
+132
+00:12:05,440 --> 00:12:10,060
+And to be able to draw these lines and have all of this drawn together.
+
+133
+00:12:10,560 --> 00:12:12,960
+So now we're going to start and tackle this.
+
+134
+00:12:12,960 --> 00:12:20,960
+This is what the guidelines are supposed to help the teams do, by the way, define architectural components that will fit in those boundaries.
+
+135
+00:12:22,440 --> 00:12:30,600
+So we started working on research, actually, two years ago, when the company started scaling.
+
+136
+00:12:31,440 --> 00:12:34,780
+We went out and we talked to other companies and what do they do?
+
+137
+00:12:34,780 --> 00:12:37,100
+And we understand that DDD is a good practice.
+
+138
+00:12:37,100 --> 00:12:38,820
+And we started looking into DDD.
+
+139
+00:12:39,320 --> 00:12:41,940
+And then we sort of like took a step back.
+
+140
+00:12:42,800 --> 00:12:43,000
+Okay.
+
+141
+00:12:43,000 --> 00:12:44,540
+Because DDD is a huge world.
+
+142
+00:12:44,800 --> 00:12:45,120
+Okay.
+
+143
+00:12:45,120 --> 00:12:48,240
+And how do you come and take it and put it like in your company?
+
+144
+00:12:48,940 --> 00:12:51,940
+So what we decided is to look into our specific research.
+
+145
+00:12:51,940 --> 00:12:52,240
+Okay.
+
+146
+00:12:52,240 --> 00:12:53,740
+Requirements and needs.
+
+147
+00:12:54,200 --> 00:13:00,420
+For example, we are very data intensive because we have a lot of data coming from our sensors to the to the cloud.
+
+148
+00:13:00,640 --> 00:13:06,100
+And we have very complex visualizations for our customers to look at their machines.
+
+149
+00:13:06,620 --> 00:13:06,780
+Okay.
+
+150
+00:13:06,780 --> 00:13:08,920
+So this is something we need to take into account.
+
+151
+00:13:09,620 --> 00:13:12,820
+For example, we're in hyper growth and we need to sustain this growth.
+
+152
+00:13:12,820 --> 00:13:13,080
+Right.
+
+153
+00:13:13,080 --> 00:13:15,120
+Architecture can be rigid or less.
+
+154
+00:13:15,420 --> 00:13:21,240
+And also, we just started looking at what's happening in our design reviews.
+
+155
+00:13:21,240 --> 00:13:22,240
+We already had the design.
+
+156
+00:13:22,240 --> 00:13:32,480
+We've plot processing in place and we started seeing what are the common questions that are arising from different initiatives happening in the company.
+
+157
+00:13:33,820 --> 00:13:37,700
+And from that, we derived basic the DDD definitions.
+
+158
+00:13:37,740 --> 00:13:40,080
+We decided we're not introducing everything.
+
+159
+00:13:40,340 --> 00:13:46,080
+We're introducing only what's relevant for us, what will help us serve what we're trying to achieve.
+
+160
+00:13:46,520 --> 00:13:51,080
+So we took DDD definitions and actually also some architectural definitions and patterns.
+
+161
+00:13:51,080 --> 00:13:52,020
+And you'll see this soon.
+
+162
+00:13:52,240 --> 00:13:58,960
+And I think something that is very important pinpoint here is that language is key.
+
+163
+00:13:59,320 --> 00:13:59,580
+Okay.
+
+164
+00:13:59,580 --> 00:14:05,200
+We're talking in DDD and ubiquitous language and we understand the importance of language.
+
+165
+00:14:05,380 --> 00:14:10,180
+But what DDD doesn't supply us is actually an opinion on microservices.
+
+166
+00:14:10,340 --> 00:14:16,020
+And we needed to give one because our system is very distributed and this is our ecosystem.
+
+167
+00:14:16,020 --> 00:14:17,540
+So we need to use that.
+
+168
+00:14:18,060 --> 00:14:21,780
+We need to optimize for propagating the costal and the knowledge.
+
+169
+00:14:21,780 --> 00:14:22,020
+Okay.
+
+170
+00:14:22,020 --> 00:14:28,560
+It can't be too complicated and we need to align also with existing language.
+
+171
+00:14:28,560 --> 00:14:34,020
+Like I don't think it's very common that a company starts and day two, let's have DDD.
+
+172
+00:14:34,260 --> 00:14:36,160
+It's too complicated for the start, right?
+
+173
+00:14:36,160 --> 00:14:37,120
+You're already in place.
+
+174
+00:14:37,120 --> 00:14:40,500
+You already have internal language.
+
+175
+00:14:40,500 --> 00:14:42,520
+We need to see how this coexists together.
+
+176
+00:14:43,020 --> 00:14:51,260
+And then we use the architectural patterns where DDD didn't supply like what we actually needed to answer our use cases.
+
+177
+00:14:52,020 --> 00:14:56,360
+So, a playbook was written.
+
+178
+00:14:57,400 --> 00:15:06,520
+And I don't know if you were ever handed a book at work, you know, like go have fun, implement your stuff.
+
+179
+00:15:06,840 --> 00:15:09,240
+So, the content in the playbook was really good.
+
+180
+00:15:09,240 --> 00:15:15,120
+Like the research was top notch and the content was top notch and the language was defined and it was all good.
+
+181
+00:15:15,660 --> 00:15:16,520
+But it failed.
+
+182
+00:15:16,920 --> 00:15:18,860
+We couldn't really embed it within the teams.
+
+183
+00:15:18,860 --> 00:15:21,260
+And the problem, the book was too long.
+
+184
+00:15:21,260 --> 00:15:23,580
+The developers didn't know how to use it.
+
+185
+00:15:23,580 --> 00:15:26,700
+There was no explaining sessions.
+
+186
+00:15:26,700 --> 00:15:32,100
+It's like we just imagined that everyone will read it and understand it.
+
+187
+00:15:32,100 --> 00:15:41,940
+Like if it took us six months to do research and then write it, then they must be, you know, it must be fun reading it for ten minutes and then be expected to use it.
+
+188
+00:15:42,820 --> 00:15:43,320
+Sure.
+
+189
+00:15:43,940 --> 00:15:45,220
+So, that failed.
+
+190
+00:15:45,600 --> 00:15:48,300
+And once again, we took a step back.
+
+191
+00:15:48,600 --> 00:15:50,640
+And what we decided is to take this playbook and do it.
+
+192
+00:15:50,640 --> 00:15:52,280
+And to separate it.
+
+193
+00:15:52,620 --> 00:15:59,120
+We've done, we've separated it to a definitions document and architectural topics.
+
+194
+00:15:59,280 --> 00:16:03,760
+Architectural topics can be either patterns or like big topics that we need to discuss.
+
+195
+00:16:04,460 --> 00:16:11,320
+And they were built in such a way that they will probably answer one question in your design.
+
+196
+00:16:11,320 --> 00:16:16,340
+Like usually if the initiative is well scoped enough, the question wouldn't be too large.
+
+197
+00:16:16,440 --> 00:16:20,560
+You will have one architectural question, hopefully, in the design.
+
+198
+00:16:20,640 --> 00:16:24,520
+But it already gets like to the feature teams, you know, to the squad.
+
+199
+00:16:24,520 --> 00:16:25,400
+It's not feature teams.
+
+200
+00:16:25,400 --> 00:16:26,280
+They're autonomous.
+
+201
+00:16:26,280 --> 00:16:29,960
+But I mean, application teams or domain teams or whatever you want to call it.
+
+202
+00:16:30,400 --> 00:16:30,900
+I don't know.
+
+203
+00:16:30,900 --> 00:16:36,880
+I'm hearing a lot of different words for this in the past few days.
+
+204
+00:16:37,440 --> 00:16:38,420
+So, we broke it off.
+
+205
+00:16:38,420 --> 00:16:50,420
+But we also put a lot of work in doing sessions with all of the R&D and also very rigorous feedback loops with the developers.
+
+206
+00:16:50,640 --> 00:16:51,820
+On the content.
+
+207
+00:16:51,980 --> 00:16:53,060
+Can you understand this?
+
+208
+00:16:53,180 --> 00:16:54,460
+What do you think?
+
+209
+00:16:54,900 --> 00:16:56,060
+Does it hit home for you?
+
+210
+00:16:56,320 --> 00:16:57,320
+And we've done all that.
+
+211
+00:17:00,120 --> 00:17:02,780
+So, a little bit about the topics.
+
+212
+00:17:03,540 --> 00:17:07,680
+So, initially the playbook was broken to five topics.
+
+213
+00:17:07,680 --> 00:17:13,100
+And since then, we have a few more because we're in this process for already two years.
+
+214
+00:17:13,320 --> 00:17:14,580
+So, it's always a work in progress.
+
+215
+00:17:14,920 --> 00:17:18,920
+And these are four of the first topics.
+
+216
+00:17:19,580 --> 00:17:20,620
+And actually, the four of them.
+
+217
+00:17:20,780 --> 00:17:27,660
+Represent situations in which we would recommend a developer to generate a new microservice in our system.
+
+218
+00:17:28,280 --> 00:17:30,320
+And we have several patterns.
+
+219
+00:17:30,320 --> 00:17:31,880
+And we'll go deeper into them.
+
+220
+00:17:31,920 --> 00:17:33,360
+But we have the aggregate service.
+
+221
+00:17:33,360 --> 00:17:35,240
+We have bounded context service.
+
+222
+00:17:35,820 --> 00:17:36,540
+A view service.
+
+223
+00:17:36,740 --> 00:17:38,020
+And a cross-cutting service.
+
+224
+00:17:38,340 --> 00:17:44,660
+So, these are the situations in which you will take an architectural component and put it in your boundary.
+
+225
+00:17:45,220 --> 00:17:45,280
+Right?
+
+226
+00:17:46,780 --> 00:17:47,120
+Whoops.
+
+227
+00:17:49,060 --> 00:17:50,240
+Number five.
+
+228
+00:17:50,640 --> 00:17:51,480
+Communication channels.
+
+229
+00:17:51,620 --> 00:17:51,760
+Right?
+
+230
+00:17:51,880 --> 00:17:54,360
+Because so far I've been talking only about the boundaries.
+
+231
+00:17:54,540 --> 00:18:01,400
+What about, you know, communication between the microservices and between the bounded context and aggregates and all that?
+
+232
+00:18:01,400 --> 00:18:03,780
+So, we've made a topic for this.
+
+233
+00:18:03,960 --> 00:18:13,040
+And number six, control flows is basically everything orchestration related because once you're going into the distributed world, you need to give an opinion on that.
+
+234
+00:18:13,800 --> 00:18:16,240
+So, we needed to give guidelines on this.
+
+235
+00:18:17,580 --> 00:18:19,780
+And this is an actual snapshot.
+
+236
+00:18:19,780 --> 00:18:26,500
+So, you have at the top a topic name.
+
+237
+00:18:26,640 --> 00:18:29,620
+You have some links, possibly, I don't know, relevant design reviews.
+
+238
+00:18:29,620 --> 00:18:32,320
+This was used on interesting reading.
+
+239
+00:18:32,580 --> 00:18:37,860
+A very short sentence of why this pattern is important for us in the company.
+
+240
+00:18:38,960 --> 00:18:40,820
+And then we go into our when-thens.
+
+241
+00:18:41,460 --> 00:18:45,820
+Because going back, I said we want to scale the decision-making process.
+
+242
+00:18:46,240 --> 00:18:49,400
+So, we need to help developers build the decision tree in their head.
+
+243
+00:18:49,780 --> 00:18:51,040
+And we're techies.
+
+244
+00:18:51,340 --> 00:18:54,300
+So, we, like, we really love if-else, if-else.
+
+245
+00:18:54,700 --> 00:18:56,780
+So, we figured we'll do, like, when-then.
+
+246
+00:18:56,780 --> 00:19:02,000
+Because we think, like, oh, if I have this situation, then I possibly should consider this situation.
+
+247
+00:19:02,440 --> 00:19:04,360
+And this is how we build our guidelines.
+
+248
+00:19:04,860 --> 00:19:07,540
+Super short, super concise, when-then.
+
+249
+00:19:07,800 --> 00:19:08,040
+Why?
+
+250
+00:19:08,180 --> 00:19:13,680
+Because it's all about propagating the knowledge and helping the developers build that decision tree.
+
+251
+00:19:15,100 --> 00:19:16,360
+So, this is this.
+
+252
+00:19:16,520 --> 00:19:17,200
+This is that.
+
+253
+00:19:17,780 --> 00:19:19,780
+And I think of sales.
+
+254
+00:19:19,780 --> 00:19:25,520
+So, this important point that we actually use to propagate it in the design review process.
+
+255
+00:19:26,040 --> 00:19:29,840
+Like, if you see a topic, you can direct a developer to go and read.
+
+256
+00:19:29,980 --> 00:19:32,020
+And also, it was considered live documentation.
+
+257
+00:19:32,420 --> 00:19:34,620
+We don't only add new topics.
+
+258
+00:19:35,460 --> 00:19:35,700
+Okay?
+
+259
+00:19:35,740 --> 00:19:38,540
+We also go back and update topics.
+
+260
+00:19:38,760 --> 00:19:41,700
+For example, we are working on REST guidelines right now.
+
+261
+00:19:41,880 --> 00:19:44,360
+And this also molds into this figure.
+
+262
+00:19:44,360 --> 00:19:48,860
+For example, we will have REST guidelines for an aggregate service.
+
+263
+00:19:49,000 --> 00:19:49,760
+We'll have REST guidelines.
+
+264
+00:19:49,780 --> 00:19:50,860
+For a view service.
+
+265
+00:19:51,280 --> 00:19:55,420
+And it's extended and updated as we go along and learn more.
+
+266
+00:19:57,520 --> 00:19:58,040
+Okay.
+
+267
+00:19:58,720 --> 00:20:02,780
+So, I'm going to start seeing the examples.
+
+268
+00:20:05,180 --> 00:20:08,460
+So, I've talked about the process.
+
+269
+00:20:09,720 --> 00:20:14,400
+The fact that we wanted to introduce architects but not make them ivory tower architects.
+
+270
+00:20:14,580 --> 00:20:14,680
+Right?
+
+271
+00:20:14,680 --> 00:20:18,340
+And we want to keep the squads empowered.
+
+272
+00:20:18,340 --> 00:20:20,580
+And that we decided to use DDD.
+
+273
+00:20:20,760 --> 00:20:25,280
+But we built our own language that is opinionated for our use case.
+
+274
+00:20:25,640 --> 00:20:25,720
+Okay?
+
+275
+00:20:26,400 --> 00:20:27,880
+So, this is what I've talked about.
+
+276
+00:20:28,540 --> 00:20:31,540
+Now, we're going to start seeing some of the definitions.
+
+277
+00:20:31,860 --> 00:20:35,080
+And just so you know, it's not like copy-paste from the blue book.
+
+278
+00:20:35,280 --> 00:20:37,380
+Again, some things were simplified.
+
+279
+00:20:37,820 --> 00:20:38,060
+Okay?
+
+280
+00:20:38,100 --> 00:20:42,000
+Because the point was not to be as close to the Bible.
+
+281
+00:20:42,360 --> 00:20:46,680
+The point was for it to be something that can be embedded in the thought process.
+
+282
+00:20:47,240 --> 00:20:47,500
+Okay?
+
+283
+00:20:48,340 --> 00:20:51,200
+I will tackle the service granularity question.
+
+284
+00:20:51,660 --> 00:20:56,180
+Because we have microservices, we need to decide what pattern is sort of recommended as a default.
+
+285
+00:20:56,780 --> 00:20:59,180
+And then we're going to go deep dive into examples.
+
+286
+00:21:01,520 --> 00:21:02,000
+Okay?
+
+287
+00:21:02,180 --> 00:21:04,620
+And a reminder, this is what we're trying to do.
+
+288
+00:21:05,160 --> 00:21:05,420
+Okay?
+
+289
+00:21:05,440 --> 00:21:06,900
+We're optimizing for ownership.
+
+290
+00:21:06,900 --> 00:21:09,560
+We want the teams to be able to take their domain forward.
+
+291
+00:21:11,460 --> 00:21:13,540
+So, first definition.
+
+292
+00:21:14,420 --> 00:21:14,980
+An aggregate.
+
+293
+00:21:15,840 --> 00:21:18,180
+A business unit which captures data.
+
+294
+00:21:18,180 --> 00:21:18,320
+A business unit which captures data.
+
+295
+00:21:18,320 --> 00:21:21,200
+Changes and holds transactional consistency.
+
+296
+00:21:21,580 --> 00:21:22,180
+A business model.
+
+297
+00:21:22,720 --> 00:21:23,260
+This is it.
+
+298
+00:21:23,600 --> 00:21:25,320
+This is what we told the developers.
+
+299
+00:21:26,000 --> 00:21:26,280
+Simple.
+
+300
+00:21:28,060 --> 00:21:29,260
+Bounded context.
+
+301
+00:21:29,980 --> 00:21:34,640
+An aggregation of related areas, business requirements, of in our product,
+
+302
+00:21:34,840 --> 00:21:37,880
+and maintains ubiquitous language with a clear boundary.
+
+303
+00:21:39,820 --> 00:21:45,440
+And now I'm going to start circling back to the Augury domain, let's say.
+
+304
+00:21:46,100 --> 00:21:48,020
+And, for example, here we have...
+
+305
+00:21:48,020 --> 00:21:52,600
+It simplifies, there's like more stuff going on, like almost in every example I'll give.
+
+306
+00:21:52,600 --> 00:21:57,360
+But, for example, so we have a bounded context called machine health analysis.
+
+307
+00:21:57,360 --> 00:21:59,460
+Because this is what we give our customers, right?
+
+308
+00:21:59,460 --> 00:22:06,040
+The ability to analyze their machines over data we harvest and stuff and AI and magic, fine.
+
+309
+00:22:06,040 --> 00:22:14,180
+But this is, in general, like one of the, you know, core capabilities we give and we will have different aggregates floating in there.
+
+310
+00:22:14,600 --> 00:22:18,000
+So, for example, we have machine status, which is the health of the machine.
+
+311
+00:22:18,020 --> 00:22:26,200
+We will have an AI detection, which is the representation of the output of what's coming from the AI engine.
+
+312
+00:22:26,460 --> 00:22:31,200
+Usually this will trigger some sort of alert that will notify the customer to come take a look.
+
+313
+00:22:31,700 --> 00:22:36,200
+And we have machine trained data for them to be able to do the analysis itself.
+
+314
+00:22:36,260 --> 00:22:37,220
+It needs the history.
+
+315
+00:22:40,060 --> 00:22:45,800
+So these are two basic definitions, and this is like how we build bounded context and aggregates.
+
+316
+00:22:46,100 --> 00:22:47,740
+And now for the granularity question.
+
+317
+00:22:48,020 --> 00:22:58,340
+Assuming you saw both of the definitions, we were conflicting between an aggregate service and a bounded context service.
+
+318
+00:22:58,840 --> 00:23:01,700
+And I'll walk you through what went through our heads.
+
+319
+00:23:02,380 --> 00:23:07,620
+So, first of all, we have very good CICD and dev tools, okay?
+
+320
+00:23:07,740 --> 00:23:14,540
+Like really top notch when you're talking about companies that, like, have a test environment in one click, like magic.
+
+321
+00:23:15,100 --> 00:23:16,520
+So we have it.
+
+322
+00:23:16,520 --> 00:23:18,000
+And we've put a lot of work into this.
+
+323
+00:23:18,020 --> 00:23:31,300
+So in our heads, maintaining a lot of microservices in the cloud or talking about the overhead of generating more, it didn't feel like, you know, the burning issue for us.
+
+324
+00:23:32,200 --> 00:23:41,240
+And also we took, like, in our thinking that a squad will usually get, like, one to two bounded context per squad.
+
+325
+00:23:41,240 --> 00:23:44,800
+And if there's more, we need to ask ourselves what's going on.
+
+326
+00:23:44,880 --> 00:23:47,020
+Because, you know, cognitive load on a squad.
+
+327
+00:23:47,140 --> 00:23:48,000
+You don't want to go too far.
+
+328
+00:23:48,020 --> 00:23:48,780
+All of that.
+
+329
+00:23:50,000 --> 00:23:56,140
+So if we have these assumptions in place, what are we actually optimizing for?
+
+330
+00:23:56,880 --> 00:24:01,400
+And as I said, we started transitioning from being a portfolio company.
+
+331
+00:24:01,620 --> 00:24:06,500
+And that required us to acknowledge the fact that we have domains that are evolving right now.
+
+332
+00:24:07,160 --> 00:24:17,940
+And because, again, the company was growing and we wanted for teams, for squads to be able to run as smoothly as possible, they needed to know their ownership.
+
+333
+00:24:18,780 --> 00:24:24,720
+We also acknowledged the fact that with changes in the company comes changes in the structure.
+
+334
+00:24:24,960 --> 00:24:31,940
+And we want to be able to, let's say, if you're saying, okay, this team was responsible for two bounded context, now it's going to be responsible.
+
+335
+00:24:32,280 --> 00:24:34,260
+Like, they're going to be a team for each one.
+
+336
+00:24:34,500 --> 00:24:36,880
+You need to be able to, like, reorganize what you're doing.
+
+337
+00:24:36,880 --> 00:24:41,420
+Whether if you were wrong in the team structure or wrong in your modeling, you need to be able to do that.
+
+338
+00:24:42,240 --> 00:24:43,660
+And we wanted to build for scale.
+
+339
+00:24:44,040 --> 00:24:47,920
+As I said, we truly believe we're building a generational company.
+
+340
+00:24:48,020 --> 00:24:50,900
+We need to have our architecture at the same place.
+
+341
+00:24:51,640 --> 00:24:56,960
+And all of this led us to go with the default granularity of an aggregate microservice.
+
+342
+00:24:57,920 --> 00:24:58,000
+Okay?
+
+343
+00:24:59,720 --> 00:25:05,160
+And this is how, so I'm going to start doing, like, deeper dives into the topics.
+
+344
+00:25:05,860 --> 00:25:11,760
+For example, the aggregate service, like I said, if this is our recommendation, we need to give a pattern for this, right?
+
+345
+00:25:11,820 --> 00:25:14,340
+This topic is actually also a pattern in a system.
+
+346
+00:25:14,940 --> 00:25:18,000
+And an aggregate will usually look like a welcome.
+
+347
+00:25:18,020 --> 00:25:19,020
+It's a well-defined business unit.
+
+348
+00:25:19,220 --> 00:25:19,940
+It has a state.
+
+349
+00:25:20,080 --> 00:25:21,040
+It has an identifier.
+
+350
+00:25:21,340 --> 00:25:23,060
+And it requires trajectory and consistency.
+
+351
+00:25:23,900 --> 00:25:25,320
+Again, simple.
+
+352
+00:25:25,960 --> 00:25:26,320
+You know?
+
+353
+00:25:26,600 --> 00:25:28,360
+Something you can take to everyone.
+
+354
+00:25:30,000 --> 00:25:41,400
+On the other hand, even though we decided on the aggregate as our default pattern for microservices, we acknowledge that, if I go back for a sec, the first line was very well-defined.
+
+355
+00:25:42,020 --> 00:25:43,740
+What happens if you have a new domain?
+
+356
+00:25:44,300 --> 00:25:46,840
+What happens if you want to do something new?
+
+357
+00:25:46,840 --> 00:25:48,000
+Do you wait?
+
+358
+00:25:48,020 --> 00:25:51,400
+Do you wait for your product manager to go and do research for six months?
+
+359
+00:25:51,860 --> 00:25:52,900
+I hope not.
+
+360
+00:25:53,760 --> 00:25:53,880
+Okay?
+
+361
+00:25:54,060 --> 00:26:00,480
+So, for these situations, we still recommend doing a microservice in the scope of a bounded context.
+
+362
+00:26:01,120 --> 00:26:01,380
+Okay?
+
+363
+00:26:01,560 --> 00:26:04,620
+Because if you have lower clarity, use this.
+
+364
+00:26:04,980 --> 00:26:05,740
+Move fast.
+
+365
+00:26:06,060 --> 00:26:06,600
+Learn more.
+
+366
+00:26:06,760 --> 00:26:11,860
+You can always separate it, you know, afterwards if the requirements say you need to.
+
+367
+00:26:14,260 --> 00:26:17,860
+So, the when-thens that were derived for these two were...
+
+368
+00:26:18,220 --> 00:26:23,140
+When to create a bounded context service, which I basically just told you.
+
+369
+00:26:23,520 --> 00:26:26,020
+By the way, fun fact, we introduced this pattern.
+
+370
+00:26:26,360 --> 00:26:29,820
+And in two years, this happened two times.
+
+371
+00:26:30,260 --> 00:26:31,760
+Like, it was used, but not a lot.
+
+372
+00:26:31,760 --> 00:26:34,100
+So, that happened.
+
+373
+00:26:34,780 --> 00:26:38,240
+We have when to create an aggregate service, which is...
+
+374
+00:26:38,320 --> 00:26:40,140
+I'll do a deeper example on this.
+
+375
+00:26:40,460 --> 00:26:42,260
+When to create a complex aggregate.
+
+376
+00:26:42,500 --> 00:26:47,660
+So, the differentiation we have done is that a simple aggregate is one that is changed by context.
+
+377
+00:26:47,660 --> 00:26:48,680
+By cloud operations.
+
+378
+00:26:49,280 --> 00:26:55,140
+And a complex aggregate is one that also changes its states due to consuming domain events.
+
+379
+00:26:55,600 --> 00:26:55,760
+Right?
+
+380
+00:26:55,820 --> 00:26:57,180
+It's part of a bigger flow.
+
+381
+00:26:57,420 --> 00:26:59,640
+So, it adds complexity for it in the system.
+
+382
+00:26:59,640 --> 00:27:03,040
+And you need to be aware that you're adding complexity to the system.
+
+383
+00:27:06,220 --> 00:27:12,300
+The other two questions, talking about, let's say, more of the granularity.
+
+384
+00:27:12,900 --> 00:27:16,680
+When to separate a monolith into aggregates.
+
+385
+00:27:16,980 --> 00:27:17,640
+Like, you know...
+
+386
+00:27:17,660 --> 00:27:20,680
+Like every company, you know, we didn't start with this.
+
+387
+00:27:20,680 --> 00:27:23,200
+We started this research two years ago.
+
+388
+00:27:23,200 --> 00:27:24,480
+The company exists for 10.
+
+389
+00:27:24,480 --> 00:27:28,980
+So, we did have monoliths, like everyone.
+
+390
+00:27:29,380 --> 00:27:33,520
+And the last question is about when to not.
+
+391
+00:27:33,860 --> 00:27:36,280
+Like, actually, each time we're talking about why should we.
+
+392
+00:27:36,700 --> 00:27:39,940
+So, we always need to talk about also when not to.
+
+393
+00:27:40,280 --> 00:27:43,600
+Like, let's say you have new requirements.
+
+394
+00:27:43,600 --> 00:27:47,280
+And what you need to actually do is add one field to the database.
+
+395
+00:27:47,280 --> 00:27:47,400
+.
+
+396
+00:27:47,400 --> 00:27:50,140
+But it's like it's a new aggregate.
+
+397
+00:27:50,140 --> 00:27:50,800
+You know it.
+
+398
+00:27:50,960 --> 00:27:54,900
+Like, should you really open up a new microservice for this and add the overhead?
+
+399
+00:27:55,260 --> 00:27:56,760
+The answer is probably no.
+
+400
+00:27:56,980 --> 00:27:59,920
+Add it somewhere else and refactor afterwards.
+
+401
+00:28:00,200 --> 00:28:02,160
+So, you need to tackle these questions as well.
+
+402
+00:28:04,280 --> 00:28:04,540
+Okay.
+
+403
+00:28:05,700 --> 00:28:08,760
+So, imagine a big industrial manufacturer.
+
+404
+00:28:09,480 --> 00:28:09,960
+Okay?
+
+405
+00:28:10,020 --> 00:28:11,780
+They have a lot of manufacturing plants.
+
+406
+00:28:11,780 --> 00:28:15,780
+And in each manufacturing plant, they have a lot of machines.
+
+407
+00:28:15,780 --> 00:28:26,940
+And let's say this manufacturer is Dino Food, Inc., the best dinosaur food manufacturer in the world because it's a household necessity.
+
+408
+00:28:28,460 --> 00:28:28,680
+Yes.
+
+409
+00:28:30,640 --> 00:28:38,460
+So, if we'll start looking into when to create a new aggregate service, I'll share this story.
+
+410
+00:28:38,860 --> 00:28:44,820
+So, what you're seeing here, actually here at the top, and it looks kind of small, but this is the machine page.
+
+411
+00:28:44,820 --> 00:28:45,740
+Each machine.
+
+412
+00:28:45,880 --> 00:28:47,800
+Has a machine page in our web app.
+
+413
+00:28:48,160 --> 00:28:48,280
+Right?
+
+414
+00:28:48,480 --> 00:28:50,200
+At the top, there's like a lifeline.
+
+415
+00:28:50,380 --> 00:28:52,180
+At the middle, some extra information.
+
+416
+00:28:52,380 --> 00:28:55,120
+And to the side, you have an events bar.
+
+417
+00:28:55,480 --> 00:28:58,500
+I'm going to go from the bottom to the top.
+
+418
+00:28:59,040 --> 00:29:05,440
+And, for example, you have an observation, which means a technician went to the machine and looked at something and logged something in.
+
+419
+00:29:05,860 --> 00:29:10,500
+Afterwards, a health, the health of the machine was updated.
+
+420
+00:29:11,020 --> 00:29:13,100
+Afterwards, there was another observation.
+
+421
+00:29:13,100 --> 00:29:15,600
+And then the health was updated.
+
+422
+00:29:15,780 --> 00:29:19,440
+And then it went to danger, pretty obvious danger is the worst.
+
+423
+00:29:19,480 --> 00:29:21,840
+And then they need to issue a repair.
+
+424
+00:29:21,960 --> 00:29:22,460
+Okay?
+
+425
+00:29:22,540 --> 00:29:26,660
+So, we have a squad that is responsible for all of this, okay?
+
+426
+00:29:26,660 --> 00:29:32,380
+And one day it comes to a product manager, because we have the entire team.
+
+427
+00:29:32,380 --> 00:29:37,440
+Then you have the product manager and the designer and everyone inside with the engineering in the same team.
+
+428
+00:29:38,040 --> 00:29:40,240
+And he says, oh, this is awesome.
+
+429
+00:29:40,240 --> 00:29:41,940
+I want to add bookmarks.
+
+430
+00:29:41,940 --> 00:29:44,000
+You see the blue square thingy?
+
+431
+00:29:44,000 --> 00:29:45,720
+Over there by the repair name?
+
+432
+00:29:45,720 --> 00:29:45,740
+Right?
+
+433
+00:29:45,740 --> 00:29:45,780
+Okay.
+
+434
+00:29:45,780 --> 00:29:51,280
+want to add bookmarks and I want the bookmarks to be searchable I want to be
+
+435
+00:29:51,280 --> 00:29:57,660
+able to like give the customers extra capabilities on this so comes the
+
+436
+00:29:57,660 --> 00:30:01,440
+designer you know tells the product manager cool I'll do that here here's
+
+437
+00:30:01,440 --> 00:30:05,820
+your design let's say you have an event okay we saw the events bar you have an
+
+438
+00:30:05,820 --> 00:30:12,480
+event when you click on it it opens the top part is the the event information
+
+439
+00:30:12,480 --> 00:30:16,440
+that at the bottom you have everything related to the bookmark and look it has
+
+440
+00:30:16,440 --> 00:30:21,380
+like differentiating it's differentiated with colors it's all very visual so nice
+
+441
+00:30:21,380 --> 00:30:26,080
+you can also see there's an edit and I remove specifically for the bookmark
+
+442
+00:30:26,080 --> 00:30:31,380
+whoops and now comes the question when it's passed on to the engineering team
+
+443
+00:30:31,380 --> 00:30:37,840
+is this part of the event or is this something new does this require a new
+
+444
+00:30:37,840 --> 00:30:41,760
+micro service in our eyes and this is the question we're asking ourselves and
+
+445
+00:30:41,760 --> 00:30:42,420
+this
+
+446
+00:30:42,420 --> 00:30:46,080
+there's some questions we can ask for example do they share a lifecycle and
+
+447
+00:30:46,080 --> 00:30:49,900
+this is like part of the wind dance imagine when they share a lifecycle you
+
+448
+00:30:49,900 --> 00:30:54,240
+should do this when it's you require transactional consistency you should
+
+449
+00:30:54,240 --> 00:30:59,100
+you should do this okay so these are leading questions we can use in our
+
+450
+00:30:59,100 --> 00:31:03,360
+wind dance to build this decision tree and in fact we don't require
+
+451
+00:31:03,360 --> 00:31:08,180
+transactional consistency here you can delete one leave the other do it the
+
+452
+00:31:08,180 --> 00:31:12,420
+same time it's all fine they're dependent in some way right but but it's
+
+453
+00:31:12,420 --> 00:31:17,220
+all fine and they don't share a lifecycle you can remove the bookmark
+
+454
+00:31:17,220 --> 00:31:24,360
+without even so all of this leads us to saying we want a bookmark bookmarks
+
+455
+00:31:24,360 --> 00:31:28,980
+aggregate service also remember they need to be searchable on their own they
+
+456
+00:31:28,980 --> 00:31:35,940
+have like their own web page that actually you know enables us using them
+
+457
+00:31:35,940 --> 00:31:42,420
+so this is an example for when to use an aggregate micro service and how it's
+
+458
+00:31:42,420 --> 00:31:50,540
+can come up within a design topic number three view service possibly could be
+
+459
+00:31:50,540 --> 00:31:57,660
+confused with back-end for front-end or stuff like that or I don't know what but
+
+460
+00:31:57,660 --> 00:32:05,020
+so we have mobile and web and for we don't want to add our logic into the UI
+
+461
+00:32:05,020 --> 00:32:10,020
+components into our clients so we need a way for a back-end to represent
+
+462
+00:32:10,020 --> 00:32:11,700
+knowledge and represent
+
+463
+00:32:11,700 --> 00:32:12,200
+uh
+
+464
+00:32:12,420 --> 00:32:20,020
+logic and the use case we defined for this is for complex UI components that
+
+465
+00:32:20,020 --> 00:32:26,140
+require getting data from more than one aggregate okay if you have more than one
+
+466
+00:32:26,140 --> 00:32:30,300
+aggregate that you need to for some reason visualize manipulate its data in
+
+467
+00:32:30,300 --> 00:32:33,900
+reach I don't know what you need to do you will use the view service to
+
+468
+00:32:33,900 --> 00:32:39,900
+encapsulate this logic and the one thens here are when to create a new new
+
+469
+00:32:39,900 --> 00:32:41,700
+service but also
+
+470
+00:32:41,700 --> 00:32:47,060
+when you should add persistency to the view service itself and I can talk about
+
+471
+00:32:47,060 --> 00:32:52,560
+the second one I I think for forty five minutes on its own and I won't because
+
+472
+00:32:52,560 --> 00:32:58,420
+I'm on a time limit but in general we don't always recommend using persistency
+
+473
+00:32:58,420 --> 00:33:02,920
+because this adds another layer of complexity and there's trade-offs it's a
+
+474
+00:33:02,920 --> 00:33:11,500
+straight-ups you know you need to decide and back to our back to dino Inc the
+
+475
+00:33:11,500 --> 00:33:15,320
+the best dinosaur food company in the world.
+
+476
+00:33:15,320 --> 00:33:17,020
+So we have a lot of manufacturing plants,
+
+477
+00:33:17,020 --> 00:33:19,160
+and the persona in the manufacturing plants
+
+478
+00:33:19,160 --> 00:33:22,180
+is a maintenance manager, okay?
+
+479
+00:33:22,180 --> 00:33:24,680
+But in a company, in an account,
+
+480
+00:33:24,680 --> 00:33:27,480
+you have also higher-ups, execs,
+
+481
+00:33:27,480 --> 00:33:31,000
+and these are the people that usually sign our checks.
+
+482
+00:33:32,520 --> 00:33:34,900
+So we have a different squad
+
+483
+00:33:34,900 --> 00:33:37,720
+that handles all the needs of this persona.
+
+484
+00:33:37,720 --> 00:33:42,720
+And the product manager from this squad comes and says,
+
+485
+00:33:42,980 --> 00:33:46,440
+okay, the thing that's most painful to us
+
+486
+00:33:46,440 --> 00:33:48,600
+is how to visualize to our customers
+
+487
+00:33:48,600 --> 00:33:51,640
+the value they are getting from us.
+
+488
+00:33:51,640 --> 00:33:53,960
+They don't care about specific machines,
+
+489
+00:33:53,960 --> 00:33:55,700
+they care about statistics and numbers,
+
+490
+00:33:55,700 --> 00:33:58,960
+and they want it to be pretty and easy to consume.
+
+491
+00:33:58,960 --> 00:34:01,280
+So the product manager came and said,
+
+492
+00:34:01,280 --> 00:34:03,760
+this is what we want to do, and the designer said,
+
+493
+00:34:03,760 --> 00:34:06,900
+okay, so I'll give you a UI component,
+
+494
+00:34:06,900 --> 00:34:07,680
+this is part of it,
+
+495
+00:34:07,680 --> 00:34:09,440
+by the way, these are real snapshots,
+
+496
+00:34:09,440 --> 00:34:13,720
+everything you're seeing from our web.
+
+497
+00:34:13,720 --> 00:34:16,220
+And the top part actually shows you
+
+498
+00:34:16,220 --> 00:34:19,800
+like aggregation over time of machine health statuses.
+
+499
+00:34:19,800 --> 00:34:23,520
+You can see how much of your machines in your old company,
+
+500
+00:34:23,520 --> 00:34:26,860
+actually right now, green or red, stuff like that,
+
+501
+00:34:26,860 --> 00:34:30,240
+and how it changed through the months.
+
+502
+00:34:30,240 --> 00:34:34,940
+And on the bottom, you can see basically user engagement
+
+503
+00:34:34,940 --> 00:34:36,640
+within the manufacturing plants.
+
+504
+00:34:36,640 --> 00:34:37,060
+Each time something is wrong, it changes.
+
+505
+00:34:37,060 --> 00:34:38,820
+Each time something is wrong with a machine,
+
+506
+00:34:38,820 --> 00:34:39,840
+we issue an alert.
+
+507
+00:34:39,840 --> 00:34:41,520
+And then someone in the manufacturing plant
+
+508
+00:34:41,520 --> 00:34:44,320
+is supposed to respond to it and fix the machine.
+
+509
+00:34:44,320 --> 00:34:46,640
+And basically, this is what it is,
+
+510
+00:34:46,640 --> 00:34:52,280
+how many alerts were sent out, how many people reacted to them,
+
+511
+00:34:52,280 --> 00:34:54,560
+and stuff like this.
+
+512
+00:34:54,560 --> 00:34:59,620
+And to understand better why this is super important,
+
+513
+00:34:59,620 --> 00:35:02,200
+we have one squad that is responsible for the machine
+
+514
+00:35:02,200 --> 00:35:03,640
+health statuses.
+
+515
+00:35:03,640 --> 00:35:07,060
+And we have a different squad that might be responsible,
+
+516
+00:35:07,060 --> 00:35:09,640
+you know, for the health alerts, right?
+
+517
+00:35:09,640 --> 00:35:11,340
+But we have an entirely different squad
+
+518
+00:35:11,340 --> 00:35:13,520
+that needs to build this logic that
+
+519
+00:35:13,520 --> 00:35:15,720
+aggregates all of those things.
+
+520
+00:35:15,720 --> 00:35:19,460
+We can push this code into the other squads.
+
+521
+00:35:19,460 --> 00:35:21,640
+We can also push it into the UI, but then we
+
+522
+00:35:21,640 --> 00:35:25,300
+need to duplicate it for our mobile applications as well.
+
+523
+00:35:25,300 --> 00:35:26,620
+And this is why we need this.
+
+524
+00:35:26,620 --> 00:35:29,200
+This is why we need this pattern in our system,
+
+525
+00:35:29,200 --> 00:35:31,380
+specifically, because we have a lot of this.
+
+526
+00:35:33,920 --> 00:35:35,840
+So this is the situation you will choose.
+
+527
+00:35:35,840 --> 00:35:36,900
+These are the questions.
+
+528
+00:35:36,900 --> 00:35:40,140
+You're asking yourself, right, to decide
+
+529
+00:35:40,140 --> 00:35:42,140
+when to do this sort of service when
+
+530
+00:35:42,140 --> 00:35:49,360
+you're aggregating data from one or more aggregates.
+
+531
+00:35:49,360 --> 00:35:50,220
+Awesome.
+
+532
+00:35:50,220 --> 00:35:51,240
+Now, a riddle.
+
+533
+00:35:56,580 --> 00:35:57,940
+Anybody can guess.
+
+534
+00:36:04,640 --> 00:36:05,140
+No?
+
+535
+00:36:06,900 --> 00:36:08,400
+Cross-cutting concerns.
+
+536
+00:36:08,400 --> 00:36:08,940
+Yes.
+
+537
+00:36:08,940 --> 00:36:11,200
+You thought it in your hearts, but you didn't say it.
+
+538
+00:36:11,200 --> 00:36:11,940
+You were ashamed.
+
+539
+00:36:11,940 --> 00:36:13,900
+That's fine.
+
+540
+00:36:13,900 --> 00:36:17,040
+So let's talk about cross-cutting concerns.
+
+541
+00:36:17,040 --> 00:36:21,520
+One of the things we introduced with our topics.
+
+542
+00:36:21,520 --> 00:36:24,180
+So we have cross-cutting concerns.
+
+543
+00:36:24,180 --> 00:36:27,640
+By the way, in the blue book, possibly more similar
+
+544
+00:36:27,640 --> 00:36:30,960
+to infrastructure layer, a set of services
+
+545
+00:36:30,960 --> 00:36:34,260
+that provides commonly used capabilities to the business
+
+546
+00:36:34,260 --> 00:36:35,020
+components.
+
+547
+00:36:35,020 --> 00:36:35,520
+OK?
+
+548
+00:36:35,520 --> 00:36:41,880
+These services do not include business content, OK?
+
+549
+00:36:41,880 --> 00:36:46,580
+So we have a topic for this, and that's the cost-cutting service,
+
+550
+00:36:46,580 --> 00:36:47,620
+also a pattern.
+
+551
+00:36:47,620 --> 00:36:49,120
+And the main use case would actually
+
+552
+00:36:49,120 --> 00:36:54,420
+be wrapping integrations with third-party vendors, right?
+
+553
+00:36:54,420 --> 00:36:59,160
+And it most likely will service more than one aggregate,
+
+554
+00:36:59,160 --> 00:37:02,780
+more than one bounded context, more than one even R&D group,
+
+555
+00:37:02,780 --> 00:37:04,040
+more than one domain.
+
+556
+00:37:04,040 --> 00:37:05,080
+Very cross-siting.
+
+557
+00:37:05,520 --> 00:37:10,760
+So the when-thens we have here is, first of all,
+
+558
+00:37:10,760 --> 00:37:12,020
+when to generate the service.
+
+559
+00:37:12,020 --> 00:37:14,440
+And the other one is when to not to.
+
+560
+00:37:14,440 --> 00:37:16,420
+Because we always need to ask ourselves
+
+561
+00:37:16,420 --> 00:37:18,980
+if we're using use cases properly.
+
+562
+00:37:18,980 --> 00:37:21,880
+Sometimes it's better off to actually build things
+
+563
+00:37:21,880 --> 00:37:23,020
+as a library.
+
+564
+00:37:23,020 --> 00:37:27,400
+And like the persistency topic, I can talk about this,
+
+565
+00:37:27,400 --> 00:37:29,240
+I think, for also 45 minutes.
+
+566
+00:37:29,240 --> 00:37:30,020
+I won't.
+
+567
+00:37:30,020 --> 00:37:34,120
+If anybody wants to go head-in-head afterwards, we can.
+
+568
+00:37:34,120 --> 00:37:34,620
+OK.
+
+569
+00:37:34,620 --> 00:37:35,120
+Bye.
+
+570
+00:37:35,120 --> 00:37:35,500
+Bye.
+
+571
+00:37:35,520 --> 00:37:40,920
+Let's dive a little deeper into the cross-cutting service.
+
+572
+00:37:40,920 --> 00:37:44,340
+Once again, dino food, Inc.
+
+573
+00:37:44,340 --> 00:37:46,440
+Globally consumed.
+
+574
+00:37:46,440 --> 00:37:48,200
+There's dinosaurs everywhere.
+
+575
+00:37:48,200 --> 00:37:53,400
+And we have manufacturing plants in different parts in the world.
+
+576
+00:37:53,400 --> 00:37:55,900
+And now comes the product manager
+
+577
+00:37:55,900 --> 00:37:59,920
+for the team that is responsible for cross-cutting concerns
+
+578
+00:37:59,920 --> 00:38:05,420
+and says, OK, we've been translating so far the static
+
+579
+00:38:05,420 --> 00:38:07,560
+data that we have in our system.
+
+580
+00:38:07,560 --> 00:38:09,860
+But what about the user-generated data?
+
+581
+00:38:09,860 --> 00:38:13,020
+And this is somewhat of a no-brainer writing
+
+582
+00:38:13,020 --> 00:38:14,260
+related to experience.
+
+583
+00:38:14,260 --> 00:38:15,920
+Like, they're doing this everywhere.
+
+584
+00:38:15,920 --> 00:38:19,280
+Every app you look at, you can translate information.
+
+585
+00:38:19,280 --> 00:38:20,620
+So this is what I want.
+
+586
+00:38:20,620 --> 00:38:23,780
+You can imagine this appears in several and several
+
+587
+00:38:23,780 --> 00:38:26,500
+different UI components.
+
+588
+00:38:26,500 --> 00:38:29,800
+So this is also a situation that we can direct ourselves
+
+589
+00:38:29,800 --> 00:38:31,920
+for saying it's a repeating capability.
+
+590
+00:38:31,920 --> 00:38:33,980
+It has no business context.
+
+591
+00:38:33,980 --> 00:38:35,220
+You can plug it in to someone.
+
+592
+00:38:35,220 --> 00:38:38,500
+There's some automatic translator, whatever,
+
+593
+00:38:38,500 --> 00:38:40,260
+API in the back.
+
+594
+00:38:40,260 --> 00:38:43,780
+And it's independently deployed.
+
+595
+00:38:43,780 --> 00:38:45,460
+It can be independently deployed.
+
+596
+00:38:45,460 --> 00:38:47,660
+And this is a situation which will
+
+597
+00:38:47,660 --> 00:38:51,980
+decide to put the wrapping of the service in a microservice.
+
+598
+00:38:51,980 --> 00:38:56,280
+And then you can actually pluck it and change vendors,
+
+599
+00:38:56,280 --> 00:38:58,500
+just like that, instead of running around
+
+600
+00:38:58,500 --> 00:39:02,580
+after all the libraries you have in a million microservices
+
+601
+00:39:02,580 --> 00:39:04,620
+to update this, or UI components, whatever
+
+602
+00:39:04,620 --> 00:39:05,160
+the architecture.
+
+603
+00:39:05,160 --> 00:39:09,640
+It ends up being so cost-cutting service.
+
+604
+00:39:12,160 --> 00:39:15,200
+We're starting to get to the end.
+
+605
+00:39:15,200 --> 00:39:18,200
+Last topic that I will do a deep dive into
+
+606
+00:39:18,200 --> 00:39:20,680
+is the communication channels.
+
+607
+00:39:20,680 --> 00:39:25,240
+And basically, the use case is everything.
+
+608
+00:39:25,240 --> 00:39:27,940
+From a click of a button to complex flows,
+
+609
+00:39:27,940 --> 00:39:29,780
+everything has communication.
+
+610
+00:39:29,780 --> 00:39:34,560
+And we need to define how we are using this.
+
+611
+00:39:34,560 --> 00:39:36,760
+So the when-thens that we built for this
+
+612
+00:39:36,760 --> 00:39:40,000
+was when to generate a new domain event.
+
+613
+00:39:40,000 --> 00:39:43,640
+When does an aggregate tell the world my state have changed?
+
+614
+00:39:43,640 --> 00:39:44,180
+Who cares?
+
+615
+00:39:44,180 --> 00:39:44,680
+Take it.
+
+616
+00:39:44,680 --> 00:39:46,600
+Take my information.
+
+617
+00:39:46,600 --> 00:39:51,060
+Another one is when should we generate service requests?
+
+618
+00:39:51,060 --> 00:39:53,260
+So service request is how we communicate
+
+619
+00:39:53,260 --> 00:39:54,680
+with cost-cutting concerns.
+
+620
+00:39:54,680 --> 00:39:57,460
+It can be synchronous, asynchronous.
+
+621
+00:39:57,460 --> 00:40:00,560
+But how do we do it and when?
+
+622
+00:40:00,560 --> 00:40:03,440
+When to enrich an event with data?
+
+623
+00:40:03,440 --> 00:40:04,560
+Like I said, it's very important.
+
+624
+00:40:04,560 --> 00:40:06,220
+We had distributed systems.
+
+625
+00:40:06,220 --> 00:40:07,860
+And we needed to give our opinion
+
+626
+00:40:07,860 --> 00:40:12,060
+whether we put on an event, on a domain event, all the data,
+
+627
+00:40:12,060 --> 00:40:17,140
+or actually just the ID of the aggregate that change its state.
+
+628
+00:40:17,140 --> 00:40:20,280
+So this is also something we dove into.
+
+629
+00:40:20,280 --> 00:40:22,800
+When an aggregate should consume a domain event
+
+630
+00:40:22,800 --> 00:40:25,980
+and practically become complex?
+
+631
+00:40:25,980 --> 00:40:29,560
+And when should we use commands?
+
+632
+00:40:29,560 --> 00:40:31,060
+So all of these are when-thens.
+
+633
+00:40:31,060 --> 00:40:34,560
+I don't have a big example for this because this topic
+
+634
+00:40:34,560 --> 00:40:37,320
+is super broad.
+
+635
+00:40:37,320 --> 00:40:42,280
+But it was important for me to show you how we build this.
+
+636
+00:40:42,280 --> 00:40:45,060
+Because once again, I'll take a step back.
+
+637
+00:40:45,060 --> 00:40:47,960
+What we want to achieve is for developers.
+
+638
+00:40:47,960 --> 00:40:51,240
+And even imagine a new developer comes to the company.
+
+639
+00:40:51,240 --> 00:40:56,180
+How do you bring them up to speed with all of this?
+
+640
+00:40:56,180 --> 00:40:58,300
+So it needs to be simple enough to be
+
+641
+00:40:58,300 --> 00:41:01,620
+added to the lifecycle of the squads themselves.
+
+642
+00:41:04,560 --> 00:41:08,060
+So key takeaways, or at least my key takeaways,
+
+643
+00:41:08,060 --> 00:41:11,120
+and hopefully can be helpful for you too,
+
+644
+00:41:11,120 --> 00:41:13,860
+is for scaling the decision-making process
+
+645
+00:41:13,860 --> 00:41:17,460
+within squads, we need to make it very easy
+
+646
+00:41:17,460 --> 00:41:20,280
+to make the right architectural decision.
+
+647
+00:41:20,280 --> 00:41:23,120
+Technology-wise as well, but also
+
+648
+00:41:23,120 --> 00:41:28,680
+with regards of thinking and having depth understanding.
+
+649
+00:41:28,680 --> 00:41:32,400
+We need to define very clear boundaries
+
+650
+00:41:32,400 --> 00:41:33,880
+to optimize for ownership.
+
+651
+00:41:33,880 --> 00:41:34,380
+OK?
+
+652
+00:41:34,380 --> 00:41:37,740
+Because we don't want people to be too much spread around.
+
+653
+00:41:37,740 --> 00:41:40,260
+So ownership is very critical.
+
+654
+00:41:40,260 --> 00:41:44,880
+And we want to define our own language.
+
+655
+00:41:44,880 --> 00:41:45,380
+OK?
+
+656
+00:41:45,380 --> 00:41:47,380
+It will be tailor-made for us.
+
+657
+00:41:47,380 --> 00:41:53,160
+You maybe could take some of those when-thens to your place
+
+658
+00:41:53,160 --> 00:41:54,480
+and it will work.
+
+659
+00:41:54,480 --> 00:41:57,380
+But actually, it requires real deep understanding
+
+660
+00:41:57,380 --> 00:42:01,600
+of what are the questions that arise in your company.
+
+661
+00:42:01,600 --> 00:42:03,140
+And you need to tailor-made it for you.
+
+662
+00:42:04,380 --> 00:42:05,880
+OK?
+
+663
+00:42:05,880 --> 00:42:08,780
+Focus on making knowledge accessible.
+
+664
+00:42:08,780 --> 00:42:11,560
+Whether it's by generating personas, which
+
+665
+00:42:11,560 --> 00:42:12,560
+are go-to people.
+
+666
+00:42:12,560 --> 00:42:14,200
+For example, for us, it's the architects.
+
+667
+00:42:14,200 --> 00:42:16,460
+You can always go to the architect within your group
+
+668
+00:42:16,460 --> 00:42:19,320
+to ask questions, to, I don't know,
+
+669
+00:42:19,320 --> 00:42:22,140
+for them to help you in your design process.
+
+670
+00:42:22,140 --> 00:42:24,640
+But the relationship is backwards, right?
+
+671
+00:42:24,640 --> 00:42:27,240
+Instead of the architect bringing you here,
+
+672
+00:42:27,240 --> 00:42:30,240
+take your design, the developer is working on the design
+
+673
+00:42:30,240 --> 00:42:31,560
+and they come to the architects.
+
+674
+00:42:31,560 --> 00:42:33,760
+And we need to be go-to people for this, right?
+
+675
+00:42:33,760 --> 00:42:37,720
+They need to truly believe we want to help.
+
+676
+00:42:37,720 --> 00:42:40,720
+They need to believe that we have the right knowledge.
+
+677
+00:42:40,720 --> 00:42:43,840
+And it will be impactful for them or else they'll just
+
+678
+00:42:43,840 --> 00:42:45,140
+skip us, right?
+
+679
+00:42:45,140 --> 00:42:47,480
+And this is why the emphasis on the process
+
+680
+00:42:47,480 --> 00:42:50,860
+and on the feedback loops and on working with the developers
+
+681
+00:42:50,860 --> 00:42:52,160
+to build the guidelines.
+
+682
+00:42:52,160 --> 00:42:54,000
+You can't just drop guidelines on them.
+
+683
+00:42:54,000 --> 00:42:55,720
+It probably wouldn't work.
+
+684
+00:42:55,720 --> 00:42:59,680
+They'll resist, you know, naturally resist.
+
+685
+00:42:59,680 --> 00:43:03,400
+And what we wanted to resolve or what happened for us, or at least
+
+686
+00:43:03,400 --> 00:43:03,760
+it's working.
+
+687
+00:43:03,760 --> 00:43:05,900
+It's working well for us for two years.
+
+688
+00:43:05,900 --> 00:43:09,100
+And maybe I'll be telling a different story in another two
+
+689
+00:43:09,100 --> 00:43:12,000
+years, but it's generating autonomous
+
+690
+00:43:12,000 --> 00:43:14,640
+codes with agile architecture.
+
+691
+00:43:14,640 --> 00:43:16,240
+And the agile is on the architecture.
+
+692
+00:43:16,240 --> 00:43:21,640
+It needs to be not as rigid or enough not rigid, you know,
+
+693
+00:43:21,640 --> 00:43:25,820
+to be able to support changes within the company,
+
+694
+00:43:25,820 --> 00:43:29,920
+within the product or team structure.
+
+695
+00:43:29,920 --> 00:43:33,400
+OK, so what's next?
+
+696
+00:43:33,400 --> 00:43:36,340
+As I've said, we are always working
+
+697
+00:43:36,340 --> 00:43:38,300
+on new topics and new things.
+
+698
+00:43:38,300 --> 00:43:40,980
+For example, now that we started distributing
+
+699
+00:43:40,980 --> 00:43:43,400
+some of our monoliths, we are starting
+
+700
+00:43:43,400 --> 00:43:45,960
+seeing issues over distributed entities
+
+701
+00:43:45,960 --> 00:43:49,880
+and what type of complexities comes from this
+
+702
+00:43:49,880 --> 00:43:54,320
+within the distributed systems.
+
+703
+00:43:54,320 --> 00:43:57,080
+The whole talk was about back end.
+
+704
+00:43:57,080 --> 00:43:59,400
+We are not forgetting the front end.
+
+705
+00:43:59,400 --> 00:44:01,240
+The back end was the beginning of this.
+
+706
+00:44:01,240 --> 00:44:02,620
+And we're working right now.
+
+707
+00:44:02,620 --> 00:44:03,120
+On.
+
+708
+00:44:03,120 --> 00:44:03,400
+On.
+
+709
+00:44:03,400 --> 00:44:06,640
+How to do the same process with micro front end.
+
+710
+00:44:06,640 --> 00:44:08,840
+We don't have them yet, but we will.
+
+711
+00:44:08,840 --> 00:44:12,380
+And we're working very hard on, well, we mostly
+
+712
+00:44:12,380 --> 00:44:17,440
+from within our front end guild, on mapping UI components
+
+713
+00:44:17,440 --> 00:44:19,540
+to the right bounded context and understanding
+
+714
+00:44:19,540 --> 00:44:21,400
+what types of heuristics this will have.
+
+715
+00:44:21,400 --> 00:44:26,000
+Because UI is different and complex in different ways.
+
+716
+00:44:26,000 --> 00:44:28,540
+But this is something we're tackling.
+
+717
+00:44:28,540 --> 00:44:33,120
+Context mapping, we started going into context mapping.
+
+718
+00:44:33,120 --> 00:44:38,280
+We didn't initially introduce it at all because, as I said,
+
+719
+00:44:38,280 --> 00:44:39,900
+we didn't want to do too much.
+
+720
+00:44:39,900 --> 00:44:41,940
+We wanted to finish the first phase
+
+721
+00:44:41,940 --> 00:44:45,560
+and then deepen our understanding
+
+722
+00:44:45,560 --> 00:44:47,020
+and take it to the next level.
+
+723
+00:44:47,020 --> 00:44:51,000
+So we're starting research on this, specifically, actually
+
+724
+00:44:51,000 --> 00:44:52,600
+starting from the generic domains
+
+725
+00:44:52,600 --> 00:44:55,400
+and how this can impact relationships
+
+726
+00:44:55,400 --> 00:45:00,240
+using the cross-cutting concerns that we have in our system.
+
+727
+00:45:00,240 --> 00:45:01,360
+I think that's that.
+
+728
+00:45:01,360 --> 00:45:02,760
+Yes.
+
+729
+00:45:02,760 --> 00:45:04,320
+So that's it.
