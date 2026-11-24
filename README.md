@@ -15,6 +15,7 @@
 | Eric Evans — Tackling Complexity in the Heart of Software | Eric Evans | DDD Europe 2016 | [مشاهده](videos/ddd-europe/2-Eric-Evans—Tackling-Complexity-in-the-Heart-of-Software/) |
 | What is DDD in 1 slide - Javiera Laso | Javiera Laso | DDD Europe 2021 | [مشاهده](videos/ddd-europe/3-What-is-DDD-in-1-slide-Javiera-Laso/) |
 | DDD By Example - Paul Rayner - DDD Europe 2020 | Paul Rayner | DDD Europe 2020 | [مشاهده](videos/ddd-europe/4-DDD-By-Example-Paul-Rayner-DDD-Europe-2020/) |
+| Practical DDD - Transforming theories into guidelines - Hila Fox - DDD Europe 2023 | Hila Fox | DDD Europe 2023 | [مشاهده](videos/ddd-europe/5-Practical-DDD-Transforming-theories-into-guidelines-Hila-Fox-DDD-Europe-2023/) |
 
 <div dir="rtl">
 در پوشهٔ هر ویدیو، `subtitles/en.srt` متن انگلیسی و `subtitles/fa.srt` ترجمهٔ فارسی است. وضعیت بررسی و منبع فایل‌ها در README همان ویدیو آمده است. این نسخه‌ها نیاز به بازبینی دارند؛ فایل انگلیسی را لزوماً زیرنویس رسمی در نظر نگیرید.
